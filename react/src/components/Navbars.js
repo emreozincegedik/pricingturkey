@@ -6,18 +6,32 @@ import { Navbar, NavDropdown } from "react-bootstrap";
 import { animateScroll, scroller } from "react-scroll";
 
 export class Navbars extends Component {
-  state = { isOpen: false, isCollapsed: true };
+  state = { isDropdownOpen: false, isCollapsed: true };
   handleDropdown = () => {
-    this.setState({ isOpen: !this.state.isOpen });
+    // console.log("pressed");
+    this.setState({ isDropdownOpen: !this.state.isDropdownOpen });
   };
+  handleClick = (e) => {
+    if (!this.node.contains(e.target)) {
+      this.setState({ isDropdownOpen: false });
+      // console.log("test");
+    }
+  };
+  componentDidMount() {
+    document.addEventListener("click", this.handleClick);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("click", this.handleClick);
+  }
   static contextType = Context;
   // handleOpen = () => {
-  //   this.setState({ isOpen: true });
+  //   this.setState({ isDropdownOpen: true });
   //   console.log("yes");
   // };
 
   // handleClose = () => {
-  //   this.setState({ isOpen: false });
+  //   this.setState({ isDropdownOpen: false });
   //   console.log("no");
   // };
   // componentDidMount() {
@@ -30,13 +44,14 @@ export class Navbars extends Component {
       secili_dil,
       scrollSetup,
     } = this.context.state;
+    const { isDropdownOpen } = this.state;
     const a = true; //false eskisi, true test
     return (
       <header>
         {a ? (
           <nav className="navbar navbar-expand-md navbar-light fixed-top bg-white">
             <div className="container">
-              <NavLink className="navbar-brand" to="#">
+              <NavLink className="navbar-brand" to="/">
                 <img
                   src=""
                   className="d-inline-block align-top"
@@ -57,8 +72,10 @@ export class Navbars extends Component {
                   (this.state.isCollapsed ? "collapsed" : "")
                 }
                 onClick={() => {
-                  this.setState({ isCollapsed: !this.state.isCollapsed });
-                  console.log(this.state.isCollapsed);
+                  this.setState({
+                    isCollapsed: !this.state.isCollapsed,
+                  });
+                  // console.log(this.state.isCollapsed);
                 }}
               >
                 <span style={{ border: "none" }}>
@@ -109,8 +126,42 @@ export class Navbars extends Component {
                     </NavLink>
                   </li>
 
-                  <li className="nav-item dropdown">
-                    <NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                  <li
+                    className={
+                      "nav-item dropdown " + (isDropdownOpen ? "show" : "")
+                    }
+                  >
+                    <div
+                      class="nav-link dropdown-toggle text-dark"
+                      id="navbarDropdownMenuLink"
+                      role="button"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="true"
+                      ref={(node) => (this.node = node)}
+                      onClick={() => this.handleDropdown()}
+                    >
+                      Services
+                    </div>
+                    <div
+                      class={"dropdown-menu " + (isDropdownOpen ? "show" : "")}
+                      aria-labelledby="navbarDropdownMenuLink"
+                    >
+                      <a class="dropdown-item" href="#">
+                        Action
+                      </a>
+                      <a class="dropdown-item" href="#">
+                        Another action
+                      </a>
+                      <a class="dropdown-item" href="#">
+                        Something else here
+                      </a>
+                    </div>
+                    {/* <NavDropdown
+                      title="Dropdown"
+                      id="basic-nav-dropdown"
+                      ref={(node) => (this.node = node)}
+                    >
                       <NavDropdown.Item href="#action/3.1">
                         Action
                       </NavDropdown.Item>
@@ -127,7 +178,7 @@ export class Navbars extends Component {
                       <NavDropdown.Item href="#action/3.4">
                         Separated link
                       </NavDropdown.Item>
-                    </NavDropdown>
+                    </NavDropdown> */}
                   </li>
                   <li className="nav-item active">
                     <NavLink className="nav-link" to="/login">

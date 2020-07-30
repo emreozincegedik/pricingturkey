@@ -1,0 +1,13 @@
+$theme-colors: (
+  "vahitcan": #5887FF,
+  "emre":black,
+  "allah":cyan
+);
+
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+
+body{
+    $blue_t1:#5887FF;
+}

@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css"; //eklemek istediklerin
 //import "bootstrap/dist/css/bootstrap.min.css";
 import "./main.css"; //yeni bootstrap
@@ -14,7 +13,7 @@ function App() {
         <Navbars />
         <Switch>
           <Route path="/" exact component={Anasayfa} />
-          <Route path="/anasayfa" component={Anasayfa} />
+          <Route path="/anasayfa" exact component={Anasayfa} />
           <Route path="/test" exact component={Test} />
           <Route path="/test/:id" component={Test2} />
           <Route path="/login" exact component={Login} />

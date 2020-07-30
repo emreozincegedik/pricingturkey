@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Landing from "../resimler/Landing.svg";
 import { Element } from "react-scroll";
+import { NavLink } from "react-router-dom";
 
 export class LandingPage extends Component {
   render() {
@@ -19,9 +20,9 @@ export class LandingPage extends Component {
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
               Consequatur, quidem!
             </p>
-            <a href="#" className="btn btn-outline-vahitcan">
+            <NavLink to="/" className="btn btn-outline-vahitcan">
               Learn more
-            </a>
+            </NavLink>
           </div>
           <div className="col-12 col-lg-8">
             <img src={Landing} alt="Team process banner" />

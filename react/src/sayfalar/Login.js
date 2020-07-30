@@ -4,11 +4,11 @@ import "./Login.css";
 
 export class Login extends Component {
   static contextType = Context;
-  componentDidMount() {
-    console.log(this.props.match);
-  }
+  // componentDidMount() {
+  //   console.log(this.props.match);
+  // }
   render() {
-    const { dil_degisken, dil_degistir, secili_dil } = this.context.state;
+    const { dil_degisken } = this.context.state;
 
     return (
       <div style={{ marginTop: "20vh" }}>
@@ -30,7 +30,7 @@ export class Login extends Component {
               className="form-control"
               placeholder={dil_degisken("Email adresi", "Email address")}
               required
-              autofocus
+              autoFocus
             />
             <label for="inputEmail">
               {dil_degisken("Email adresi", "Email address")}

@@ -5,7 +5,7 @@ import { Context } from "./Genel";
 
 export class CarouselTest extends Component {
   componentDidMount() {
-    console.log(this.context);
+    // console.log(this.context);
   }
   render() {
     return (

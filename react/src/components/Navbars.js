@@ -1,16 +1,9 @@
 import React, { Component } from "react";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { Context } from "./Genel";
 import Navbutton from "../resimler/navbar.svg";
-import {
-  Dropdown,
-  DropdownButton,
-  Nav,
-  Navbar,
-  NavDropdown,
-  MenuItem,
-} from "react-bootstrap";
-import { Link, animateScroll, scroller } from "react-scroll";
+import { Navbar, NavDropdown } from "react-bootstrap";
+import { animateScroll, scroller } from "react-scroll";
 
 export class Navbars extends Component {
   state = { isOpen: false, isCollapsed: true };
@@ -27,9 +20,9 @@ export class Navbars extends Component {
   //   this.setState({ isOpen: false });
   //   console.log("no");
   // };
-  componentDidMount() {
-    console.log(this);
-  }
+  // componentDidMount() {
+  //   console.log(this);
+  // }
   render() {
     const {
       dil_degisken,
@@ -69,7 +62,7 @@ export class Navbars extends Component {
                 }}
               >
                 <span style={{ border: "none" }}>
-                  <img src={Navbutton} alt="" srcset="" />
+                  <img src={Navbutton} alt="" srcSet="" />
                 </span>
               </button>
               <div
@@ -84,13 +77,14 @@ export class Navbars extends Component {
                     <NavLink
                       className="nav-link text-vahitcan"
                       to="/"
-                      onClick={() =>
+                      onClick={() => {
+                        scrollSetup("");
                         animateScroll.scrollToTop({
                           duration: 500,
                           delay: 0,
                           smooth: "easeInOutQuart",
-                        })
-                      }
+                        });
+                      }}
                     >
                       {dil_degisken("Ana Sayfa", "Home Page")}{" "}
                       {/* <span className="sr-only">(current)</span> */}
@@ -100,7 +94,7 @@ export class Navbars extends Component {
                     <NavLink
                       className="nav-link active"
                       to="/"
-                      tabindex="-1"
+                      tabIndex="-1"
                       // aria-disabled="true"
                       onClick={() => {
                         scrollSetup("landingMain");
@@ -136,25 +130,30 @@ export class Navbars extends Component {
                     </NavDropdown>
                   </li>
                   <li className="nav-item active">
-                    <NavLink className="nav-link" to="index.html">
-                      Contact<span className="sr-only">(current)</span>
+                    <NavLink className="nav-link" to="/login">
+                      {dil_degisken("Giriş", "Login")}
+                      {/* <span className="sr-only">(current)</span> */}
                     </NavLink>
                   </li>
                   <li className="nav-item">
                     <NavLink className="nav-link active" to="#">
-                      Pricing
+                      {dil_degisken("Ücretlendirme", "Pricing")}
                     </NavLink>
                   </li>
 
                   <li className="nav-item">
-                    <NavLink
-                      className="nav-link disabled"
-                      to="#"
-                      tabindex="-1"
+                    <div
+                      className="nav-link"
                       aria-disabled="true"
+                      onClick={() => {
+                        // console.log(context);
+                        dil_degistir(secili_dil === "tr" ? "en" : "tr");
+                        // console.log(secili_dil);
+                      }}
                     >
+                      {secili_dil === "tr" ? "en" : "tr"}
                       <i className="fa fa-language fa-2x"></i>
-                    </NavLink>
+                    </div>
                   </li>
                 </ul>
               </div>

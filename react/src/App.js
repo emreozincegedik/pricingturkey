@@ -2,7 +2,7 @@ import React from "react";
 import logo from "./logo.svg";
 import "./App.css"; //eklemek istediklerin
 //import "bootstrap/dist/css/bootstrap.min.css";
-import "./main.css" //yeni bootstrap
+import "./main.css"; //yeni bootstrap
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Anasayfa, Test, Test2, Login, Error } from "./sayfalar";
 import { Navbars, Genel } from "./components";

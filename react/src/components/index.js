@@ -4,3 +4,4 @@ export { CarouselAnaResimler } from "./CarouselAnaResimler";
 export { CarouselCalisanlar } from "./CarouselCalisanlar";
 export { CarouselTest } from "./CarouselTest";
 export { CalisanCard } from "./CalisanCard";
+export { LandingPage } from "./LandingPage";

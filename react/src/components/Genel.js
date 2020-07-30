@@ -21,6 +21,10 @@ export class Genel extends Component {
         return en;
       }
     },
+    scroll: "",
+    scrollSetup: (name) => {
+      this.setState({ scroll: name });
+    },
   };
   render() {
     return (

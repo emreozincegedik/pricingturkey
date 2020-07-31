@@ -23,10 +23,10 @@ export class Anasayfa extends Component {
   render() {
     return (
       <div>
-        <CarouselAnaResimler />
-        <CarouselTest />
-        {/* <CarouselCalisanlar /> */}
+        {/* <CarouselAnaResimler /> */}
         <LandingPage />
+        {/* <CarouselTest /> */}
+        <CarouselCalisanlar />
       </div>
     );
   }

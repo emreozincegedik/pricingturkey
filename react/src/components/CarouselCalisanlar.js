@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import { Carousel } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
-import { CalisanCard } from "./CalisanCard";
+import { CalisanCard, EkipCard } from "./index";
 import "react-multi-carousel/lib/styles.css";
 
 const CustomLeftArrow = ({ onClick, ...rest }) => {
@@ -11,12 +11,13 @@ const CustomLeftArrow = ({ onClick, ...rest }) => {
   } = rest;
   // onMove means if dragging or swiping in progress.
   return (
-    <button
-      aria-label="Go to previous slide??"
-      className="react-multiple-carousel__arrow react-multiple-carousel__arrow--left"
-      style={{ margin: "-48px" }}
-      onClick={() => onClick()}
-    />
+    <div></div>
+    // <button
+    //   aria-label="Go to previous slide??"
+    //   className="react-multiple-carousel__arrow react-multiple-carousel__arrow--left"
+    //   style={{ margin: "-48px" }}
+    //   onClick={() => onClick()}
+    // />
   );
 };
 
@@ -27,12 +28,13 @@ const CustomRightArrow = ({ onClick, ...rest }) => {
   } = rest;
   // onMove means if dragging or swiping in progress.
   return (
-    <button
-      aria-label="Go to next slide"
-      className="react-multiple-carousel__arrow react-multiple-carousel__arrow--right"
-      style={{ margin: "-50px" }}
-      onClick={() => onClick()}
-    />
+    <div></div>
+    // <button
+    //   aria-label="Go to next slide"
+    //   className="react-multiple-carousel__arrow react-multiple-carousel__arrow--right"
+    //   style={{ margin: "-50px" }}
+    //   onClick={() => onClick()}
+    // />
   );
 };
 export class CarouselCalisanlar extends Component {
@@ -65,8 +67,11 @@ export class CarouselCalisanlar extends Component {
       },
     };
     return (
-      <div className="py-5">
-        <div className="container-fluid" style={{ padding: 0 }}>
+      /////////////////
+      <div className="py-5" style={{ marginTop: "80px" }}>
+        <div class="container-fluid bg-vahitcan py-5">
+          {/* <div class="container"> */}
+          {/* <div class="row"> */}
           <Carousel
             swipeable={true}
             draggable={true}
@@ -79,7 +84,7 @@ export class CarouselCalisanlar extends Component {
             keyBoardControl={true}
             customTransition="transform 300ms ease-in-out"
             transitionDuration={500}
-            containerClass="carousel-container"
+            containerClass="container"
             removeArrowOnDeviceType={["tablet", "mobile"]}
             deviceType={this.props.deviceType}
             dotListClass="custom-dot-list-style"
@@ -88,9 +93,11 @@ export class CarouselCalisanlar extends Component {
             customLeftArrow={<CustomLeftArrow />}
           >
             {this.state.a.map((item) => (
-              <CalisanCard key={item} Text={item} />
+              <EkipCard key={item} />
             ))}
           </Carousel>
+          {/* </div> */}
+          {/* </div> */}
         </div>
       </div>
     );

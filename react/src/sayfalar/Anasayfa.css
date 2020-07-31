@@ -50,3 +50,50 @@
   top: -13.5rem;
   right: 2.9rem;
 }
+
+body {
+  background-color: #f2f2f2;
+}
+
+.davud {
+  margin-top: 80px;
+}
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.flex-equal > * {
+  -ms-flex: 1;
+  flex: 1;
+}
+@media (min-width: 768px) {
+  .flex-md-equal > * {
+    -ms-flex: 1;
+    flex: 1;
+  }
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.sutlu {
+  background-color: #d9bba0;
+}
+.kahve {
+  background-color: #bf8c60;
+}
+
+.cikolata {
+  background-color: #a68877;
+}
+
+.gri {
+  background-color: #737272;
+}

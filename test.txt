@@ -1,1 +1,7 @@
-test
+//ekleme
+git add .
+git commit -m "mesaj"
+git push
+
+//çekme
+git pull

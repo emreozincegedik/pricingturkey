@@ -181,7 +181,11 @@ export class Navbars extends Component {
                     </NavDropdown> */}
                   </li>
                   <li className="nav-item active">
-                    <NavLink className="nav-link" to="/login">
+                    <NavLink
+                      className="nav-link"
+                      to="/login"
+                      onClick={() => animateScroll.scrollToTop(scrollSetting)}
+                    >
                       {dil_degisken("Giriş", "Login")}
                       {/* <span className="sr-only">(current)</span> */}
                     </NavLink>

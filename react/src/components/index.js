@@ -7,3 +7,4 @@ export { CalisanCard } from "./CalisanCard";
 export { LandingPage } from "./LandingPage";
 export { EkipCard } from "./EkipCard";
 export { Bulten } from "./Bulten/index";
+export { Footer } from "./Footer";

@@ -4,7 +4,7 @@ import "./App.css"; //eklemek istediklerin
 import "./main.css"; //yeni bootstrap
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Anasayfa, Test, Test2, Login, Error } from "./sayfalar";
-import { Navbars, Genel } from "./components";
+import { Navbars, Genel, Footer } from "./components";
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
           <Route path="/login" exact component={Login} />
           <Route component={Error} />
         </Switch>
+        <Footer />
       </Genel>
     </Router>
   );

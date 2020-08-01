@@ -6,5 +6,4 @@ export { CarouselTest } from "./CarouselTest";
 export { CalisanCard } from "./CalisanCard";
 export { LandingPage } from "./LandingPage";
 export { EkipCard } from "./EkipCard";
-export { Ekip } from "./Ekip";
 export { Bulten } from "./Bulten/index";

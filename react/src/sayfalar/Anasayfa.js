@@ -5,6 +5,7 @@ import {
   CarouselCalisanlar,
   CarouselTest,
   LandingPage,
+  Bulten,
 } from "../components";
 import { scroller } from "react-scroll";
 
@@ -27,6 +28,7 @@ export class Anasayfa extends Component {
         <LandingPage />
         {/* <CarouselTest /> */}
         <CarouselCalisanlar />
+        <Bulten />
       </div>
     );
   }

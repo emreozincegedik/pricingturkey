@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import Carousel from "react-multi-carousel";
 import { CalisanCard, EkipCard } from "./index";
 import "react-multi-carousel/lib/styles.css";
+import { Element } from "react-scroll";
 
 const CustomLeftArrow = ({ onClick, ...rest }) => {
   const {
@@ -68,7 +69,11 @@ export class CarouselCalisanlar extends Component {
     };
     return (
       /////////////////
-      <div className="py-5" style={{ marginTop: "80px" }}>
+      <Element
+        className="py-5"
+        style={{ marginTop: "80px" }}
+        id="carouselCalisanlarEmreOzincegedik"
+      >
         <div class="container-fluid bg-vahitcan py-5">
           {/* <div class="container"> */}
           {/* <div class="row"> */}
@@ -99,7 +104,7 @@ export class CarouselCalisanlar extends Component {
           {/* </div> */}
           {/* </div> */}
         </div>
-      </div>
+      </Element>
     );
   }
 }

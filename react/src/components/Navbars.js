@@ -46,6 +46,11 @@ export class Navbars extends Component {
     } = this.context.state;
     const { isDropdownOpen } = this.state;
     const a = true; //false eskisi, true test
+    const scrollSetting = {
+      duration: 200,
+      delay: 0,
+      smooth: "easeInOutQuart",
+    };
     return (
       <header>
         {a ? (
@@ -96,11 +101,7 @@ export class Navbars extends Component {
                       to="/"
                       onClick={() => {
                         scrollSetup("");
-                        animateScroll.scrollToTop({
-                          duration: 500,
-                          delay: 0,
-                          smooth: "easeInOutQuart",
-                        });
+                        animateScroll.scrollToTop(scrollSetting);
                       }}
                     >
                       {dil_degisken("Ana Sayfa", "Home Page")}{" "}
@@ -114,12 +115,11 @@ export class Navbars extends Component {
                       tabIndex="-1"
                       // aria-disabled="true"
                       onClick={() => {
-                        scrollSetup("landingMain");
-                        scroller.scrollTo("landingMain", {
-                          duration: 500,
-                          delay: 0,
-                          smooth: "easeInOutQuart",
-                        });
+                        scrollSetup("carouselCalisanlarEmreOzincegedik");
+                        scroller.scrollTo(
+                          "carouselCalisanlarEmreOzincegedik",
+                          scrollSetting
+                        );
                       }}
                     >
                       {dil_degisken("Ekibimiz", "Our Team")}

@@ -3,16 +3,31 @@ import { Context } from "../components";
 import "./Login.css";
 
 export class Login extends Component {
+  state = {
+    email: "",
+    password: "",
+  };
   static contextType = Context;
   // componentDidMount() {
   //   console.log(this.props.match);
   // }
+  emailDegisti = (e) => {
+    this.setState({ email: e.target.value });
+  };
+  passwordDegisti = (e) => {
+    this.setState({ password: e.target.value });
+  };
+  formGonderildi = (e) => {
+    e.preventDefault();
+    console.log(this.state.email, this.state.password);
+    //backend ile iletişim
+  };
   render() {
     const { dil_degisken } = this.context.state;
-
+    const { email, password } = this.state;
     return (
       <div style={{ marginTop: "20vh" }}>
-        <form className="form-signin">
+        <form className="form-signin" onSubmit={this.formGonderildi}>
           <div className="text-center mb-4">
             <img
               className="mb-4"
@@ -31,6 +46,8 @@ export class Login extends Component {
               placeholder={dil_degisken("Email adresi", "Email address")}
               required
               autoFocus
+              value={email}
+              onChange={this.emailDegisti}
             />
             <label for="inputEmail">
               {dil_degisken("Email adresi", "Email address")}
@@ -44,6 +61,8 @@ export class Login extends Component {
               className="form-control"
               placeholder={dil_degisken("Şifre", "Password")}
               required
+              value={password}
+              onChange={this.passwordDegisti}
             />
             <label for="inputPassword">
               {dil_degisken("Şifre", "Password")}

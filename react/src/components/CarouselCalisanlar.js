@@ -74,7 +74,7 @@ export class CarouselCalisanlar extends Component {
         style={{ marginTop: "80px" }}
         id="carouselCalisanlarEmreOzincegedik"
       >
-        <div class="container-fluid bg-vahitcan py-5">
+        <div className="container-fluid bg-vahitcan py-5">
           {/* <div class="container"> */}
           {/* <div class="row"> */}
           <Carousel

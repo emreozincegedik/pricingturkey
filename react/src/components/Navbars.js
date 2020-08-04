@@ -132,7 +132,7 @@ export class Navbars extends Component {
                     }
                   >
                     <div
-                      class="nav-link dropdown-toggle text-dark"
+                      className="nav-link dropdown-toggle text-dark"
                       id="navbarDropdownMenuLink"
                       role="button"
                       data-toggle="dropdown"
@@ -144,16 +144,18 @@ export class Navbars extends Component {
                       Services
                     </div>
                     <div
-                      class={"dropdown-menu " + (isDropdownOpen ? "show" : "")}
+                      className={
+                        "dropdown-menu " + (isDropdownOpen ? "show" : "")
+                      }
                       aria-labelledby="navbarDropdownMenuLink"
                     >
-                      <a class="dropdown-item" href="#">
+                      <a className="dropdown-item" href="#">
                         Action
                       </a>
-                      <a class="dropdown-item" href="#">
+                      <a className="dropdown-item" href="#">
                         Another action
                       </a>
-                      <a class="dropdown-item" href="#">
+                      <a className="dropdown-item" href="#">
                         Something else here
                       </a>
                     </div>

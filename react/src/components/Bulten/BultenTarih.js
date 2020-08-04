@@ -3,19 +3,19 @@ import React, { Component } from "react";
 export class BultenTarih extends Component {
   render() {
     return (
-      <aside class="col-md-3 order-5 justify-content-end">
-        <div class="p-4 mb-3 bg-vahitcan">
-          <h4 class="font-italic">About</h4>
-          <p class="mb-0">
+      <aside className="col-md-3 order-5 justify-content-end">
+        <div className="p-4 mb-3 bg-vahitcan">
+          <h4 className="font-italic">About</h4>
+          <p className="mb-0">
             Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis
             consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla
             sed consectetur.
           </p>
         </div>
 
-        <div class="p-4">
-          <h4 class="font-italic">Archives</h4>
-          <ol class="list-unstyled mb-0">
+        <div className="p-4">
+          <h4 className="font-italic">Archives</h4>
+          <ol className="list-unstyled mb-0">
             <li>
               <a href="#">March 2014</a>
             </li>
@@ -55,9 +55,9 @@ export class BultenTarih extends Component {
           </ol>
         </div>
 
-        <div class="p-4">
-          <h4 class="font-italic">Elsewhere</h4>
-          <ol class="list-unstyled">
+        <div className="p-4">
+          <h4 className="font-italic">Elsewhere</h4>
+          <ol className="list-unstyled">
             <li>
               <a href="#">GitHub</a>
             </li>

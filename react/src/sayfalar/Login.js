@@ -6,6 +6,9 @@ export class Login extends Component {
   state = {
     email: "",
     password: "",
+    emailMesaj: true,
+    passwordMesaj: true,
+    genelMesaj: true,
   };
   static contextType = Context;
   // componentDidMount() {
@@ -18,13 +21,37 @@ export class Login extends Component {
     this.setState({ password: e.target.value });
   };
   formGonderildi = (e) => {
+    const { email, password } = this.state;
     e.preventDefault();
-    console.log(this.state.email, this.state.password);
+    console.log(email, password);
+    if (email === "" || password === "") {
+      this.setState({ genelMesaj: false });
+      this.emailCheck();
+      this.passwordCheck();
+      return;
+    }
+    //şifre cryptolama
     //backend ile iletişim
+  };
+  emailCheck = () => {
+    if (this.state.email === "") {
+      this.setState({ emailMesaj: false });
+    }
+  };
+  passwordCheck = () => {
+    if (this.state.password === "") {
+      this.setState({ passwordMesaj: false });
+    }
   };
   render() {
     const { dil_degisken } = this.context.state;
-    const { email, password } = this.state;
+    const {
+      email,
+      password,
+      emailMesaj,
+      passwordMesaj,
+      genelMesaj,
+    } = this.state;
     return (
       <div style={{ marginTop: "20vh" }}>
         <form className="form-signin" onSubmit={this.formGonderildi}>
@@ -40,18 +67,24 @@ export class Login extends Component {
 
           <div className="form-label-group">
             <input
-              type="email"
+              // type="email"
               id="inputEmail"
               className="form-control"
               placeholder={dil_degisken("Email adresi", "Email address")}
-              required
               autoFocus
               value={email}
               onChange={this.emailDegisti}
+              onBlur={this.emailCheck}
+              onFocus={() =>
+                this.setState({ emailMesaj: true, genelMesaj: true })
+              }
             />
             <label for="inputEmail">
               {dil_degisken("Email adresi", "Email address")}
             </label>
+            <p hidden={emailMesaj} style={{ color: "red" }}>
+              {dil_degisken("Giriş ismini yazınız", "Please enter username")}
+            </p>
           </div>
 
           <div className="form-label-group">
@@ -60,15 +93,26 @@ export class Login extends Component {
               id="inputPassword"
               className="form-control"
               placeholder={dil_degisken("Şifre", "Password")}
-              required
               value={password}
               onChange={this.passwordDegisti}
+              onBlur={this.passwordCheck}
+              onFocus={() =>
+                this.setState({ passwordMesaj: true, genelMesaj: true })
+              }
             />
             <label for="inputPassword">
               {dil_degisken("Şifre", "Password")}
             </label>
+            <p hidden={passwordMesaj} style={{ color: "red" }}>
+              {dil_degisken("Şifreyi yazınız", "Please enter password")}
+            </p>
           </div>
-
+          <p hidden={genelMesaj} style={{ background: "red", color: "white" }}>
+            {dil_degisken(
+              "Zorunlu alanları doldurunuz",
+              "Please fill required fields"
+            )}
+          </p>
           <div className="checkbox mb-3 text-center">
             <label>
               <input type="checkbox" value="remember-me" />{" "}
@@ -81,6 +125,7 @@ export class Login extends Component {
           >
             {dil_degisken("Giriş yap", "Sign in")}
           </button>
+
           <p className="mt-5 mb-3 text-muted text-center">
             &copy;2017-{new Date().getFullYear()}
           </p>

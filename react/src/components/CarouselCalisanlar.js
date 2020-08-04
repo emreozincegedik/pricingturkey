@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 // import { Carousel } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
-import { CalisanCard, EkipCard } from "./index";
+import { CalisanCard, EkipCard, Context } from "./index";
 import "react-multi-carousel/lib/styles.css";
 import { Element } from "react-scroll";
 
@@ -39,11 +39,13 @@ const CustomRightArrow = ({ onClick, ...rest }) => {
   );
 };
 export class CarouselCalisanlar extends Component {
+  static contextType = Context;
   state = {
     index: 0,
     a: [0, 1, 2, 3],
   };
   render() {
+    const { dil_degisken } = this.context.state;
     const handleSelect = (selectedIndex, e) => {
       this.setState({ index: selectedIndex });
       // setIndex(selectedIndex);
@@ -75,6 +77,12 @@ export class CarouselCalisanlar extends Component {
         id="carouselCalisanlarEmreOzincegedik"
       >
         <div className="container-fluid bg-vahitcan py-5">
+          <div
+            className="display-3 d-flex justify-content-center mb-5"
+            style={{ width: "%50", margin: "0 auto" }}
+          >
+            {dil_degisken("Ekibimiz", "Our team")}
+          </div>
           {/* <div class="container"> */}
           {/* <div class="row"> */}
           <Carousel

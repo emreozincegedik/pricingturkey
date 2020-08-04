@@ -206,8 +206,8 @@ export class Navbars extends Component {
                         // console.log(secili_dil);
                       }}
                     >
-                      {secili_dil === "tr" ? "en" : "tr"}
-                      <i className="fa fa-language fa-2x"></i>
+                      {/* {secili_dil === "tr" ? "en" : "tr"} */}
+                      <i className="fa fa-language"></i>
                     </div>
                   </li>
                 </ul>

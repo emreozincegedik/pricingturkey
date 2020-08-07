@@ -6,6 +6,7 @@ import {
   CarouselTest,
   LandingPage,
   Bulten,
+  IstekForm,
 } from "../components";
 import { scroller } from "react-scroll";
 
@@ -29,6 +30,7 @@ export class Anasayfa extends Component {
         {/* <CarouselTest /> */}
         <CarouselCalisanlar />
         <Bulten />
+        <IstekForm />
       </div>
     );
   }

@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export class BultenCard extends Component {
   render() {
     return (
-      <div className={"order-" + this.props.class} style={{ width: "350px" }}>
+      <div className={"order-5"} style={{ width: "350px" }}>
         <div className="card mb-4 bg-white" style={{ border: "hidden" }}>
           <img
             src={this.props.img || "https://via.placeholder.com/350x225"}
@@ -21,9 +21,9 @@ export class BultenCard extends Component {
           > */}
           <title>{this.props.title || "Placeholder"}</title>
           <rect width="100%" height="100%" fill="#55595c" />
-          <text x="50%" y="50%" fill="#eceeef" dy=".3em">
+          <span x="50%" y="50%" fill="#eceeef" dy=".3em">
             {this.props.thumbnail || "Thumbnail"}
-          </text>
+          </span>
           {/* </svg> */}
           <div className="card-body">
             <p className="card-text">

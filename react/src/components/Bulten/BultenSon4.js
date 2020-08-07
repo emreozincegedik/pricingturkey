@@ -13,12 +13,9 @@ export class BultenSon4 extends Component {
       date: "",
     };
     return (
-      <div className="col-md-9 d-flex flex-row flex-wrap">
+      <div className="col-md-9 d-flex flex-row flex-wrap justify-content-around">
         {cards.map((item, i) => (
-          <BultenCard
-            key={i}
-            class={i + 1 + " " + ((i + 1) % 2 === 0 ? "mx-auto" : "")}
-          />
+          <BultenCard key={i} />
         ))}
       </div>
     );

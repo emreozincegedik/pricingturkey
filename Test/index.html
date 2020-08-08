@@ -128,10 +128,93 @@
     .gri {
       background-color: #737272;
     }
+
+    .form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-label-group > input,
+.form-label-group > label {
+  height: 3.125rem;
+  padding: .75rem;
+}
+
+.form-label-group > label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0; 
+  line-height: 1.5;
+  color: #495057;
+  pointer-events: none;
+  cursor: text;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  transition: all .1s ease-in-out;
+}
+
+.form-label-group input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input:-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-moz-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::placeholder {
+  color: transparent;
+}
+
+.form-label-group input:not(:placeholder-shown) {
+  padding-top: 1.25rem;
+  padding-bottom: .25rem;
+}
+
+.form-label-group input:not(:placeholder-shown) ~ label {
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  font-size: 12px;
+  color: #777;
+}
+
+/* Fallback for Edge
+-------------------------------------------------- */
+@supports (-ms-ime-align: auto) {
+  .form-label-group > label {
+    display: none;
+  }
+  .form-label-group input::-ms-input-placeholder {
+    color: #777;
+  }
+}
+
+/* Fallback for IE
+-------------------------------------------------- */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .form-label-group > label {
+    display: none;
+  }
+  .form-label-group input:-ms-input-placeholder {
+    color: #777;
+  }
+}
+
   </style>
+  
 </head>
 
-<body>
+<body data-barba="wrapper">
 
   <header>
     <!--navbar-->
@@ -151,7 +234,7 @@
               <a class="nav-link text-vahitcan" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             </li>
-            <li class="nav-item>
+            <li class="nav-item">
               <a class="nav-link active" href="#" tabindex="-1" aria-disabled="true">Our Team</a>
             </li>
 
@@ -187,16 +270,16 @@
   </header>
 
   <!--Workspace-->
-  <main>
+  <main data-barba="container" data-barba-namespace="home">
     <!-- landing -->
     <section>
-      <div class="container" style="margin-top: 90px;">
+      <div class="container box" style="margin-top: 90px;">
         <div class="row custom-section d-flex align-items-center">
           <div class="col-12 col-lg-4">
             <h2>Team Work</h2>
             <h3>Process</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, quidem!</p>
-            <a href="#" class="btn btn-outline-vahitcan">Learn more</a>
+            <a href="hizmetlerimiz.html" class="btn btn-outline-vahitcan left">Learn more</a>
           </div>
           <div class="col-12 col-lg-8">
             <img src="a.svg" alt="Team process banner">
@@ -381,17 +464,37 @@
             <form>
               <div class="row">
                 <div class="col">
-                  <input type="text" class="form-control" placeholder="First name">
+                  <div class="form-label-group">
+                  <input type="text" class="form-control" placeholder="First name" id="inputName">
+                  <label for="inputName">First name</label>
                 </div>
+              </div>
                 <div class="col">
-                  <input type="text" class="form-control" placeholder="Last name">
+                  <div class="form-label-group">
+                  <input type="text" class="form-control" placeholder="Last name" id="inputLast">
+                  <label for="inputLast">Last name</label>
                 </div>
+              </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-label-group">
+                  <input type="text" class="form-control" placeholder="E-mail" id="inputMail">
+                  <label for="inputMail">E-mail</label>
+                </div>
+              </div>
+                <div class="col">
+                  <div class="form-label-group">
+                  <input type="text" class="form-control" placeholder="Desired Services" id="inputServices">
+                  <label for="inputServices">Desired Services</label>
+                </div>
+              </div>
               </div>
               <div class="row">
                 <div class="col">
                   <div class="form-group py-3">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"
-                      placeholder="Plase enter you wish."></textarea>
+                    <textarea class="form-control" id="TextArea" rows="10"
+                      placeholder="Plase enter you Message."></textarea>
                   </div>
                 </div>
               </div>
@@ -460,8 +563,16 @@
   <!-- Optional JavaScript -->
   
   
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/gsap.min.js"></script>
  
+
+  <script>
+    gsap.from(".box", {
+  opacity: 0, 
+  y: 100, 
+  duration: 1
+});
+  </script>
   
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -473,7 +584,9 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
     crossorigin="anonymous"></script>
+   
 
+    
 </body>
 
 </html>

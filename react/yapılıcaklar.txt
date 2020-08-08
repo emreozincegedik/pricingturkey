@@ -1,0 +1,14 @@
+sayfa.js klasörü oluştur
+rfc enter
+divler arası sayfa oluşturma kısmı
+default sil
+yorum satırı: alt shift a
+class yerine className
+import {Context} from '../components/Genel'
+const state=useContext(Context).state;
+
+
+style={{}} İÇERDEKİLER
+margin-bottom YANLIŞ marginBottom DOĞRU
+marginBottom: 30px YANLIŞ marginBottom: "30px" DOĞRU
+margin: "30px"; padding: 30px YANLIŞ, margin: "30px", <------ DOĞRU

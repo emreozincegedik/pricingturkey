@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@barba/core": "^2.9.7",
     "bootstrap": "^4.5.0",
     "gsap": "^3.4.2",
     "smooth-scrollbar": "^8.5.2"

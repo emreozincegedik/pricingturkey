@@ -20,7 +20,7 @@ export class BultenCard extends Component {
             aria-label="Placeholder: Thumbnail"
           > */}
           <title>{this.props.title || "Placeholder"}</title>
-          <rect width="100%" height="100%" fill="#55595c" />
+          <div width="100%" height="100%" fill="#55595c" />
           <span x="50%" y="50%" fill="#eceeef" dy=".3em">
             {this.props.thumbnail || "Thumbnail"}
           </span>

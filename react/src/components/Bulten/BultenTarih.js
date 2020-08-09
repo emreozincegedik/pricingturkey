@@ -1,7 +1,26 @@
 import React, { Component } from "react";
+import { Context } from "../index";
+import { NavLink } from "react-router-dom";
 
 export class BultenTarih extends Component {
+  static contextType = Context;
   render() {
+    const { dil_degisken } = this.context.state;
+    const months = [
+      ["Aralık", "December"],
+      ["Kasım", "November"],
+      ["Ekim", "October"],
+      ["Ağustos", "August"],
+      ["Temmuz", "July"],
+      ["Haziran", "June"],
+      ["Mayıs", "May"],
+      ["Nisan", "April"],
+      ["Mart", "March"],
+      ["Eylül", "September"],
+      ["Şubat", "February"],
+      ["Ocak", "January"],
+    ];
+    const years = ["2020", "2019"];
     return (
       <aside className="col-md-3 order-5 justify-content-end">
         <div className="p-4 mb-3 bg-vahitcan">
@@ -16,42 +35,15 @@ export class BultenTarih extends Component {
         <div className="p-4">
           <h4 className="font-italic">Archives</h4>
           <ol className="list-unstyled mb-0">
-            <li>
-              <a href="#">March 2014</a>
-            </li>
-            <li>
-              <a href="#">February 2014</a>
-            </li>
-            <li>
-              <a href="#">January 2014</a>
-            </li>
-            <li>
-              <a href="#">December 2013</a>
-            </li>
-            <li>
-              <a href="#">November 2013</a>
-            </li>
-            <li>
-              <a href="#">October 2013</a>
-            </li>
-            <li>
-              <a href="#">September 2013</a>
-            </li>
-            <li>
-              <a href="#">August 2013</a>
-            </li>
-            <li>
-              <a href="#">July 2013</a>
-            </li>
-            <li>
-              <a href="#">June 2013</a>
-            </li>
-            <li>
-              <a href="#">May 2013</a>
-            </li>
-            <li>
-              <a href="#">April 2013</a>
-            </li>
+            {years.map((year) =>
+              months.map((month) => (
+                <li>
+                  <NavLink to={"/bultenler/" + year + "/" + month[0]}>
+                    {year + " " + dil_degisken(month[0], month[1])}
+                  </NavLink>
+                </li>
+              ))
+            )}
           </ol>
         </div>
       </aside>

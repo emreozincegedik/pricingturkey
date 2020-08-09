@@ -1,5 +1,3 @@
-import IstekForm from "./IstekForm";
-
 export { Genel, Context } from "./Genel";
 export { Navbars } from "./Navbars";
 export { CarouselAnaResimler } from "./CarouselAnaResimler";

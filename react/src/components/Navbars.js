@@ -65,7 +65,7 @@ export class Navbars extends Component {
                   <NavLink
                     className="nav-link"
                     to="/"
-                    tabindex="-1"
+                    tabIndex="-1"
                     aria-disabled="true"
                     onClick={() => {
                       scrollSetup("carouselCalisanlarEmreOzincegedik");
@@ -125,7 +125,7 @@ export class Navbars extends Component {
                 <li className="nav-item">
                   <div
                     className="nav-link"
-                    tabindex="-1"
+                    tabIndex="-1"
                     aria-disabled="true"
                     onClick={() => {
                       // console.log(context);

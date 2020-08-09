@@ -28,8 +28,8 @@ export class Anasayfa extends Component {
         {/* <CarouselAnaResimler /> */}
         <LandingPage />
         {/* <CarouselTest /> */}
-        <CarouselCalisanlar />
         <Bulten />
+        <CarouselCalisanlar />
         <IstekForm />
       </div>
     );

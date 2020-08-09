@@ -47,8 +47,8 @@ sql
 
     return pool
       .request()
-      .input("input_parameter", sql.Int, 1)
-      .query("select * from test where id = @input_parameter ");
+      .input("input_parameter", sql.NVarChar, "admin")
+      .query("select * from bulten"); // where username = @input_parameter
   })
   .then((result) => {
     console.dir(result);

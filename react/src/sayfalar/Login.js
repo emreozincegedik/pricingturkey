@@ -13,9 +13,8 @@ export function Login() {
   const [passwordMesaj, setPasswordMesaj] = useState(true);
   const [genelMesajStatus, setGenelMesajStatus] = useState(true);
   const [loginCheck, setLoginCheck] = useState(false);
-  const [loginInıt, setLoginInıt] = useState(false);
-  const context = useContext(Context);
-  const { dil_degisken } = context.state;
+  const { dil_degisken } = useContext(Context).state;
+
   const [genelMesaj, setGenelMesaj] = useState(
     dil_degisken("Zorunlu alanları doldurunuz", "Please fill required fields")
   );
@@ -27,7 +26,6 @@ export function Login() {
   };
   const formGonderildi = async (e) => {
     e.preventDefault();
-    setLoginInıt(true);
     setLoginCheck(false);
     // console.log(email, password);
     if (email === "" || password === "") {
@@ -39,7 +37,7 @@ export function Login() {
     var sha256 = crypto.createHash("sha256");
     sha256.update(password, "utf8"); //utf8 here
     var pwdHash = sha256.digest("hex");
-    let response = await fetch("http://localhost:453/login/select", {
+    let response = await fetch("/login/select", {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",

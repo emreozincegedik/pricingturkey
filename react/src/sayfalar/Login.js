@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../components";
+import { Redirect } from "react-router-dom";
 import "./Login.css";
+import crypto from "crypto";
 
 // import React from 'react'
 
@@ -9,23 +11,55 @@ export function Login() {
   const [password, setPassword] = useState("");
   const [emailMesaj, setEmailMesaj] = useState(true);
   const [passwordMesaj, setPasswordMesaj] = useState(true);
-  const [genelMesaj, setGenelMesaj] = useState(true);
+  const [genelMesajStatus, setGenelMesajStatus] = useState(true);
+  const [loginCheck, setLoginCheck] = useState(false);
+  const [loginInıt, setLoginInıt] = useState(false);
   const context = useContext(Context);
   const { dil_degisken } = context.state;
+  const [genelMesaj, setGenelMesaj] = useState(
+    dil_degisken("Zorunlu alanları doldurunuz", "Please fill required fields")
+  );
   const emailDegisti = (e) => {
     setEmail(e.target.value);
   };
   const passwordDegisti = (e) => {
     setPassword(e.target.value);
   };
-  const formGonderildi = (e) => {
+  const formGonderildi = async (e) => {
     e.preventDefault();
-    console.log(email, password);
+    setLoginInıt(true);
+    setLoginCheck(false);
+    // console.log(email, password);
     if (email === "" || password === "") {
-      setGenelMesaj(false);
-      this.emailCheck();
-      this.passwordCheck();
+      setGenelMesajStatus(false);
+      emailCheck();
+      passwordCheck();
       return;
+    }
+    var sha256 = crypto.createHash("sha256");
+    sha256.update(password, "utf8"); //utf8 here
+    var pwdHash = sha256.digest("hex");
+    let response = await fetch("http://localhost:453/login/select", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify({ username: email, pwd: pwdHash }),
+      // body: JSON.stringify(user),
+    });
+    // var response = await response.status;
+    if (response.status === 200) {
+      setLoginCheck(true);
+      let json = await response.json();
+      // console.log(json, response.status);
+    } else {
+      setGenelMesaj(
+        dil_degisken(
+          "Kullanıcı adı veya şifre hatalı",
+          "Wrong username or password"
+        )
+      );
+      setGenelMesajStatus(false);
     }
     //şifre cryptolama
     //backend ile iletişim
@@ -65,7 +99,7 @@ export function Login() {
             onBlur={emailCheck}
             onFocus={() => {
               setEmailMesaj(true);
-              setGenelMesaj(true);
+              setGenelMesajStatus(true);
             }}
           />
           <label for="inputEmail">
@@ -87,19 +121,20 @@ export function Login() {
             onBlur={passwordCheck}
             onFocus={() => {
               setPasswordMesaj(true);
-              setGenelMesaj(true);
+              setGenelMesajStatus(true);
             }}
           />
           <label for="inputPassword">{dil_degisken("Şifre", "Password")}</label>
           <p hidden={passwordMesaj} style={{ color: "red" }}>
-            {dil_degisken("Şifreyi yazınız", "Please enter password")}
+            {dil_degisken("Şifreyi doldurunuz", "Please fill out password")}
           </p>
         </div>
-        <p hidden={genelMesaj} style={{ background: "red", color: "white" }}>
-          {dil_degisken(
-            "Zorunlu alanları doldurunuz",
-            "Please fill required fields"
-          )}
+        <p
+          hidden={genelMesajStatus}
+          style={{ background: "red", color: "white" }}
+        >
+          {genelMesaj}
+          {loginCheck && <Redirect to="/test" />}
         </p>
         <div className="checkbox mb-3 text-center">
           <label>

@@ -127,6 +127,9 @@ router.post("/bulten/update", (req, res) => {
 router.post("/login/select", (req, res) => {
   if (!(req.body.username && req.body.pwd)) {
     // console.log(req.body.username, req.body.pwd);
+    console.log(
+      "Bad request: " + req.body.username || null + " " + req.body.pwd || null
+    );
     res.status(400);
     res.json({
       username: req.body.username || null,
@@ -141,8 +144,13 @@ router.post("/login/select", (req, res) => {
     .query("select * from login where username=@username and pwd=@pwd")
     .then((dbres) => {
       console.log(dbres.recordset);
-      res.status(200);
-      res.send(dbres.recordset);
+      if (dbres.recordset.length < 1) {
+        res.status(403);
+        res.json({ message: "username or password is false" });
+      } else {
+        res.status(200);
+        res.json(dbres.recordset);
+      }
     })
     .catch((err) => {
       console.log(err);

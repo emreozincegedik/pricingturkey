@@ -9,7 +9,7 @@ export class Test2 extends Component {
     const { dil_degisken } = this.context.state;
     const { id } = this.props.match.params;
     return (
-      <div>
+      <div style={{ marginTop: "90px" }}>
         {dil_degisken("Test sayfası özel bilgi", "Test page special info")}:{" "}
         {id}
       </div>

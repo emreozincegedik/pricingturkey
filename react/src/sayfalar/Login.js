@@ -14,19 +14,15 @@ export function Login() {
   const { dil_degisken } = context.state;
   const emailDegisti = (e) => {
     setEmail(e.target.value);
-    // this.setState({ email: e.target.value });
   };
   const passwordDegisti = (e) => {
     setPassword(e.target.value);
-    // this.setState({ password: e.target.value });
   };
   const formGonderildi = (e) => {
-    // const { email, password } = this.state;
     e.preventDefault();
     console.log(email, password);
     if (email === "" || password === "") {
       setGenelMesaj(false);
-      // this.setState({ genelMesaj: false });
       this.emailCheck();
       this.passwordCheck();
       return;
@@ -37,13 +33,11 @@ export function Login() {
   const emailCheck = () => {
     if (email === "") {
       setEmailMesaj(false);
-      // this.setState({ emailMesaj: false });
     }
   };
   const passwordCheck = () => {
     if (password === "") {
       setPasswordMesaj(false);
-      // this.setState({ passwordMesaj: false });
     }
   };
   return (

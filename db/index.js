@@ -6,12 +6,12 @@ require("dotenv").config();
 const port = process.env.port || 5000;
 app.use(cors());
 app.use(express.json());
-
+console.log(process.env);
 var config = {
-  server: "localhost",
-  user: "sa",
-  password: "Wdv3GrgqYDJzMLhYi0ek",
-  database: "pricingTurkey",
+  server: process.env.server,
+  user: process.env.user,
+  password: process.env.password,
+  database: process.env.database,
   options: {
     enableArithAbort: true,
   },

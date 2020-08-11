@@ -89,7 +89,7 @@ export function Login() {
           <input
             // type="email"
             id="inputEmail"
-            className="form-control"
+            className={"form-control " + (emailMesaj ? "" : "border-danger")}
             placeholder={dil_degisken("Email adresi", "Email address")}
             autoFocus
             value={email}
@@ -112,7 +112,7 @@ export function Login() {
           <input
             type="password"
             id="inputPassword"
-            className="form-control border-danger"
+            className={"form-control " + (passwordMesaj ? "" : "border-danger")}
             placeholder={dil_degisken("Şifre", "Password")}
             value={password}
             onChange={passwordDegisti}

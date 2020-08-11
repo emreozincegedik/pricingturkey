@@ -48,7 +48,7 @@ export function Login() {
     // var response = await response.status;
     if (response.status === 200) {
       setLoginCheck(true);
-      let json = await response.json();
+      // let json = await response.json();
       // console.log(json, response.status);
     } else {
       setGenelMesaj(
@@ -112,7 +112,7 @@ export function Login() {
           <input
             type="password"
             id="inputPassword"
-            className="form-control"
+            className="form-control border-danger"
             placeholder={dil_degisken("Şifre", "Password")}
             value={password}
             onChange={passwordDegisti}
@@ -128,6 +128,7 @@ export function Login() {
           </p>
         </div>
         <p
+          className="alert alert-danger"
           hidden={genelMesajStatus}
           style={{ background: "red", color: "white" }}
         >

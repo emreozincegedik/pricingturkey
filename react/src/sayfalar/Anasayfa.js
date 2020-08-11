@@ -21,6 +21,7 @@ export class Anasayfa extends Component {
     });
     console.log(this.context.state.scroll);
     this.context.state.scrollSetup("");
+    console.log(this.props);
   }
   render() {
     return (

@@ -131,6 +131,7 @@ export class Navbars extends Component {
                       // console.log(context);
                       dil_degistir(secili_dil === "tr" ? "en" : "tr");
                       // console.log(secili_dil);
+                      console.log(window.location);
                     }}
                   >
                     <i className="fa fa-language fa-2x"></i>

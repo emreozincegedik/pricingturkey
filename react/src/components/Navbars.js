@@ -20,7 +20,8 @@ export class Navbars extends Component {
       smooth: "easeInOutQuart",
     };
     return (
-      <header>
+      <>
+      <header style={{marginBottom:"90px"}}>
         <Helmet>
           <html lang={secili_dil} amp />
         </Helmet>
@@ -145,7 +146,10 @@ export class Navbars extends Component {
             </div>
           </div>
         </nav>
+        
       </header>
+      
+      </>
     );
   }
 }

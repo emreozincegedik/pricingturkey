@@ -8,7 +8,7 @@ export class Error extends Component {
   render() {
     const { dil_degisken } = this.context.state;
     return (
-      <div className="container" style={{ marginTop: "20vh" }}>
+      <div className="container" /* style={{ marginTop: "20vh" }} */>
         <h1>404 {dil_degisken("sayfa bulunamadı", "page not found")}</h1>
       </div>
     );

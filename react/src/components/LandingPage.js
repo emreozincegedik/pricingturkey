@@ -8,7 +8,7 @@ export class LandingPage extends Component {
     return (
       <Element
         className="container"
-        style={{ marginTop: "90px" }}
+        /* style={{ marginTop: "90px" }} */
         id="landingMain"
         name="landingMain"
       >

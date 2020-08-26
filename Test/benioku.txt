@@ -3,3 +3,5 @@ Emre bundan sonra yaptığımız değişiklikleri yazalım en azından daha raha
 08.08.2020
 Eski kodlamamdan kalan saçma classları kaldırdım allah vs.
 İstediğin css efekti forma ekledim ve alt sayfalara başladım. -can
+
+

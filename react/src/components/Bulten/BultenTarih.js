@@ -44,6 +44,7 @@ export class BultenTarih extends Component {
                 </li>
               ))
             )}
+            
           </ol>
         </div>
       </aside>

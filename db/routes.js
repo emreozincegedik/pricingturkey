@@ -1,9 +1,9 @@
 var express = require("express");
 var router = express.Router();
 var sql = require("mssql");
-const columns = ["baslikTR", "baslikEN", "yaziTR", "yaziEN"];
+;
 errCols = [];
-const bultenColumnChecker = (body) => {
+const columnChecker = (body, columns) => {
   let a = true;
   columns.forEach((col) => {
     if (!(col in body)) {
@@ -14,6 +14,8 @@ const bultenColumnChecker = (body) => {
   console.log(errCols);
   return a;
 };
+
+//----------------------bulten--------------------------
 router.post("/bulten/select", (req, res) => {
   // console.log(req.body);
   console.log({ incomingBody: req.body });
@@ -28,18 +30,18 @@ router.post("/bulten/select", (req, res) => {
     .then((dbres) => {
       // console.log(dbres);
       res.status(200);
-      res.send(dbres.recordset);
+      res.json(dbres.recordset);
     })
     .catch((err) => {
       console.log(err);
       res.status(500);
-      res.send("Internal server error");
+      res.json(err);
     });
 });
 router.post("/bulten/delete", (req, res) => {
   if (!req.body.id) {
     res.status(400);
-    res.send("id is needed to update");
+    res.json({ message: "id is needed to update" });
     return;
   }
   var sql_request = new sql.Request();
@@ -49,20 +51,21 @@ router.post("/bulten/delete", (req, res) => {
     .then((dbres) => {
       console.log(dbres);
       res.status(200);
-      res.send(dbres);
+      res.json(dbres);
     })
     .catch((err) => {
       console.log(err);
       res.status(500);
-      res.send(err);
+      res.json(err);
     });
 });
 
 router.post("/bulten/insert", (req, res) => {
   // console.log(req.body);
-  if (!bultenColumnChecker(req.body)) {
+  const columns = ["baslikTR", "baslikEN", "yaziTR", "yaziEN"]
+  if (!columnChecker(req.body, columns)) {
     res.status(400);
-    res.send("invalid column(s): " + errCols);
+    res.json("invalid column(s): " + errCols);
     errCols = [];
     return;
   }
@@ -78,18 +81,18 @@ router.post("/bulten/insert", (req, res) => {
     .then((dbres) => {
       console.log(dbres);
       res.status(200);
-      res.send(dbres);
+      res.json(dbres);
     })
     .catch((err) => {
       console.log(err);
       res.status(500);
-      res.send("Internal server error");
+      res.json("Internal server error");
     });
 });
 router.post("/bulten/update", (req, res) => {
   if (!req.body.id) {
     res.status(400);
-    res.send("id is needed to update");
+    res.json({ message: "id is needed to update" });
     return;
   }
   var sql_request = new sql.Request();
@@ -115,15 +118,16 @@ router.post("/bulten/update", (req, res) => {
     .then((dbres) => {
       console.log(dbres);
       res.status(200);
-      res.send(dbres);
+      res.json(dbres);
     })
     .catch((err) => {
       console.log(err);
       res.status(500);
-      res.send(err);
+      res.json(err);
     });
 });
 
+//--------------------login-------------------------
 router.post("/login/select", (req, res) => {
   if (!(req.body.username && req.body.pwd)) {
     // console.log(req.body.username, req.body.pwd);
@@ -155,7 +159,7 @@ router.post("/login/select", (req, res) => {
     .catch((err) => {
       console.log(err);
       res.status(500);
-      res.send(err);
+      res.json(err);
     });
 });
 router.post("/login/update", (req, res) => {
@@ -179,12 +183,131 @@ router.post("/login/update", (req, res) => {
     .then((dbres) => {
       console.log(dbres.recordset);
       res.status(200);
-      res.send(dbres);
+      res.json(dbres);
     })
     .catch((err) => {
       console.log(err);
       res.status(500);
-      res.send(err);
+      res.json(err);
     });
 });
+
+//--------------------ekip-------------------
+
+router.post("/ekip/select", (req, res) => {
+  // console.log(req.body);
+  console.log({ incomingBody: req.body });
+  var sql_request = new sql.Request();
+  sql_request
+    .input("input", sql.Int, req.body.id)
+    .query(
+      req.body.id
+        ? "select * from ekip where id=@input"
+        : "select * from ekip"
+    )
+    .then((dbres) => {
+      // console.log(dbres);
+      res.status(200);
+      res.json(dbres.recordset);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500);
+      res.json("Internal server error");
+    });
+});
+
+router.post("/ekip/insert", (req, res) => {
+  // console.log(req.body);
+  const columns = ["isim", "soyisim", "aciklamaTR", "aciklamaEN"]
+  if (!columnChecker(req.body, columns)) {
+    res.status(400);
+    res.json("invalid column(s): " + errCols);
+    errCols = [];
+    return;
+  }
+  var sql_request = new sql.Request();
+  sql_request
+    .input("isim", sql.NVarChar, req.body[columns[0]])
+    .input("soyisim", sql.NVarChar, req.body[columns[1]])
+    .input("aciklamaTR", sql.NVarChar, req.body[columns[2]])
+    .input("aciklamaEN", sql.NVarChar, req.body[columns[3]])
+    .query(
+      "insert into ekip (isim,soyisim,aciklamaTR,aciklamaEN) values (@isim,@soyisim,@aciklamaTR,@aciklamaEN)"
+    )
+    .then((dbres) => {
+      console.log(dbres);
+      res.status(200);
+      res.json(dbres);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500);
+      res.json(err);
+    });
+});
+router.post("/ekip/update", (req, res) => {
+  const columns = ["id", "isim", "soyisim", "aciklamaTR", "aciklamaEN"]
+  if (!columnChecker(req.body, columns)) {
+    res.status(400);
+    res.json("invalid column(s): " + errCols);
+    errCols = [];
+    return;
+  }
+  var sql_request = new sql.Request();
+  sql_request
+    .input("id", sql.Int, req.body.id)
+    .input("isim", sql.NVarChar, req.body[columns[0]])
+    .input("soyisim", sql.NVarChar, req.body[columns[1]])
+    .input("aciklamaTR", sql.NVarChar, req.body[columns[2]])
+    .input("aciklamaEN", sql.NVarChar, req.body[columns[3]])
+    .query(
+      `
+    update ekip
+    set
+      isim=@isim,
+      soyisim=@soyisim,
+      aciklamaTR=@aciklamaTR,
+      aciklamaEN=@aciklamaEN,
+      degistirilmeTarihi=getdate()
+    where
+      id=@id
+      `
+    )
+    .then((dbres) => {
+      console.log(dbres);
+      res.status(200);
+      res.json(dbres);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500);
+      res.json(err);
+    });
+});
+
+router.post("/ekip/delete", (req, res) => {
+  if (!req.body.id) {
+    res.status(400);
+    res.json({ message: "id is needed to update" });
+    return;
+  }
+  var sql_request = new sql.Request();
+  sql_request
+    .input("id", sql.Int, req.body.id)
+    .query("delete from ekip where id=@id")
+    .then((dbres) => {
+      console.log(dbres);
+      res.status(200);
+      res.json(dbres);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500);
+      res.json(err);
+    });
+});
+
+
+
 module.exports = router;

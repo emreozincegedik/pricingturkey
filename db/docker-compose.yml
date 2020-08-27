@@ -9,3 +9,4 @@ services:
       SA_PASSWORD: "Wdv3GrgqYDJzMLhYi0ek"
       ACCEPT_EULA: "Y"
     restart: "unless-stopped"
+    privileged: true

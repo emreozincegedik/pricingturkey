@@ -16,6 +16,7 @@ const columnChecker = (body, columns) => {
 };
 
 //----------------------bulten--------------------------
+const bultenColumns = ["baslikTR", "baslikEN", "yaziTR", "yaziEN"]
 router.post("/bulten/select", (req, res) => {
   // console.log(req.body);
   console.log({ incomingBody: req.body });
@@ -62,8 +63,8 @@ router.post("/bulten/delete", (req, res) => {
 
 router.post("/bulten/insert", (req, res) => {
   // console.log(req.body);
-  const columns = ["baslikTR", "baslikEN", "yaziTR", "yaziEN"]
-  if (!columnChecker(req.body, columns)) {
+
+  if (!columnChecker(req.body, bultenColumns)) {
     res.status(400);
     res.json("invalid column(s): " + errCols);
     errCols = [];
@@ -71,10 +72,10 @@ router.post("/bulten/insert", (req, res) => {
   }
   var sql_request = new sql.Request();
   sql_request
-    .input("baslikTR", sql.NVarChar, req.body[columns[0]])
-    .input("baslikEN", sql.NVarChar, req.body[columns[1]])
-    .input("yaziTR", sql.NVarChar, req.body[columns[2]])
-    .input("yaziEN", sql.NVarChar, req.body[columns[3]])
+    .input("baslikTR", sql.NVarChar, req.body[bultenColumns[0]])
+    .input("baslikEN", sql.NVarChar, req.body[bultenColumns[1]])
+    .input("yaziTR", sql.NVarChar, req.body[bultenColumns[2]])
+    .input("yaziEN", sql.NVarChar, req.body[bultenColumns[3]])
     .query(
       "insert into bulten (baslikTR,baslikEN,yaziTR,yaziEN) values (@baslikTR,@baslikEN,@yaziTR,@yaziEN)"
     )
@@ -95,13 +96,19 @@ router.post("/bulten/update", (req, res) => {
     res.json({ message: "id is needed to update" });
     return;
   }
+  if (!columnChecker(req.body, bultenColumns)) {
+    res.status(400);
+    res.json("invalid column(s): " + errCols);
+    errCols = [];
+    return;
+  }
   var sql_request = new sql.Request();
   sql_request
     .input("id", sql.Int, req.body.id)
-    .input("baslikTR", sql.NVarChar, req.body[columns[0]])
-    .input("baslikEN", sql.NVarChar, req.body[columns[1]])
-    .input("yaziTR", sql.NVarChar, req.body[columns[2]])
-    .input("yaziEN", sql.NVarChar, req.body[columns[3]])
+    .input("baslikTR", sql.NVarChar, req.body[bultenColumns[0]])
+    .input("baslikEN", sql.NVarChar, req.body[bultenColumns[1]])
+    .input("yaziTR", sql.NVarChar, req.body[bultenColumns[2]])
+    .input("yaziEN", sql.NVarChar, req.body[bultenColumns[3]])
     .query(
       `
     update bulten
@@ -163,7 +170,7 @@ router.post("/login/select", (req, res) => {
     });
 });
 router.post("/login/update", (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   if (!(req.body.username && req.body.pwd)) {
     // console.log(req.body.username, req.body.pwd);
     res.status(400);
@@ -194,6 +201,7 @@ router.post("/login/update", (req, res) => {
 
 //--------------------ekip-------------------
 
+const ekipColumns = ["isim", "soyisim", "aciklamaTR", "aciklamaEN", "resim"]
 router.post("/ekip/select", (req, res) => {
   // console.log(req.body);
   console.log({ incomingBody: req.body });
@@ -219,8 +227,7 @@ router.post("/ekip/select", (req, res) => {
 
 router.post("/ekip/insert", (req, res) => {
   // console.log(req.body);
-  const columns = ["isim", "soyisim", "aciklamaTR", "aciklamaEN"]
-  if (!columnChecker(req.body, columns)) {
+  if (!columnChecker(req.body, ekipColumns)) {
     res.status(400);
     res.json("invalid column(s): " + errCols);
     errCols = [];
@@ -228,12 +235,13 @@ router.post("/ekip/insert", (req, res) => {
   }
   var sql_request = new sql.Request();
   sql_request
-    .input("isim", sql.NVarChar, req.body[columns[0]])
-    .input("soyisim", sql.NVarChar, req.body[columns[1]])
-    .input("aciklamaTR", sql.NVarChar, req.body[columns[2]])
-    .input("aciklamaEN", sql.NVarChar, req.body[columns[3]])
+    .input("isim", sql.NVarChar, req.body[ekipColumns[0]])
+    .input("soyisim", sql.NVarChar, req.body[ekipColumns[1]])
+    .input("aciklamaTR", sql.NVarChar, req.body[ekipColumns[2]])
+    .input("aciklamaEN", sql.NVarChar, req.body[ekipColumns[3]])
+    .input("resim", sql.NVarChar, req.body[ekipColumns[4]])
     .query(
-      "insert into ekip (isim,soyisim,aciklamaTR,aciklamaEN) values (@isim,@soyisim,@aciklamaTR,@aciklamaEN)"
+      "insert into ekip (isim,soyisim,aciklamaTR,aciklamaEN,resim) values (@isim,@soyisim,@aciklamaTR,@aciklamaEN,@resim)"
     )
     .then((dbres) => {
       console.log(dbres);
@@ -247,8 +255,12 @@ router.post("/ekip/insert", (req, res) => {
     });
 });
 router.post("/ekip/update", (req, res) => {
-  const columns = ["id", "isim", "soyisim", "aciklamaTR", "aciklamaEN"]
-  if (!columnChecker(req.body, columns)) {
+  if (!req.body.id) {
+    res.status(400);
+    res.json({ message: "id is needed to update" });
+    return;
+  }
+  if (!columnChecker(req.body, ekipColumns)) {
     res.status(400);
     res.json("invalid column(s): " + errCols);
     errCols = [];
@@ -257,10 +269,11 @@ router.post("/ekip/update", (req, res) => {
   var sql_request = new sql.Request();
   sql_request
     .input("id", sql.Int, req.body.id)
-    .input("isim", sql.NVarChar, req.body[columns[0]])
-    .input("soyisim", sql.NVarChar, req.body[columns[1]])
-    .input("aciklamaTR", sql.NVarChar, req.body[columns[2]])
-    .input("aciklamaEN", sql.NVarChar, req.body[columns[3]])
+    .input("isim", sql.NVarChar, req.body[ekipColumns[0]])
+    .input("soyisim", sql.NVarChar, req.body[ekipColumns[1]])
+    .input("aciklamaTR", sql.NVarChar, req.body[ekipColumns[2]])
+    .input("aciklamaEN", sql.NVarChar, req.body[ekipColumns[3]])
+    .input("resim", sql.NVarChar, req.body[ekipColumns[4]])
     .query(
       `
     update ekip
@@ -269,6 +282,7 @@ router.post("/ekip/update", (req, res) => {
       soyisim=@soyisim,
       aciklamaTR=@aciklamaTR,
       aciklamaEN=@aciklamaEN,
+      resim=@resim,
       degistirilmeTarihi=getdate()
     where
       id=@id

@@ -4,6 +4,7 @@ const express = require("express");
 const http = require("http");
 const cors = require("cors");
 const sql = require("mssql");
+var bodyParser = require('body-parser');
 
 const routes = require("./routes");
 const app = express();
@@ -13,7 +14,10 @@ require("dotenv").config();
 const port = process.env.backendPort || 5000;
 
 app.use(cors());
-app.use(express.json());
+// app.use(express.json());
+
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
 app.use("/", routes);
 // console.log(process.env);

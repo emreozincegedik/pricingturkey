@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { Context } from "./Genel";
 import Navbutton from "../resimler/navbar.svg";
 import { animateScroll, scroller } from "react-scroll";
+import { Helmet } from "react-helmet"
 
 export class Navbars extends Component {
   static contextType = Context;
@@ -20,6 +21,9 @@ export class Navbars extends Component {
     };
     return (
       <header>
+        <Helmet>
+          <html lang={secili_dil} amp />
+        </Helmet>
         <nav className="navbar navbar-expand-md navbar-light fixed-top bg-white">
           <div className="container">
             <NavLink className="navbar-brand" to="/">

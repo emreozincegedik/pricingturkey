@@ -1,5 +1,4 @@
 import React from "react";
-import "./App.css"; //eklemek istediklerin
 //import "bootstrap/dist/css/bootstrap.min.css";
 import "./main.css"; //yeni bootstrap
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -30,7 +29,7 @@ function App() {
             href="https://fonts.googleapis.com/css?family=Satisfy|Montserrat|Raleway&display=swap"
             rel="stylesheet"
           />
-          <title>Transfet Pricing Turkey</title>
+          <title>Transfer Pricing Turkey</title>
           <link
             rel="stylesheet"
             href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"

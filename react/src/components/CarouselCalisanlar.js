@@ -123,7 +123,7 @@ export function CarouselCalisanlar(props) {
         >
           {status === "success" && (
             data.map((item) => (
-              <EkipCard key={item.id} title={item.isim + " " + item.soyisim} detail={dil_degisken(item.aciklamaTR, item.aciklamaEN)} />
+              <EkipCard key={item.id} img={item.resim} title={item.isim + " " + item.soyisim} detail={dil_degisken(item.aciklamaTR, item.aciklamaEN)} />
             ))
           )}
           {status === "error" && (

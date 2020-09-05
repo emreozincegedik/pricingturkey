@@ -1,5 +1,4 @@
-import React from 'react'
-
+import React from "react";
 
 export function EkipCard(props) {
   return (
@@ -8,6 +7,7 @@ export function EkipCard(props) {
         src={props.img || "https://via.placeholder.com/300x300"}
         className="rounded-circle"
         style={{ width: "90%" }}
+        alt={props.title || "Heading"}
       />
       <h2>{props.title || "Heading"}</h2>
       <p /* style={{ width: "200px" }} */>
@@ -23,9 +23,8 @@ export function EkipCard(props) {
           </a>
         </p> */}
     </div>
-  )
+  );
 }
-
 
 // export class EkipCard extends Component {
 //   render() {

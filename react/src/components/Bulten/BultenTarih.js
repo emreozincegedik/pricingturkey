@@ -37,7 +37,7 @@ export class BultenTarih extends Component {
           <ol className="list-unstyled mb-0">
             {years.map((year) =>
               months.map((month) => (
-                <li>
+                <li key={year + "/" + month}>
                   <NavLink to={"/bultenler/" + year + "/" + month[0]}>
                     {year + " " + dil_degisken(month[0], month[1])}
                   </NavLink>

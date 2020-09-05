@@ -1,5 +1,10 @@
 import React from "react";
+import { Bulten } from "../components";
 
 export function BultenMain() {
-  return <div>asd</div>;
+  return (
+    <div>
+      <Bulten lastX={6} ordered={true} />
+    </div>
+  );
 }

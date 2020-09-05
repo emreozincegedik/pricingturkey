@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import {
   Context,
-  CarouselAnaResimler,
+  // CarouselAnaResimler,
   CarouselCalisanlar,
-  CarouselTest,
+  // CarouselTest,
   LandingPage,
   Bulten,
   IstekForm,
@@ -19,9 +19,9 @@ export class Anasayfa extends Component {
       delay: 0,
       smooth: "easeInOutQuart",
     });
-    console.log(this.context.state.scroll);
+    // console.log(this.context.state.scroll);
     this.context.state.scrollSetup("");
-    console.log(this.props);
+    // console.log(this.props);
   }
   render() {
     return (

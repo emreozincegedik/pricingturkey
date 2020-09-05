@@ -2,7 +2,7 @@
 import React, { useContext, useState } from "react";
 // import { Carousel } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
-import { CalisanCard, EkipCard, Context } from "./index";
+import { /* CalisanCard, */ EkipCard, Context } from "./index";
 import "react-multi-carousel/lib/styles.css";
 import { Element } from "react-scroll";
 
@@ -56,7 +56,7 @@ const CustomRightArrow = ({ onClick, ...rest }) => {
 
 export function CarouselCalisanlar(props) {
   const { data, status } = useQuery("ekip", fetchEkip);
-  console.log(data, status);
+  // console.log(data, status);
 
   const handleSelect = (selectedIndex, e) => {
     setindex(selectedIndex);

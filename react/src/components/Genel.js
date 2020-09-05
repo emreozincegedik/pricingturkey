@@ -25,6 +25,15 @@ export class Genel extends Component {
     scrollSetup: (name) => {
       this.setState({ scroll: name });
     },
+    dateConverter: (date) => {
+      // console.log(date);
+      var dateObj = new Date(date);
+      var month = dateObj.getUTCMonth() + 1; //months from 1-12
+      var day = dateObj.getUTCDate();
+      var year = dateObj.getUTCFullYear();
+      var newdate = day + "/" + month + "/" + year;
+      return newdate;
+    },
   };
   render() {
     return (

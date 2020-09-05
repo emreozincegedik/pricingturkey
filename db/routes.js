@@ -22,9 +22,12 @@ router.post("/bulten/select", (req, res) => {
   var sql_request = new sql.Request();
   sql_request
     .input("input", sql.Int, req.body.id)
+    .input("lastX", sql.Int, req.body.lastX)
     .query(
       req.body.id
         ? "select * from bulten where id=@input"
+        : req.body.lastX
+        ? "SELECT TOP(@lastX) * FROM bulten  ORDER BY id DESC"
         : "select * from bulten"
     )
     .then((dbres) => {

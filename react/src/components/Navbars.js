@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { Context } from "./Genel";
-import Navbutton from "../resimler/navbar.svg";
 import { animateScroll, scroller } from "react-scroll";
 import { Helmet } from "react-helmet";
+
+import Navbutton from "../resimler/navbar.svg";
 import tr from "../resimler/turkey.svg";
 import en from "../resimler/united-states-of-america.svg";
 

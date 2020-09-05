@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NavLink } from "react-router-dom";
 import logo from "../resimler/logo_turkish.png";
 
 export class Footer extends Component {
@@ -15,41 +16,41 @@ export class Footer extends Component {
               className="d-inline-block align-top"
             />
             <small className="d-inline-block mb-3 text-muted">
-              &copy; Penetra - 2020
+              &copy; Penetra - {new Date().getFullYear()}
             </small>
           </div>
           <div className="col-6 col-md mt-3">
             <h5>Features</h5>
             <ul className="list-unstyled text-small">
               <li>
-                <a className="text-muted" href="#">
+                <NavLink className="text-muted" to="/">
                   Cool stuff
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a className="text-muted" href="#">
+                <NavLink className="text-muted" to="/">
                   Random feature
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a className="text-muted" href="#">
+                <NavLink className="text-muted" to="/">
                   Team feature
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a className="text-muted" href="#">
+                <NavLink className="text-muted" to="/">
                   Stuff for developers
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a className="text-muted" href="#">
+                <NavLink className="text-muted" to="/">
                   Another one
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a className="text-muted" href="#">
+                <NavLink className="text-muted" to="/">
                   Last time
-                </a>
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -57,24 +58,24 @@ export class Footer extends Component {
             <h5>Resources</h5>
             <ul className="list-unstyled text-small">
               <li>
-                <a className="text-muted" href="#">
+                <NavLink className="text-muted" to="/">
                   Resource
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a className="text-muted" href="#">
+                <NavLink className="text-muted" to="/">
                   Resource name
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a className="text-muted" href="#">
+                <NavLink className="text-muted" to="/">
                   Another resource
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a className="text-muted" href="#">
+                <NavLink className="text-muted" to="/">
                   Final resource
-                </a>
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -82,24 +83,24 @@ export class Footer extends Component {
             <h5>Resources</h5>
             <ul className="list-unstyled text-small">
               <li>
-                <a className="text-muted" href="#">
+                <NavLink className="text-muted" to="/">
                   Business
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a className="text-muted" href="#">
+                <NavLink className="text-muted" to="/">
                   Education
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a className="text-muted" href="#">
+                <NavLink className="text-muted" to="/">
                   Government
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a className="text-muted" href="#">
+                <NavLink className="text-muted" to="/">
                   Gaming
-                </a>
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -107,24 +108,24 @@ export class Footer extends Component {
             <h5>About</h5>
             <ul className="list-unstyled text-small">
               <li>
-                <a className="text-muted" href="#">
+                <NavLink className="text-muted" to="/">
                   Team
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a className="text-muted" href="#">
+                <NavLink className="text-muted" to="/">
                   Locations
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a className="text-muted" href="#">
+                <NavLink className="text-muted" to="/">
                   Privacy
-                </a>
+                </NavLink>
               </li>
               <li>
-                <a className="text-muted" href="#">
+                <NavLink className="text-muted" to="/">
                   Terms
-                </a>
+                </NavLink>
               </li>
             </ul>
           </div>

@@ -2,7 +2,16 @@ import React from "react";
 //import "bootstrap/dist/css/bootstrap.min.css";
 import "./main.css"; //yeni bootstrap
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { Anasayfa, Test, Test2, Login, Error, Hizmetlerimiz } from "./sayfalar";
+import {
+  Anasayfa,
+  Test,
+  Test2,
+  Login,
+  Error,
+  Hizmetlerimiz,
+  BultenMain,
+  BultenTek,
+} from "./sayfalar";
 import { Navbars, Genel, Footer } from "./components";
 import { Helmet } from "react-helmet";
 
@@ -41,6 +50,8 @@ function App() {
           <Route path="/anasayfa" exact component={Anasayfa} />
           <Route path="/test" exact component={Test} />
           <Route path="/test/:id" component={Test2} />
+          <Route path="/bulten" exact component={BultenMain} />
+          <Route path="/bulten/:id" component={BultenTek} />
           <Route path="/login" exact component={Login} />
           <Route path="/hizmetlerimiz" exact component={Hizmetlerimiz} />
           <Route component={Error} />

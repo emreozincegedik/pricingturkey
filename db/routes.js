@@ -1,7 +1,6 @@
 var express = require("express");
 var router = express.Router();
 var sql = require("mssql");
-;
 errCols = [];
 const columnChecker = (body, columns) => {
   let a = true;
@@ -16,7 +15,7 @@ const columnChecker = (body, columns) => {
 };
 
 //----------------------bulten--------------------------
-const bultenColumns = ["baslikTR", "baslikEN", "yaziTR", "yaziEN"]
+const bultenColumns = ["baslikTR", "baslikEN", "yaziTR", "yaziEN"];
 router.post("/bulten/select", (req, res) => {
   // console.log(req.body);
   console.log({ incomingBody: req.body });
@@ -201,7 +200,7 @@ router.post("/login/update", (req, res) => {
 
 //--------------------ekip-------------------
 
-const ekipColumns = ["isim", "soyisim", "aciklamaTR", "aciklamaEN", "resim"]
+const ekipColumns = ["isim", "soyisim", "aciklamaTR", "aciklamaEN", "resim"];
 router.post("/ekip/select", (req, res) => {
   // console.log(req.body);
   console.log({ incomingBody: req.body });
@@ -209,9 +208,7 @@ router.post("/ekip/select", (req, res) => {
   sql_request
     .input("input", sql.Int, req.body.id)
     .query(
-      req.body.id
-        ? "select * from ekip where id=@input"
-        : "select * from ekip"
+      req.body.id ? "select * from ekip where id=@input" : "select * from ekip"
     )
     .then((dbres) => {
       // console.log(dbres);
@@ -321,7 +318,5 @@ router.post("/ekip/delete", (req, res) => {
       res.json(err);
     });
 });
-
-
 
 module.exports = router;

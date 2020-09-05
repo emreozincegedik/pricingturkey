@@ -1,12 +1,12 @@
 // import React, { Component } from "react";
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState } from "react";
 // import { Carousel } from "react-bootstrap";
 import Carousel from "react-multi-carousel";
 import { CalisanCard, EkipCard, Context } from "./index";
 import "react-multi-carousel/lib/styles.css";
 import { Element } from "react-scroll";
 
-import { useQuery } from 'react-query'
+import { useQuery } from "react-query";
 
 const fetchEkip = async () => {
   const response = await fetch("/ekip/select", {
@@ -17,8 +17,8 @@ const fetchEkip = async () => {
     // body: JSON.stringify({ username: email, pwd: pwdHash }),
     // body: JSON.stringify(user),
   });
-  return response.json()
-}
+  return response.json();
+};
 
 const CustomLeftArrow = ({ onClick, ...rest }) => {
   const {
@@ -54,14 +54,12 @@ const CustomRightArrow = ({ onClick, ...rest }) => {
   );
 };
 
-
 export function CarouselCalisanlar(props) {
-  const { data, status } = useQuery("ekip", fetchEkip)
-  console.log(data, status)
-
+  const { data, status } = useQuery("ekip", fetchEkip);
+  console.log(data, status);
 
   const handleSelect = (selectedIndex, e) => {
-    setindex(selectedIndex)
+    setindex(selectedIndex);
     // setIndex(selectedIndex);
   };
   const responsive = {
@@ -84,8 +82,8 @@ export function CarouselCalisanlar(props) {
     },
   };
   const { dil_degisken } = useContext(Context).state;
-  const [index, setindex] = useState(0)
-  const [a, setA] = useState([0, 1, 2, 3])
+  const [index, setindex] = useState(0);
+  const [a, setA] = useState([0, 1, 2, 3]);
   return (
     <Element
       className="py-5"
@@ -121,26 +119,23 @@ export function CarouselCalisanlar(props) {
           customRightArrow={<CustomRightArrow />}
           customLeftArrow={<CustomLeftArrow />}
         >
-          {status === "success" && (
+          {status === "success" &&
             data.map((item) => (
-              <EkipCard key={item.id} img={item.resim} title={item.isim + " " + item.soyisim} detail={dil_degisken(item.aciklamaTR, item.aciklamaEN)} />
-            ))
-          )}
-          {status === "error" && (
-            a.map((item) => (
-              <EkipCard key={item} />
-            ))
-          )}
+              <EkipCard
+                key={item.id}
+                img={item.resim}
+                title={item.isim + " " + item.soyisim}
+                detail={dil_degisken(item.aciklamaTR, item.aciklamaEN)}
+              />
+            ))}
+          {status === "error" && a.map((item) => <EkipCard key={item} />)}
         </Carousel>
         {/* </div> */}
         {/* </div> */}
       </div>
     </Element>
-  )
+  );
 }
-
-
-
 
 // export class CarouselCalisanlar extends Component {
 //   static contextType = Context;

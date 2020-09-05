@@ -22,7 +22,7 @@ export class BultenTarih extends Component {
     ];
     const years = ["2020", "2019"];
     return (
-      <aside className="col-md-3 order-5 justify-content-end">
+      <aside className="col-md-3 justify-content-end">
         <div className="p-4 mb-3 bg-vahitcan">
           <h4 className="font-italic">About</h4>
           <p className="mb-0">
@@ -44,7 +44,6 @@ export class BultenTarih extends Component {
                 </li>
               ))
             )}
-            
           </ol>
         </div>
       </aside>

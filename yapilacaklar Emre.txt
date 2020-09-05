@@ -1,0 +1,13 @@
+dashboard:
+	ekip ekle, çıkar, update
+	bülten ekle, çıkar, update
+
+emergency:
+	tek sayfalık yazı değiştirme
+
+bülten kolon yapısı
+    "baslikTR": "ikinci başlık",
+    "baslikEN": "second Title",
+    "yaziTR": "ikinci yazı",
+    "yaziEN": "second text",
+	"resim": img.png

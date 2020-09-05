@@ -1,0 +1,3 @@
+bulten sayafasındaki flex yapısından kurtul ana sayfadakinin aynısını yap
+
+navbar header margin bottom ver

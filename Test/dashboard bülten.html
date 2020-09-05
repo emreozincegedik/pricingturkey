@@ -134,13 +134,27 @@
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Dashboard</h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
-                        <div class="btn-group mr-2">
+                        <div class="btn-group mr-auto">
                             <button type="button" class="btn btn-sm btn-outline-secondary">Ekle</button>
                             <button type="button" class="btn btn-sm btn-outline-secondary">Çıkar</button>
                             <button type="button" class="btn btn-sm btn-outline-secondary">Sil</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary">Güncelle</button>
                         </div>
                        
-                        <input type="date" class="btn btn-sm border-secondary dropdown-toggle">
+                        
+                        <div class="dropdown mx-3">
+                            <button class="btn btn-vahitcan dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              xx seçin
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                              <a class="dropdown-item" href="#">Action</a>
+                              <a class="dropdown-item" href="#">Another action</a>
+                              <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                          </div>
+
+                          <input type="date" class="btn btn-sm border-secondary dropdown-toggle">
+
                     </div>
                 </div>
                 
@@ -149,7 +163,7 @@
                         <div class="row">
                           <div class="col">
                             <div class="form-label-group py-2">
-                                <label for="inputName">Türkçe başlık</label>
+                                <label for="baslikTR">Türkçe başlık</label>
                             <input type="text" class="form-control" placeholder="Başlık Türkçe" id="baslikTR">
                             
                           </div>
@@ -157,7 +171,7 @@
                           <div class="col">
                             <div class="form-label-group py-2
                             ">
-                                <label for="inputLast">İngilizce başlık</label>
+                                <label for="baslikEN">İngilizce başlık</label>
                             <input type="text" class="form-control" placeholder="İngilizce başlık" id="baslikEN">
                             
                           </div>

@@ -11,6 +11,7 @@ import {
   Hizmetlerimiz,
   BultenMain,
   BultenTek,
+  Dashboard,
 } from "./sayfalar";
 import { Navbars, Genel, Footer } from "./components";
 import { Helmet } from "react-helmet";
@@ -54,6 +55,7 @@ function App() {
           <Route path="/bulten/:id" component={BultenTek} />
           <Route path="/login" exact component={Login} />
           <Route path="/hizmetlerimiz" exact component={Hizmetlerimiz} />
+          <Route path="/dashboard" exact component={Dashboard} />
           <Route component={Error} />
         </Switch>
         <Footer />

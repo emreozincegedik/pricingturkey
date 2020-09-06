@@ -1,234 +1,298 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="Türkçe">
-
-<head>
+  <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Vahitcan Tutarın CSE216 dersi için ödevidir.">
-    <meta name="keywords" content="HTML, CSS, JavaScript">
-    <meta name="author" content="Vahitcan Tutar">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="description"
+      content="Vahitcan Tutarın CSE216 dersi için ödevidir."
+    />
+    <meta name="keywords" content="HTML, CSS, JavaScript" />
+    <meta name="author" content="Vahitcan Tutar" />
     <title>Panel</title>
     <!-- Bootstrap core CSS -->
 
-    <link href="main.css" rel="stylesheet">
+    <link href="main.css" rel="stylesheet" />
 
     <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
 
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
         }
+      }
     </style>
     <!-- Custom styles for this template -->
-    <link href="dashboard.css" rel="stylesheet">
-</head>
+    <link href="dashboard.css" rel="stylesheet" />
+  </head>
 
-<body>
-    <nav class="navbar navbar-dark sticky-top bg-dashboardkoyumavi flex-md-nowrap p-0">
-        <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Logo</a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse"
-            data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-        <ul class="navbar-nav px-3">
-            <li class="nav-item text-nowrap">
-                <!-- buraya kullanıcı isimleri yerleştirilicek örn hoş geldiniz ibrahim bey vs -->
-                <a class="nav-link" href="#">Sign out</a>
-                <!--  -->
-            </li>
-        </ul>
+  <body>
+    <nav
+      class="navbar navbar-dark sticky-top bg-dashboardkoyumavi flex-md-nowrap p-0"
+    >
+      <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Logo</a>
+      <button
+        class="navbar-toggler position-absolute d-md-none collapsed"
+        type="button"
+        data-toggle="collapse"
+        data-target="#sidebarMenu"
+        aria-controls="sidebarMenu"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <input
+        class="form-control form-control-dark w-100"
+        type="text"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+          <!-- buraya kullanıcı isimleri yerleştirilicek örn hoş geldiniz ibrahim bey vs -->
+          <a class="nav-link" href="#">Sign out</a>
+          <!--  -->
+        </li>
+      </ul>
     </nav>
 
     <div class="container-fluid">
-        <div class="row">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dashboardparliment sidebar collapse">
-                <div class="sidebar-sticky pt-3">
-                    <ul class="nav flex-column">
-                        <li class="nav-item border-bottom border-top">
-                            <a class="nav-link active" href="#">
-                                <span data-feather="bulten"></span>
-                                Bülten <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item border-bottom">
-                            <a class="nav-link" href="#">
-                                <span data-feather="Haber"></span>
-                                Haber
-                            </a>
-                        </li>
-                        <li class="nav-item border-bottom">
-                            <a class="nav-link" href="#">
-                                <span data-feather="Duyurular"></span>
-                                Duyurular
-                            </a>
-                        </li>
-                        <li class="nav-item border-bottom">
-                            <a class="nav-link" href="#">
-                                <span data-feather="users"></span>
-                                Lorem.
-                            </a>
-                        </li>
-                        <li class="nav-item border-bottom">
-                            <a class="nav-link" href="#">
-                                <span data-feather="bar-chart-2"></span>
-                                Lorem.
-                            </a>
-                        </li>
-                        <li class="nav-item border-bottom">
-                            <a class="nav-link" href="#">
-                                <span data-feather="layers"></span>
-                                Lorem.
-                            </a>
-                        </li>
-                    </ul>
+      <div class="row">
+        <nav
+          id="sidebarMenu"
+          class="col-md-3 col-lg-2 d-md-block bg-dashboardparliment sidebar collapse"
+        >
+          <div class="sidebar-sticky pt-3">
+            <ul class="nav flex-column">
+              <li class="nav-item border-bottom border-top">
+                <a class="nav-link active" href="#">
+                  <span data-feather="bulten"></span>
+                  Bülten <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item border-bottom">
+                <a class="nav-link" href="#">
+                  <span data-feather="Haber"></span>
+                  Haber
+                </a>
+              </li>
+              <li class="nav-item border-bottom">
+                <a class="nav-link" href="#">
+                  <span data-feather="Duyurular"></span>
+                  Duyurular
+                </a>
+              </li>
+              <li class="nav-item border-bottom">
+                <a class="nav-link" href="#">
+                  <span data-feather="users"></span>
+                  Lorem.
+                </a>
+              </li>
+              <li class="nav-item border-bottom">
+                <a class="nav-link" href="#">
+                  <span data-feather="bar-chart-2"></span>
+                  Lorem.
+                </a>
+              </li>
+              <li class="nav-item border-bottom">
+                <a class="nav-link" href="#">
+                  <span data-feather="layers"></span>
+                  Lorem.
+                </a>
+              </li>
+            </ul>
 
-                    <h6
-                        class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                        <span>Lorem, ipsum.</span>
-                        <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-                            <span data-feather="plus-circle"></span>
-                        </a>
-                    </h6>
-                    <ul class="nav flex-column mb-2">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Lorem.
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                Lorem.
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                lorem
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <span data-feather="file-text"></span>
-                                lorem
-                            </a>
-                        </li>
-                    </ul>
+            <h6
+              class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted"
+            >
+              <span>Lorem, ipsum.</span>
+              <a
+                class="d-flex align-items-center text-muted"
+                href="#"
+                aria-label="Add a new report"
+              >
+                <span data-feather="plus-circle"></span>
+              </a>
+            </h6>
+            <ul class="nav flex-column mb-2">
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file-text"></span>
+                  Lorem.
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file-text"></span>
+                  Lorem.
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file-text"></span>
+                  lorem
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                  <span data-feather="file-text"></span>
+                  lorem
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+          <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+          >
+            <h1 class="h2">Dashboard</h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+              <div class="btn-group mr-auto">
+                <button type="button" class="btn btn-sm btn-outline-secondary">
+                  Ekle
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">
+                  Çıkar
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">
+                  Sil
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">
+                  Güncelle
+                </button>
+              </div>
+
+              <div class="dropdown mx-3">
+                <button
+                  class="btn btn-vahitcan dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  xx seçin
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Action</a>
+                  <a class="dropdown-item" href="#">Another action</a>
+                  <a class="dropdown-item" href="#">Something else here</a>
                 </div>
-            </nav>
+              </div>
 
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-                <div
-                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Dashboard</h1>
-                    <div class="btn-toolbar mb-2 mb-md-0">
-                        <div class="btn-group mr-auto">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Ekle</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Çıkar</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Sil</button>
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Güncelle</button>
-                        </div>
-                       
-                        
-                        <div class="dropdown mx-3">
-                            <button class="btn btn-vahitcan dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              xx seçin
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                              <a class="dropdown-item" href="#">Action</a>
-                              <a class="dropdown-item" href="#">Another action</a>
-                              <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                          </div>
+              <input
+                type="date"
+                class="btn btn-sm border-secondary dropdown-toggle"
+              />
+            </div>
+          </div>
 
-                          <input type="date" class="btn btn-sm border-secondary dropdown-toggle">
-
-                    </div>
+          <div class="container">
+            <form>
+              <div class="row">
+                <div class="col">
+                  <div class="form-label-group py-2">
+                    <label for="baslikTR">Türkçe başlık</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Başlık Türkçe"
+                      id="baslikTR"
+                    />
+                  </div>
                 </div>
-                
-                <div class="container">
-                    <form>
-                        <div class="row">
-                          <div class="col">
-                            <div class="form-label-group py-2">
-                                <label for="baslikTR">Türkçe başlık</label>
-                            <input type="text" class="form-control" placeholder="Başlık Türkçe" id="baslikTR">
-                            
-                          </div>
-                        </div>
-                          <div class="col">
-                            <div class="form-label-group py-2
-                            ">
-                                <label for="baslikEN">İngilizce başlık</label>
-                            <input type="text" class="form-control" placeholder="İngilizce başlık" id="baslikEN">
-                            
-                          </div>
-                        </div>
-                        </div>
-                        
-                        <div class="row">
-                          <div class="col">
-                            <div class="form-group py-3">
-                              <textarea class="form-control" id="yaziTR" rows="10"
-                                placeholder="Türkçe metni girin."></textarea>
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="form-group py-3">
-                              <textarea class="form-control" id="yaziEN" rows="10"
-                                placeholder="İngilizce metni girin."></textarea>
-                            </div>
-                          </div>
-                          
-                        </div>
-
-                        <div class="input-group">
-                            <div class="custom-file">
-                              <input type="file" class="custom-file-input" id="resim" aria-describedby="inputresim"
-                              accept=".jpg, .jpeg, .png">
-                              <label class="custom-file-label" for="resim">Resim dosyasını yükleyin. (.jpg, .jpeg, .png)</label>
-                            </div>
-                          </div>
-
-                        <div class="row">
-                          <button class="btn btn-outline-emre btn-block mt-3">Gönder</button>
-                        </div>
-                      </form>
+                <div class="col">
+                  <div class="form-label-group py-2">
+                    <label for="baslikEN">İngilizce başlık</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="İngilizce başlık"
+                      id="baslikEN"
+                    />
+                  </div>
                 </div>
+              </div>
 
+              <div class="row">
+                <div class="col">
+                  <div class="form-group py-3">
+                    <textarea
+                      class="form-control"
+                      id="yaziTR"
+                      rows="10"
+                      placeholder="Türkçe metni girin."
+                    ></textarea>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group py-3">
+                    <textarea
+                      class="form-control"
+                      id="yaziEN"
+                      rows="10"
+                      placeholder="İngilizce metni girin."
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
 
+              <div class="input-group">
+                <div class="custom-file">
+                  <input
+                    type="file"
+                    class="custom-file-input"
+                    id="resim"
+                    aria-describedby="inputresim"
+                    accept=".jpg, .jpeg, .png"
+                  />
+                  <label class="custom-file-label" for="resim"
+                    >Resim dosyasını yükleyin. (.jpg, .jpeg, .png)</label
+                  >
+                </div>
+              </div>
 
-            </main>
-        </div>
+              <div class="row">
+                <button class="btn btn-outline-emre btn-block mt-3">
+                  Gönder
+                </button>
+              </div>
+            </form>
+          </div>
+        </main>
+      </div>
     </div>
 
-    
-
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous"></script>
-
-
-
-</body>
-
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

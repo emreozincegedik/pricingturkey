@@ -6,3 +6,4 @@ export { Error } from "./Error";
 export { Hizmetlerimiz } from "./Hizmetlerimiz";
 export { BultenMain } from "./BultenMain";
 export { BultenTek } from "./BultenTek";
+export { Dashboard } from "./Dashboard";

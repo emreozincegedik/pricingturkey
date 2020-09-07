@@ -1,15 +1,17 @@
 import { NavLink, useLocation } from "react-router-dom";
 import logo from "../resimler/logo_turkish.png";
 
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "./Genel";
 
 export function Footer() {
+  const context = useContext(Context);
   let location = useLocation();
-  return location.pathname === "/dashboard" ? (
+  return location.pathname === "/dashboard" && context.state.uyegirisi ? (
     ""
   ) : (
     <footer className="footer mt-auto container-fluid bg-vahitcan">
-      {console.log(location.pathname)}
+      {/* {console.log(location.pathname)} */}
       <div className="row">
         <div className="col-12 col-md mt-5">
           <img

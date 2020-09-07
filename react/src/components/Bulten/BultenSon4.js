@@ -30,7 +30,7 @@ export function BultenSon4(props) {
           <BultenCard
             key={item.id}
             id={item.id}
-            img={item.img}
+            img={item.resim}
             date={dateConverter(item.eklenmeTarihi)}
             baslikTR={item.baslikTR}
             baslikEN={item.baslikEN}

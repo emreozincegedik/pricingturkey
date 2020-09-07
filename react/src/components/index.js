@@ -9,3 +9,4 @@ export { EkipCard } from "./EkipCard";
 export { Bulten } from "./Bulten/index";
 export { Footer } from "./Footer";
 export { IstekForm } from "./IstekForm";
+export { DashboardForm } from "./DashboardForm";

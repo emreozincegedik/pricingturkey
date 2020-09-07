@@ -29,11 +29,15 @@ export function BultenTek(props) {
     <div>
       {status === "success" && data.length > 0 && (
         <div class="col-md-8 blog-main">
-          <h3 class="pb-4 mb-4 lead border-bottom">
+          <h1 class="pb-4 mb-4 lead border-bottom">
             {dil_degisken(data[0].baslikTR, data[0].baslikEN)}
-          </h3>
+          </h1>
           <p>{dateConverter(data[0].eklenmeTarihi)}</p>
-          <div>{dil_degisken(data[0].yaziTR, data[0].yaziEN)}</div>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: dil_degisken(data[0].yaziTR, data[0].yaziEN),
+            }}
+          ></div>
         </div>
       )}
       {status === "success" && data.length === 0 && <Error />}

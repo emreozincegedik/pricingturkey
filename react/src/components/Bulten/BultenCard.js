@@ -45,15 +45,19 @@ export class BultenCard extends Component {
           </span>
           {/* </svg> */}
           <div className="card-body">
-            <p className="card-text">
-              {(dil_degisken(this.props.yaziTR, this.props.yaziEN).substring(
-                0,
-                200
-              ) ||
-                `This is a wider card with supporting text below as a natural
+            <p
+              className="card-text"
+              dangerouslySetInnerHTML={{
+                __html:
+                  (dil_degisken(this.props.yaziTR, this.props.yaziEN).substring(
+                    0,
+                    200
+                  ) ||
+                    `This is a wider card with supporting text below as a natural
               lead-in to additional content. This content is a little bit
-              longer.`) + "..."}
-            </p>
+              longer.`) + "...",
+              }}
+            ></p>
             <div className="d-flex justify-content-between align-items-center">
               <NavLink
                 className="btn btn-m btn-outline-vahitcan"

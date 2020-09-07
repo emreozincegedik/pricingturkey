@@ -7,6 +7,14 @@ export class Genel extends Component {
   state = {
     diller: ["tr", "en"],
     secili_dil: Cookie.get("dil") != null ? Cookie.get("dil") : "tr",
+    uyegirisi: Cookie.get("giris") != null ? Cookie.get("giris") : false,
+    girisHandler: (bool, expires) => {
+      // Cookie.set("giris", bool);
+      this.setState({ uyegirisi: bool });
+      bool
+        ? Cookie.set("giris", bool, { expires: expires })
+        : Cookie.remove("giris");
+    },
     dil_degistir: (dil) => {
       this.setState({ secili_dil: dil });
       Cookie.set("dil", dil);

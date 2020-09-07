@@ -10,14 +10,20 @@ import en from "../resimler/united-states-of-america.svg";
 
 export function Navbars() {
   const context = useContext(Context);
-  const { dil_degisken, dil_degistir, secili_dil, scrollSetup } = context.state;
+  const {
+    dil_degisken,
+    dil_degistir,
+    secili_dil,
+    scrollSetup,
+    uyegirisi,
+  } = context.state;
   const scrollSetting = {
     duration: 200,
     delay: 0,
     smooth: "easeInOutQuart",
   };
   let location = useLocation();
-  return location.pathname === "/dashboard" ? (
+  return location.pathname === "/dashboard" && uyegirisi ? (
     ""
   ) : (
     <>
@@ -136,7 +142,7 @@ export function Navbars() {
                       // console.log(context);
                       dil_degistir(secili_dil === "tr" ? "en" : "tr");
                       // console.log(secili_dil);
-                      console.log(window.location);
+                      // console.log(window.location);
                     }}
                   >
                     <img

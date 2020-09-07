@@ -9,11 +9,13 @@ import crypto from "crypto";
 export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [remember, setRemember] = useState(false);
+
   const [emailMesaj, setEmailMesaj] = useState(true);
   const [passwordMesaj, setPasswordMesaj] = useState(true);
   const [genelMesajStatus, setGenelMesajStatus] = useState(true);
   const [loginCheck, setLoginCheck] = useState(false);
-  const { dil_degisken } = useContext(Context).state;
+  const { dil_degisken, girisHandler, uyegirisi } = useContext(Context).state;
 
   const [genelMesaj, setGenelMesaj] = useState(
     dil_degisken("Zorunlu alanları doldurunuz", "Please fill required fields")
@@ -47,6 +49,8 @@ export function Login() {
     });
     // var response = await response.status;
     if (response.status === 200) {
+      const in15min = new Date(new Date().getTime() + 15 * 60 * 1000);
+      girisHandler(true, setRemember ? 180 : in15min);
       setLoginCheck(true);
       // let json = await response.json();
       // console.log(json, response.status);
@@ -72,7 +76,9 @@ export function Login() {
       setPasswordMesaj(false);
     }
   };
-  return (
+  return uyegirisi ? (
+    <Redirect to="/dashboard" />
+  ) : (
     <div style={{ marginTop: "20vh" }}>
       <form className="form-signin" onSubmit={formGonderildi}>
         <div className="text-center mb-4">
@@ -100,7 +106,7 @@ export function Login() {
               setGenelMesajStatus(true);
             }}
           />
-          <label for="inputEmail">
+          <label htmlFor="inputEmail">
             {dil_degisken("Email adresi", "Email address")}
           </label>
           <p hidden={emailMesaj} style={{ color: "red" }}>
@@ -133,11 +139,16 @@ export function Login() {
           style={{ background: "red", color: "white" }}
         >
           {genelMesaj}
-          {loginCheck && <Redirect to="/test" />}
+          {loginCheck && <Redirect to="/dashboard" />}
         </p>
         <div className="checkbox mb-3 text-center">
           <label>
-            <input type="checkbox" value="remember-me" />{" "}
+            <input
+              type="checkbox"
+              value="remember-me"
+              checked={remember}
+              onChange={(e) => setRemember(e.target.checked)}
+            />{" "}
             {dil_degisken("Beni hatırla", "Remember me")}
           </label>
         </div>

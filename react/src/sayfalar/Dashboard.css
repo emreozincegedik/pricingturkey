@@ -12,3 +12,12 @@
     font-size: 3.5rem;
   }
 }
+
+.dashboardbtn {
+  color: rgb(20, 111, 209);
+  background-color: transparent;
+  border: 0;
+}
+
+.dashboardbtn:hover {
+}

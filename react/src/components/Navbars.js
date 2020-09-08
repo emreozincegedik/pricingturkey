@@ -60,17 +60,41 @@ export function Navbars() {
               id="navbartransferpricing"
             >
               <ul className="navbar-nav ml-auto justify-content-between">
-                <li className="nav-item active">
-                  <NavLink
-                    className="nav-link text-vahitcan"
-                    to="/"
-                    onClick={() => {
-                      scrollSetup("");
-                      animateScroll.scrollToTop(scrollSetting);
-                    }}
+                <li className="nav-item dropdown">
+                  <div
+                    className="nav-link dropdown-toggle text-dark"
+                    to="/hizmetlerimiz"
+                    id="navbarDropdownMenuLink"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
                   >
-                    {dil_degisken("Ana sayfa", "Home")}
-                  </NavLink>
+                    {dil_degisken("Ana Sayfa", "Main Page")}
+                  </div>
+                  <div
+                    className="dropdown-menu"
+                    aria-labelledby="navbarDropdownMenuLink"
+                  >
+                    <NavLink
+                      className="dropdown-item"
+                      to="/bilgi/bulten/sayfa/1"
+                    >
+                      {dil_degisken("Bulten", "Bulletin")}
+                    </NavLink>
+                    <NavLink
+                      className="dropdown-item"
+                      to="/bilgi/duyuru/sayfa/1"
+                    >
+                      {dil_degisken("Duyuru", "Announcement")}
+                    </NavLink>
+                    <NavLink
+                      className="dropdown-item"
+                      to="/bilgi/haber/sayfa/1"
+                    >
+                      {dil_degisken("Hber", "News")}
+                    </NavLink>
+                  </div>
                 </li>
                 <li className="nav-item">
                   <NavLink

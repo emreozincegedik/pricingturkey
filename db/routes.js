@@ -17,18 +17,29 @@ const columnChecker = (body, columns) => {
 //----------------------bulten--------------------------
 const bultenColumns = ["baslikTR", "baslikEN", "yaziTR", "yaziEN", "resim"];
 router.post("/bulten/select", (req, res) => {
-  // console.log(req.body);
   console.log({ incomingBody: req.body });
+  console.log("??: " + req.body.page !== undefined);
+  if (
+    ((req.body.page - 1) * 6 < 0 || isNaN(parseInt(req.body.page))) &&
+    req.body.page !== undefined
+  ) {
+    res.status(403);
+    res.json([]);
+    return;
+  }
   var sql_request = new sql.Request();
   sql_request
     .input("input", sql.Int, req.body.id)
     .input("lastX", sql.Int, req.body.lastX)
+    .input("page", sql.Int, (req.body.page - 1) * 6)
     .input("date", sql.NVarChar, req.body.date)
     .query(
       req.body.id
         ? "select * from bulten where id=@input"
         : req.body.lastX
         ? "SELECT TOP(@lastX) * FROM bulten  ORDER BY id DESC"
+        : req.body.page
+        ? "SELECT * FROM bulten ORDER BY id DESC OFFSET @page ROWS FETCH NEXT 6 ROWS ONLY"
         : req.body.date
         ? " select * from bulten where eklenmeTarihi between CAST(@date AS DATETIME2) and CAST(@date AS DATETIME2)"
         : "select * from bulten"
@@ -55,7 +66,7 @@ router.post("/bulten/delete", (req, res) => {
     .input("id", sql.Int, req.body.id)
     .query("delete from bulten where id=@id")
     .then((dbres) => {
-      console.log(dbres);
+      // console.log(dbres);
       res.status(200);
       res.json(dbres);
     })
@@ -86,7 +97,7 @@ router.post("/bulten/insert", (req, res) => {
       "insert into bulten (baslikTR,baslikEN,yaziTR,yaziEN,resim) values (@baslikTR,@baslikEN,@yaziTR,@yaziEN,@resim)"
     )
     .then((dbres) => {
-      console.log(dbres);
+      // console.log(dbres);
       res.status(200);
       res.json(dbres);
     })
@@ -131,7 +142,7 @@ router.post("/bulten/update", (req, res) => {
       `
     )
     .then((dbres) => {
-      console.log(dbres);
+      // console.log(dbres);
       res.status(200);
       res.json(dbres);
     })
@@ -162,7 +173,7 @@ router.post("/login/select", (req, res) => {
     .input("pwd", sql.NVarChar, req.body.pwd)
     .query("select * from login where username=@username and pwd=@pwd")
     .then((dbres) => {
-      console.log(dbres.recordset);
+      // console.log(dbres.recordset);
       if (dbres.recordset.length < 1) {
         res.status(403);
         res.json({ message: "username or password is false" });
@@ -333,22 +344,33 @@ const haberColumns = ["baslikTR", "baslikEN", "yaziTR", "yaziEN", "resim"];
 router.post("/haber/select", (req, res) => {
   // console.log(req.body);
   console.log({ incomingBody: req.body });
+  if (
+    ((req.body.page - 1) * 6 < 0 || isNaN(parseInt(req.body.page))) &&
+    req.body.page !== undefined
+  ) {
+    res.status(403);
+    res.json([]);
+    return;
+  }
   var sql_request = new sql.Request();
   sql_request
     .input("input", sql.Int, req.body.id)
     .input("lastX", sql.Int, req.body.lastX)
+    .input("page", sql.Int, (req.body.page - 1) * 6)
     .input("date", sql.NVarChar, req.body.date)
     .query(
       req.body.id
         ? "select * from haber where id=@input"
         : req.body.lastX
         ? "SELECT TOP(@lastX) * FROM haber  ORDER BY id DESC"
+        : req.body.page
+        ? "SELECT * FROM haber ORDER BY id DESC OFFSET @page ROWS FETCH NEXT 6 ROWS ONLY"
         : req.body.date
         ? " select * from haber where eklenmeTarihi between CAST(@date AS DATETIME2) and CAST(@date AS DATETIME2)"
         : "select * from haber"
     )
     .then((dbres) => {
-      // console.log(dbres);
+      console.log(dbres);
       res.status(200);
       res.json(dbres.recordset);
     })
@@ -461,16 +483,27 @@ const duyuruColumns = ["baslikTR", "baslikEN", "yaziTR", "yaziEN", "resim"];
 router.post("/duyuru/select", (req, res) => {
   // console.log(req.body);
   console.log({ incomingBody: req.body });
+  if (
+    ((req.body.page - 1) * 6 < 0 || isNaN(parseInt(req.body.page))) &&
+    req.body.page !== undefined
+  ) {
+    res.status(403);
+    res.json([]);
+    return;
+  }
   var sql_request = new sql.Request();
   sql_request
     .input("input", sql.Int, req.body.id)
     .input("lastX", sql.Int, req.body.lastX)
+    .input("page", sql.Int, (req.body.page - 1) * 6)
     .input("date", sql.NVarChar, req.body.date)
     .query(
       req.body.id
         ? "select * from duyuru where id=@input"
         : req.body.lastX
         ? "SELECT TOP(@lastX) * FROM duyuru  ORDER BY id DESC"
+        : req.body.page
+        ? "SELECT * FROM duyuru ORDER BY id DESC OFFSET @page ROWS FETCH NEXT 6 ROWS ONLY"
         : req.body.date
         ? " select * from duyuru where eklenmeTarihi between CAST(@date AS DATETIME2) and CAST(@date AS DATETIME2)"
         : "select * from duyuru"
@@ -497,7 +530,7 @@ router.post("/duyuru/delete", (req, res) => {
     .input("id", sql.Int, req.body.id)
     .query("delete from duyuru where id=@id")
     .then((dbres) => {
-      console.log(dbres);
+      // console.log(dbres);
       res.status(200);
       res.json(dbres);
     })
@@ -528,7 +561,7 @@ router.post("/duyuru/insert", (req, res) => {
       "insert into duyuru (baslikTR,baslikEN,yaziTR,yaziEN,resim) values (@baslikTR,@baslikEN,@yaziTR,@yaziEN,@resim)"
     )
     .then((dbres) => {
-      console.log(dbres);
+      // console.log(dbres);
       res.status(200);
       res.json(dbres);
     })
@@ -573,7 +606,7 @@ router.post("/duyuru/update", (req, res) => {
       `
     )
     .then((dbres) => {
-      console.log(dbres);
+      // console.log(dbres);
       res.status(200);
       res.json(dbres);
     })

@@ -51,8 +51,12 @@ function App() {
           <Route path="/anasayfa" exact component={Anasayfa} />
           <Route path="/test" exact component={Test} />
           <Route path="/test/:id" component={Test2} />
-          <Route path="/bulten" exact component={BultenMain} />
-          <Route path="/bulten/:id" component={BultenTek} />
+          <Route
+            path="/bilgi/:bilgiCesit/sayfa/:id"
+            exact
+            component={BultenMain}
+          />
+          <Route path="/bilgi/:bilgiCesit/baslik/:id" component={BultenTek} />
           <Route path="/login" exact component={Login} />
           <Route path="/hizmetlerimiz" exact component={Hizmetlerimiz} />
           <Route path="/dashboard" exact component={Dashboard} />

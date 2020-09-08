@@ -1,23 +1,36 @@
 import React, { useContext } from "react";
 import { BultenCard } from "./index";
 import { useQuery } from "react-query";
-import { Context } from "../Genel";
+import { Context } from "../index";
+import { Error } from "../../sayfalar";
 
-const fetchBultenX = async (key, lastX) => {
-  const response = await fetch("/bulten/select", {
+const fetchBultenX = async (key, lastX, bilgiCesit, page) => {
+  var postBody = page
+    ? JSON.stringify({ page: page })
+    : JSON.stringify({ lastX: lastX });
+  var path =
+    bilgiCesit === undefined || bilgiCesit === null
+      ? "/bulten/select"
+      : `/${bilgiCesit}/select`;
+  // console.log(path);
+  // console.log(bilgiCesit);
+  const response = await fetch(path, {
     method: "POST",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
     },
-    body: JSON.stringify({ lastX: lastX }),
+    body: postBody,
     // body: JSON.stringify(user),
   });
   return response.json();
 };
 
 export function BultenSon4(props) {
-  const { data, status } = useQuery(["bulten", props.lastX], fetchBultenX);
-  // console.log(data);
+  const { data, status } = useQuery(
+    ["bulten", props.lastX, props.bilgiCesit, props.page],
+    fetchBultenX
+  );
+  console.log(data);
   // console.log(props);
   // const cards = [1, 2, 3, 4];
   const context = useContext(Context);
@@ -36,8 +49,11 @@ export function BultenSon4(props) {
             baslikEN={item.baslikEN}
             yaziTR={item.yaziTR}
             yaziEN={item.yaziEN}
+            bilgiCesit={props.bilgiCesit}
           />
         ))}
+      {status === "success" && data.length === 0 && <Error />}
+      {status === "error" && <Error />}
     </div>
   );
 }

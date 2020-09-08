@@ -4,9 +4,9 @@ import { Context } from "../components/Genel";
 import { Error } from "./index";
 // import {Redirect} from 'react-router-dom'
 
-const fetchBulten = async (key, id) => {
+const fetchBulten = async (key, cesit, id) => {
   // console.log(id);
-  const response = await fetch("/bulten/select", {
+  const response = await fetch(`/${cesit}/select`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
@@ -18,12 +18,13 @@ const fetchBulten = async (key, id) => {
 };
 //props.match.params.id
 export function BultenTek(props) {
+  console.log("params: ", props.match.params);
   const { data, status } = useQuery(
-    ["ekip", props.match.params.id],
+    ["ekip", props.match.params.bilgiCesit, props.match.params.id],
     fetchBulten
   );
   const { dil_degisken, dateConverter } = useContext(Context).state;
-  // console.log(props);
+  console.log(props);
 
   return (
     <div>
@@ -41,6 +42,7 @@ export function BultenTek(props) {
         </div>
       )}
       {status === "success" && data.length === 0 && <Error />}
+      {status === "error" && <Error />}
     </div>
   );
 }

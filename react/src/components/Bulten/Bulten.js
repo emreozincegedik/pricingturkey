@@ -9,11 +9,19 @@ export class Bulten extends Component {
           {this.props.ordered ? (
             <>
               <BultenTarih />
-              <BultenSon4 lastX={this.props.lastX || 4} />
+              <BultenSon4
+                lastX={this.props.lastX || 4}
+                bilgiCesit={this.props.bilgiCesit}
+                page={this.props.page}
+              />
             </>
           ) : (
             <>
-              <BultenSon4 lastX={this.props.lastX || 4} />
+              <BultenSon4
+                lastX={this.props.lastX || 4}
+                bilgiCesit={this.props.bilgiCesit}
+                page={this.props.page}
+              />
               <BultenTarih />
             </>
           )}

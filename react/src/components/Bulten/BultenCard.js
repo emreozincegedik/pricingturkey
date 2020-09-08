@@ -61,7 +61,11 @@ export class BultenCard extends Component {
             <div className="d-flex justify-content-between align-items-center">
               <NavLink
                 className="btn btn-m btn-outline-vahitcan"
-                to={"/bulten/" + this.props.id}
+                to={`/bilgi/${
+                  this.props.bilgiCesit === undefined
+                    ? "bulten"
+                    : this.props.bilgiCesit
+                }/baslik/${this.props.id}`}
                 onClick={() => {
                   scrollSetup("");
                   animateScroll.scrollToTop(scrollSetting);

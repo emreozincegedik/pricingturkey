@@ -7,7 +7,8 @@ import { Context } from "./Genel";
 export function Footer() {
   const context = useContext(Context);
   let location = useLocation();
-  return location.pathname === "/dashboard" && context.state.uyegirisi ? (
+  return (location.pathname === "/dashboard" && context.state.uyegirisi) ||
+    location.pathname === "/login" ? (
     ""
   ) : (
     <footer className="footer mt-auto container-fluid bg-vahitcan">

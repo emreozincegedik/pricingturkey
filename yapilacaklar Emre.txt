@@ -1,13 +1,12 @@
-dashboard:
-	ekip ekle, çıkar, update
-	bülten ekle, çıkar, update
+dashboard
+	hoşgeldiniz parçası
+	
+bulten card
+	height düzeltme
 
-emergency:
-	tek sayfalık yazı değiştirme
+ekip card
+	height düzeltme
+	
+dashboard required
 
-bülten kolon yapısı
-    "baslikTR": "ikinci başlık",
-    "baslikEN": "second Title",
-    "yaziTR": "ikinci yazı",
-    "yaziEN": "second text",
-	"resim": img.png
+dashboard tuş basınca bilgilendirme

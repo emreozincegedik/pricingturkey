@@ -15,8 +15,11 @@ export class BultenCard extends Component {
   render() {
     const { dil_degisken, scrollSetup } = this.context.state;
     return (
-      <div /* className={"order-5"} */ style={{ width: "350px" }}>
-        <div className="card mb-4 bg-white border-vahitcan" style={{}}>
+      <div
+        className="card mb-4 bg-white border-vahitcan"
+        style={{ width: "350px" }}
+      >
+        <div className="card h-100">
           <img
             className="card-img-top"
             src={this.props.img || "https://via.placeholder.com/350x225"}
@@ -24,6 +27,7 @@ export class BultenCard extends Component {
             alt={
               dil_degisken(this.props.baslikTR, this.props.baslikEN) || "Başlık"
             }
+            style={{ objectFit: "cover", maxHeight: "225px" }}
           />
           {/* <svg
             className="bd-placeholder-img card-img-top"
@@ -38,15 +42,15 @@ export class BultenCard extends Component {
           <title>{this.props.title || "Placeholder"}</title>
           <div width="100%" height="100%" fill="#55595c" />
           <span x="50%" y="50%" fill="#eceeef" dy=".3em">
-            <h1>
+            <h3 className="card-title">
               {dil_degisken(this.props.baslikTR, this.props.baslikEN) ||
                 "Başlık askglna degankşebgnaşk.dbnaş.fnba a eşlkngae"}
-            </h1>
+            </h3>
           </span>
           {/* </svg> */}
-          <div className="card-body">
+          <div className="d-flex flex-column card-body">
             <p
-              className="card-text"
+              className="card-text align-self-start"
               dangerouslySetInnerHTML={{
                 __html:
                   (dil_degisken(this.props.yaziTR, this.props.yaziEN).substring(
@@ -58,7 +62,7 @@ export class BultenCard extends Component {
               longer.`) + "...",
               }}
             ></p>
-            <div className="d-flex justify-content-between align-items-center">
+            <div className="d-flex justify-content-between align-items-end">
               <NavLink
                 className="btn btn-m btn-outline-vahitcan"
                 to={`/bilgi/${

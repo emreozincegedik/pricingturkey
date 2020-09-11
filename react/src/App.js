@@ -1,6 +1,7 @@
 import React from "react";
 //import "bootstrap/dist/css/bootstrap.min.css";
 import "./main.css"; //yeni bootstrap
+import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import {
   Anasayfa,
@@ -14,6 +15,7 @@ import {
   Dashboard,
 } from "./sayfalar";
 import { Navbars, Genel, Footer } from "./components";
+import { BultenTest } from "./components/Bulten";
 import { Helmet } from "react-helmet";
 
 function App() {
@@ -49,7 +51,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Anasayfa} />
           <Route path="/anasayfa" exact component={Anasayfa} />
-          <Route path="/test" exact component={Test} />
+          <Route path="/test" exact component={BultenTest} />
           <Route path="/test/:id" component={Test2} />
           <Route
             path="/bilgi/:bilgiCesit/sayfa/:id"

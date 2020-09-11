@@ -33,6 +33,9 @@ router.post("/bulten/select", (req, res) => {
     .input("lastX", sql.Int, req.body.lastX)
     .input("page", sql.Int, (req.body.page - 1) * 6)
     .input("date", sql.NVarChar, req.body.date)
+    .input("random", sql.Int, req.body.random)
+    .input("lastid", sql.Int, req.body.lastid)
+    .input("ownid", sql.Int, req.body.ownid)
     .query(
       req.body.id
         ? "select * from bulten where id=@input"
@@ -40,6 +43,8 @@ router.post("/bulten/select", (req, res) => {
         ? "SELECT TOP(@lastX) * FROM bulten  ORDER BY id DESC"
         : req.body.page
         ? "SELECT * FROM bulten ORDER BY id DESC OFFSET @page ROWS FETCH NEXT 6 ROWS ONLY"
+        : req.body.random
+        ? "SELECT TOP(@random) * FROM bulten where id != @ownid and id!=@lastid ORDER BY NEWID()"
         : req.body.date
         ? " select * from bulten where eklenmeTarihi between CAST(@date AS DATETIME2) and CAST(@date AS DATETIME2)"
         : "select * from bulten"

@@ -10,3 +10,5 @@ ekip card
 dashboard required
 
 dashboard tuş basınca bilgilendirme
+
+bulten alt template

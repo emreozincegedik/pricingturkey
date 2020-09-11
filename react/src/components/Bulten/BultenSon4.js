@@ -30,7 +30,7 @@ export function BultenSon4(props) {
     ["bulten", props.lastX, props.bilgiCesit, props.page],
     fetchBultenX
   );
-  console.log(data);
+  // console.log(data);
   // console.log(props);
   // const cards = [1, 2, 3, 4];
   const context = useContext(Context);

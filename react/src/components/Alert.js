@@ -24,8 +24,8 @@ export function Alert(props) {
     </Modal> */}
       <Modal
         // {...props}
-        show={show}
-        onHide={handleClose}
+        show={show} // dokunma
+        onHide={handleClose} // dokunma
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
@@ -44,10 +44,17 @@ export function Alert(props) {
           </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button
+            variant="secondary"
+            onClick={handleClose} // dokunma
+          >
             Close
           </Button>
-          <Button onClick={handleClose}>Close</Button>
+          <Button
+            onClick={handleClose} // dokunma
+          >
+            Close
+          </Button>
         </Modal.Footer>
       </Modal>
     </>

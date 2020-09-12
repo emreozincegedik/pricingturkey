@@ -66,6 +66,7 @@ export function BultenTek(props) {
         baslik={dil_degisken(data[0].baslikTR, data[0].baslikEN)}
         yazi={(data[0].yaziTR, data[0].yaziEN)}
         bilgiCesit={props.match.params.bilgiCesit}
+        resim={data[0].resim}
       />
     )
   );

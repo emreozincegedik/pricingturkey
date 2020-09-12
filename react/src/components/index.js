@@ -10,3 +10,5 @@ export { Bulten } from "./Bulten/index";
 export { Footer } from "./Footer";
 export { IstekForm } from "./IstekForm";
 export { DashboardForm } from "./DashboardForm";
+export { DashboardIstek } from "./DashboardIstek";
+export { Alert } from "./Alert";

@@ -1,14 +1,22 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 export function BultenFeatured(props) {
   return (
-    <div
-      class="jumbotron p-4 p-md-5 text-white rounded bg-dark"
-      style={{ marginTop: "90px" }}
-    >
+    <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+      <Helmet>
+        <style>
+          {`.jumbotron{
+    background: url(${
+      props.resim || "https://via.placeholder.com/1640x640"
+    }); object-fit: cover; background-size:cover; height: 640px;
+
+}`}
+        </style>
+      </Helmet>
       <div class="col-md-6 px-0">
-        <h1 class="display-4 font-italic">
+        <h1 class="display-5 font-italic">
           {props.baslik || "Title of a longer featured blog post"}
         </h1>
         <p class="lead my-3">

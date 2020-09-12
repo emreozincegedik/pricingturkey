@@ -27,6 +27,7 @@ export function BultenTest(props) {
               props.dataLast.yaziEN
             ).substring(0, 200)}
             bilgiCesit={props.bilgiCesit}
+            resim={props.dataLast.resim}
           />
           <BultenRandomCards id={props.id} lastid={props.dataLast.id} />
         </>
@@ -39,7 +40,10 @@ export function BultenTest(props) {
               {props.baslik || "Sample blog post"}
             </h2>
             <p class="blog-post-meta">{props.date || "22/12/2020"}</p>
-
+            <img
+              className="img-fluid"
+              src={props.resim || "https://via.placeholder.com/1640x640"}
+            />
             <p>
               {props.yazi ||
                 `This blog post shows a few different types of content that’s

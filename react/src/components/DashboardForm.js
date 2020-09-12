@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { DashboardIstek } from "./index";
 
 export function DashboardForm(props) {
   const tuslar = ["Ekle", "Sil", "Güncelle"];
@@ -88,215 +89,223 @@ export function DashboardForm(props) {
   // const [dashboardBaslik, setdashboardBaslik] = useState("Ekle")
   return (
     <main role="main" className="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-      <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 className="h2">{props.form || "Dashboard"}</h1>
-        <div className="btn-toolbar mb-2 mb-md-0">
-          <div className="btn-group mr-auto">
-            {tuslar.map((item, i) => (
-              <button
-                key={i}
-                type="button"
-                className="btn btn-sm btn-outline-secondary"
-                style={postMethod === item ? { background: "#F0F0F0" } : {}}
-                onClick={() => {
-                  setpostMethod(item);
-                }}
-              >
-                {item}
-              </button>
-            ))}
+      {props.form === "Mesajlar" ? (
+        <DashboardIstek />
+      ) : (
+        <>
+          <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 className="h2">{props.form || "Dashboard"}</h1>
+            <div className="btn-toolbar mb-2 mb-md-0">
+              <div className="btn-group mr-auto">
+                {tuslar.map((item, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    className="btn btn-sm btn-outline-secondary"
+                    style={postMethod === item ? { background: "#F0F0F0" } : {}}
+                    onClick={() => {
+                      setpostMethod(item);
+                    }}
+                  >
+                    {item}
+                  </button>
+                ))}
+              </div>
+              {postMethod !== "Ekle" && (
+                <>
+                  <div className="btn-group dropleft mx-3">
+                    <button
+                      className="btn btn-vahitcan dropdown-toggle"
+                      type="button"
+                      id="dropdownMenuButton"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      {props.form === "Ekip"
+                        ? `Çalışan seçin ${
+                            props.ekipler.length !== 0
+                              ? `(${props.ekipler.length})`
+                              : ""
+                          }`
+                        : baslikSecildi && basliklar.length === 0
+                        ? `Seçili günde ${props.form} yok`
+                        : (basliklar.length === 0 ? "Gün" : props.form) +
+                          ` seçin ${
+                            basliklar.length > 0
+                              ? "(" + basliklar.length + ")"
+                              : ""
+                          }`}
+                    </button>
+                    <div
+                      className="dropdown-menu"
+                      aria-labelledby="dropdownMenuButton"
+                    >
+                      {props.form !== "Ekip" /* true */
+                        ? basliklar.map((item, i) => (
+                            <div
+                              className="dropdown-item"
+                              onClick={() => {
+                                setbaslikTR(item.baslikTR);
+                                setbaslikEN(item.baslikEN);
+                                setyaziTR(item.yaziTR);
+                                setyaziEN(item.yaziEN);
+                                setId(item.id);
+                                setResim(item.resim);
+                              }}
+                              key={item.id}
+                            >
+                              {item.baslikTR.substring(0, 20)}
+                            </div>
+                          ))
+                        : props.ekipler.map((item, i) => (
+                            <div
+                              className="dropdown-item"
+                              onClick={() => {
+                                setbaslikTR(item.isim);
+                                setbaslikEN(item.soyisim);
+                                setyaziTR(item.aciklamaTR);
+                                setyaziEN(item.aciklamaEN);
+                                setId(item.id);
+                                setResim(item.resim);
+                              }}
+                              key={item.id}
+                            >
+                              {item.isim + " " + item.soyisim}
+                            </div>
+                          ))}
+                    </div>
+                  </div>
+                  {props.form !== "Ekip" && (
+                    <input
+                      type="date"
+                      className="btn btn-sm border-secondary dropdown-toggle"
+                      onChange={dateChange}
+                    />
+                  )}
+                </>
+              )}
+            </div>
           </div>
-          {postMethod !== "Ekle" && (
-            <>
-              <div className="btn-group dropleft mx-3">
-                <button
-                  className="btn btn-vahitcan dropdown-toggle"
-                  type="button"
-                  id="dropdownMenuButton"
-                  data-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  {props.form === "Ekip"
-                    ? `Çalışan seçin ${
-                        props.ekipler.length !== 0
-                          ? `(${props.ekipler.length})`
-                          : ""
-                      }`
-                    : baslikSecildi && basliklar.length === 0
-                    ? `Seçili günde ${props.form} yok`
-                    : (basliklar.length === 0 ? "Gün" : props.form) +
-                      ` seçin ${
-                        basliklar.length > 0 ? "(" + basliklar.length + ")" : ""
-                      }`}
-                </button>
-                <div
-                  className="dropdown-menu"
-                  aria-labelledby="dropdownMenuButton"
-                >
-                  {props.form !== "Ekip" /* true */
-                    ? basliklar.map((item, i) => (
-                        <div
-                          className="dropdown-item"
-                          onClick={() => {
-                            setbaslikTR(item.baslikTR);
-                            setbaslikEN(item.baslikEN);
-                            setyaziTR(item.yaziTR);
-                            setyaziEN(item.yaziEN);
-                            setId(item.id);
-                            setResim(item.resim);
-                          }}
-                          key={item.id}
-                        >
-                          {item.baslikTR.substring(0, 20)}
-                        </div>
-                      ))
-                    : props.ekipler.map((item, i) => (
-                        <div
-                          className="dropdown-item"
-                          onClick={() => {
-                            setbaslikTR(item.isim);
-                            setbaslikEN(item.soyisim);
-                            setyaziTR(item.aciklamaTR);
-                            setyaziEN(item.aciklamaEN);
-                            setId(item.id);
-                            setResim(item.resim);
-                          }}
-                          key={item.id}
-                        >
-                          {item.isim + " " + item.soyisim}
-                        </div>
-                      ))}
+
+          <div className="container">
+            <form onSubmit={formGonderildi}>
+              <div className="row">
+                <div className="col">
+                  <div className="form-label-group">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder={
+                        props.form !== "Ekip"
+                          ? props.form + " Türkçe başlık"
+                          : "İsim"
+                      }
+                      id="baslikTR"
+                      value={baslikTR}
+                      onChange={(e) => setbaslikTR(e.target.value)}
+                    />
+                    <label htmlFor="baslikTR">
+                      {props.form !== "Ekip"
+                        ? props.form + " Türkçe başlık"
+                        : "İsim"}
+                    </label>
+                  </div>
+                </div>
+                <div className="col">
+                  <div
+                    className="form-label-group
+                            "
+                  >
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder={
+                        props.form !== "Ekip"
+                          ? props.form + " İngilizce başlık"
+                          : "Soyisim"
+                      }
+                      id="baslikEN"
+                      value={baslikEN}
+                      onChange={(e) => setbaslikEN(e.target.value)}
+                    />
+                    <label htmlFor="baslikEN">
+                      {props.form !== "Ekip"
+                        ? props.form + " İngilizce başlık"
+                        : "Soyisim"}
+                    </label>
+                  </div>
                 </div>
               </div>
-              {props.form !== "Ekip" && (
-                <input
-                  type="date"
-                  className="btn btn-sm border-secondary dropdown-toggle"
-                  onChange={dateChange}
-                />
-              )}
-            </>
-          )}
-        </div>
-      </div>
 
-      <div className="container">
-        <form onSubmit={formGonderildi}>
-          <div className="row">
-            <div className="col">
-              <div className="form-label-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder={
-                    props.form !== "Ekip"
-                      ? props.form + " Türkçe başlık"
-                      : "İsim"
-                  }
-                  id="baslikTR"
-                  value={baslikTR}
-                  onChange={(e) => setbaslikTR(e.target.value)}
-                />
-                <label htmlFor="baslikTR">
-                  {props.form !== "Ekip"
-                    ? props.form + " Türkçe başlık"
-                    : "İsim"}
-                </label>
+              <div className="row">
+                <div className="col">
+                  <div className="form-group py-3">
+                    <textarea
+                      className="form-control"
+                      id="yaziTR"
+                      rows="10"
+                      placeholder={
+                        props.form !== "Ekip"
+                          ? props.form + " Türkçe metni girin"
+                          : "Çalışanın özelliklerini anlatın"
+                      }
+                      value={yaziTR}
+                      onChange={(e) => setyaziTR(e.target.value)}
+                    ></textarea>
+                  </div>
+                </div>
+                <div className="col">
+                  <div className="form-group py-3">
+                    <textarea
+                      className="form-control"
+                      id="yaziEN"
+                      rows="10"
+                      placeholder={
+                        props.form !== "Ekip"
+                          ? props.form + " İngilizce metni girin"
+                          : "Çalışanın özelliklerini ingilizce anlatın"
+                      }
+                      value={yaziEN}
+                      onChange={(e) => setyaziEN(e.target.value)}
+                    ></textarea>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div className="col">
-              <div
-                className="form-label-group
-                            "
-              >
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder={
-                    props.form !== "Ekip"
-                      ? props.form + " İngilizce başlık"
-                      : "Soyisim"
-                  }
-                  id="baslikEN"
-                  value={baslikEN}
-                  onChange={(e) => setbaslikEN(e.target.value)}
-                />
-                <label htmlFor="baslikEN">
-                  {props.form !== "Ekip"
-                    ? props.form + " İngilizce başlık"
-                    : "Soyisim"}
-                </label>
-              </div>
-            </div>
-          </div>
 
-          <div className="row">
-            <div className="col">
-              <div className="form-group py-3">
-                <textarea
-                  className="form-control"
-                  id="yaziTR"
-                  rows="10"
-                  placeholder={
-                    props.form !== "Ekip"
-                      ? props.form + " Türkçe metni girin"
-                      : "Çalışanın özelliklerini anlatın"
-                  }
-                  value={yaziTR}
-                  onChange={(e) => setyaziTR(e.target.value)}
-                ></textarea>
+              <div className="input-group">
+                <div className="custom-file">
+                  <input
+                    type="file"
+                    className="custom-file-input"
+                    id="resim"
+                    aria-describedby="inputresim"
+                    accept=".jpg, .jpeg, .png"
+                    onChange={(e) => resimChange(e)}
+                  />
+                  <label className="custom-file-label" htmlFor="resim">
+                    {resimname === ""
+                      ? "Resim dosyasını yükleyin. (.jpg, .jpeg, .png)"
+                      : resimname}
+                  </label>
+                </div>
               </div>
-            </div>
-            <div className="col">
-              <div className="form-group py-3">
-                <textarea
-                  className="form-control"
-                  id="yaziEN"
-                  rows="10"
-                  placeholder={
-                    props.form !== "Ekip"
-                      ? props.form + " İngilizce metni girin"
-                      : "Çalışanın özelliklerini ingilizce anlatın"
-                  }
-                  value={yaziEN}
-                  onChange={(e) => setyaziEN(e.target.value)}
-                ></textarea>
-              </div>
-            </div>
-          </div>
-
-          <div className="input-group">
-            <div className="custom-file">
-              <input
-                type="file"
-                className="custom-file-input"
-                id="resim"
-                aria-describedby="inputresim"
-                accept=".jpg, .jpeg, .png"
-                onChange={(e) => resimChange(e)}
+              <img
+                className="card-img-top"
+                src={resim}
+                aria-label={props.ariaLabel || "Bülten resmi"}
+                style={{ width: "20vh" }}
               />
-              <label className="custom-file-label" htmlFor="resim">
-                {resimname === ""
-                  ? "Resim dosyasını yükleyin. (.jpg, .jpeg, .png)"
-                  : resimname}
-              </label>
-            </div>
-          </div>
-          <img
-            className="card-img-top"
-            src={resim}
-            aria-label={props.ariaLabel || "Bülten resmi"}
-            style={{ width: "20vh" }}
-          />
 
-          <div className="row">
-            <button className="btn btn-outline-emre btn-block mt-3">
-              {props.form + " " + postMethod}
-            </button>
+              <div className="row">
+                <button className="btn btn-outline-emre btn-block mt-3">
+                  {props.form + " " + postMethod}
+                </button>
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
+        </>
+      )}
     </main>
   );
 }

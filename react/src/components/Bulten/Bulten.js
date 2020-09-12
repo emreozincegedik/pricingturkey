@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { BultenSon4, BultenTarih } from "./index";
 import { Context } from "../index";
+import { NavLink } from "react-router-dom";
 
 export class Bulten extends Component {
   static contextType = Context;
   render() {
     const { dil_degisken } = this.context.state;
+    console.log(this.props);
     return (
       <>
         <div className="container py-5" style={{ marginTop: "90px" }}>
@@ -31,22 +33,36 @@ export class Bulten extends Component {
             )}
           </div>
         </div>
-        <div className="container">
-          <div aria-label="Page navigation example">
-            <ul class="nav-justified pagination">
-              <li class="page-item">
-                <a class="page-link" href="#">
-                  {dil_degisken("Önceki sayfa", "Previous page")}
-                </a>
-              </li>
-              <li class="page-item">
-                <a class="page-link" href="#">
-                  {dil_degisken("Sonraki sayfa", "Next page")}
-                </a>
-              </li>
-            </ul>
+        {this.props.bilgiCesit !== undefined && this.props.bilgiCesit !== null && (
+          <div className="container">
+            <div aria-label="Page navigation example">
+              <ul class="nav-justified pagination">
+                {this.props.page > 1 && (
+                  <li class="page-item">
+                    <NavLink
+                      class="page-link disabled"
+                      to={`/bilgi/${this.props.bilgiCesit}/sayfa/${
+                        this.props.page - 1
+                      }`}
+                    >
+                      {dil_degisken("Önceki sayfa", "Previous page")}
+                    </NavLink>
+                  </li>
+                )}
+                <li class="page-item">
+                  <NavLink
+                    class="page-link"
+                    to={`/bilgi/${this.props.bilgiCesit}/sayfa/${
+                      parseInt(this.props.page) + 1
+                    }`}
+                  >
+                    {dil_degisken("Sonraki sayfa", "Next page")}
+                  </NavLink>
+                </li>
+              </ul>
+            </div>
           </div>
-        </div>
+        )}
       </>
     );
   }

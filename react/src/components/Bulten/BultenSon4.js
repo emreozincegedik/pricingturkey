@@ -31,7 +31,7 @@ export function BultenSon4(props) {
     fetchBultenX
   );
   // console.log(data);
-  // console.log(props);
+  // console.log(props.bilgiCesit);
   // const cards = [1, 2, 3, 4];
   const context = useContext(Context);
   const { dateConverter } = context.state;

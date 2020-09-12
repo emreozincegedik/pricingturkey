@@ -7,8 +7,8 @@ import { Error } from "./Error";
 export function Dashboard() {
   const context = useContext(Context);
   const { uyegirisi, girisHandler } = context.state;
-  const dinamikForm = ["Bülten", "Haber", "Duyuru", "Ekip"];
-  const [seciliForm, setseciliForm] = useState("Bülten");
+  const dinamikForm = ["Bülten", "Haber", "Duyuru", "Ekip", "Mesajlar"];
+  const [seciliForm, setseciliForm] = useState("Mesajlar");
   const [ekipler, setEkipler] = useState([]);
   const [signedout, setSignedout] = useState(false);
   const ekipFetch = async (key, form) => {

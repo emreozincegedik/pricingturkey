@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { Context } from "./Genel";
-import { animateScroll, scroller } from "react-scroll";
+import { scroller } from "react-scroll";
 import { Helmet } from "react-helmet";
 
 import Navbutton from "../resimler/navbar.svg";
@@ -92,7 +92,7 @@ export function Navbars() {
                       className="dropdown-item"
                       to="/bilgi/haber/sayfa/1"
                     >
-                      {dil_degisken("Hber", "News")}
+                      {dil_degisken("Haberler", "News")}
                     </NavLink>
                   </div>
                 </li>

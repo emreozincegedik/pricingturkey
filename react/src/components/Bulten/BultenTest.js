@@ -1,11 +1,9 @@
-import React, { useContext, useState } from "react";
-import { BultenTarih, BultenRandomCards, BultenFeatured } from "./index";
+import React, { useContext } from "react";
+import { BultenTarih, BultenFeatured } from "./index";
 import { Context } from "../index";
-import { useQuery } from "react-query";
 
 export function BultenTest(props) {
   const { dil_degisken } = useContext(Context).state;
-  const [items, setItems] = useState([]);
   // const { data, status } = useQuery(
   //   ["bulten", props.bilgiCesit],
   //   fetchBultenLast
@@ -29,7 +27,6 @@ export function BultenTest(props) {
             bilgiCesit={props.bilgiCesit}
             resim={props.dataLast.resim}
           />
-          <BultenRandomCards id={props.id} lastid={props.dataLast.id} />
         </>
       )}
 
@@ -43,6 +40,7 @@ export function BultenTest(props) {
             <img
               className="img-fluid"
               src={props.resim || "https://via.placeholder.com/1640x640"}
+              alt={dil_degisken("öne çıkan resim", "featured img")}
             />
             <p>
               {props.yazi ||

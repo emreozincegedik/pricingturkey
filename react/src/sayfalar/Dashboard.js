@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { Helmet } from "react-helmet";
-import { Redirect } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 import "./Dashboard.css";
 import { DashboardForm, Context } from "../components";
 import { Error } from "./Error";
@@ -39,9 +39,9 @@ export function Dashboard() {
         <html lang="tr" amp />
       </Helmet>
       <div className="navbar navbar-dark sticky-top bg-dashboardkoyumavi flex-md-nowrap p-0">
-        <a className="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">
+        <NavLink className="navbar-brand col-md-3 col-lg-2 mr-0 px-3" to="/">
           Logo
-        </a>
+        </NavLink>
         <button
           className="navbar-toggler position-absolute d-md-none collapsed"
           type="button"

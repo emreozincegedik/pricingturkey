@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
-import { Error } from "./index";
+import React, { useContext } from "react";
 import { useQuery } from "react-query";
 import { BultenTest } from "../components/Bulten";
 import { Context } from "../components";
@@ -44,8 +43,6 @@ const fetchBultenLast = async (key, bilgiCesit) => {
 
 export function BultenTek(props) {
   const { dil_degisken } = useContext(Context).state;
-  const [test, setTest] = useState([]);
-  const [error, setError] = useState(false);
   const { data, status } = useQuery(
     ["bultenOwn", props.match.params.bilgiCesit, props.match.params.id],
     fetchBulten
@@ -56,7 +53,6 @@ export function BultenTek(props) {
   );
   // console.log(data);
   // console.log(dataLast);
-  if (error) return <Error />;
   return (
     status === "success" &&
     statusLast === "success" && (

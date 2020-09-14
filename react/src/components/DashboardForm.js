@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { DashboardIstek } from "./index";
+import { DashboardIstek, Alert } from "./index";
 
 export function DashboardForm(props) {
   const tuslar = ["Ekle", "Sil", "Güncelle"];
@@ -20,6 +20,13 @@ export function DashboardForm(props) {
   const [id, setId] = useState(0);
   const [resim, setResim] = useState("");
   const [resimname, setResimname] = useState("");
+  const [alertMesaj, setAlertMesaj] = useState("");
+  const [onlyMesaj, setOnlyMesaj] = useState(false);
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => {
+    setShow(false);
+  };
 
   // console.log(props);
   const resimChange = async (e) => {
@@ -59,32 +66,51 @@ export function DashboardForm(props) {
     }
     setBaslikSecildi(true);
   };
-  const handleOk = () => {
+  const formBasildi = (e) => {
+    e.preventDefault();
+    setAlertMesaj(`${props.form} ${postMethod}mek istediğinize emin misiniz?`);
+    setOnlyMesaj(false);
+    setShow(true);
     ////alert hallet ve bitir
   };
-  const formGonderildi = async (e) => {
-    e.preventDefault();
+  const handleOk = () => {
+    formGonderildi();
+    setShow(false);
+    setbaslikTR("");
+    setbaslikEN("");
+    setyaziTR("");
+    setyaziEN("");
+    setResim("");
+  };
+  const formGonderildi = async () => {
     let path =
       "/" +
       props.form.toLocaleLowerCase("en-US").replace("ü", "u") +
       "/" +
       methods[postMethod];
     // console.log(path);
-    await fetch(path, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify({
-        id: id,
-        baslikTR: baslikTR,
-        baslikEN: baslikEN,
-        yaziTR: yaziTR,
-        yaziEN: yaziEN,
-        resim: resim,
-      }),
-      // body: JSON.stringify(user),
-    });
+    try {
+      await fetch(path, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        },
+        body: JSON.stringify({
+          id: id,
+          baslikTR: baslikTR,
+          baslikEN: baslikEN,
+          yaziTR: yaziTR,
+          yaziEN: yaziEN,
+          resim: resim,
+        }),
+        // body: JSON.stringify(user),
+      });
+      setAlertMesaj(`${postMethod}me işlemi başarılı`);
+    } catch (error) {
+      setAlertMesaj(error);
+    }
+    setShow(true);
+    setOnlyMesaj(true);
     // let body = await response.json();
     // console.log(body);
     // setBasliklar(body);
@@ -192,7 +218,7 @@ export function DashboardForm(props) {
           </div>
 
           <div className="container">
-            <form onSubmit={formGonderildi}>
+            <form onSubmit={formBasildi}>
               <div className="row">
                 <div className="col">
                   <div className="form-label-group">
@@ -298,6 +324,7 @@ export function DashboardForm(props) {
                 src={resim}
                 aria-label={props.ariaLabel || "Bülten resmi"}
                 style={{ width: "20vh" }}
+                alt={resimname}
               />
 
               <div className="row">
@@ -308,6 +335,16 @@ export function DashboardForm(props) {
             </form>
           </div>
         </>
+      )}
+      {onlyMesaj ? (
+        <Alert show={show} handleClose={handleClose} title={alertMesaj} />
+      ) : (
+        <Alert
+          show={show}
+          handleClose={handleClose}
+          handleOk={handleOk}
+          title={alertMesaj}
+        />
       )}
     </main>
   );

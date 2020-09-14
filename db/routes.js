@@ -18,7 +18,7 @@ const columnChecker = (body, columns) => {
 const bultenColumns = ["baslikTR", "baslikEN", "yaziTR", "yaziEN", "resim"];
 router.post("/bulten/select", (req, res) => {
   console.log({ incomingBody: req.body });
-  console.log("??: " + req.body.page !== undefined);
+  // console.log("??: " + req.body.page !== undefined);
   if (
     ((req.body.page - 1) * 6 < 0 || isNaN(parseInt(req.body.page))) &&
     req.body.page !== undefined
@@ -36,17 +36,23 @@ router.post("/bulten/select", (req, res) => {
     .input("random", sql.Int, req.body.random)
     .input("lastid", sql.Int, req.body.lastid)
     .input("ownid", sql.Int, req.body.ownid)
+    .input("year", sql.Int, req.body.year)
+    .input("pages", sql.Int, (req.body.pages - 1) * 6)
     .query(
       req.body.id
         ? "select * from bulten where id=@input"
         : req.body.lastX
         ? "SELECT TOP(@lastX) * FROM bulten  ORDER BY id DESC"
+        : req.body.year
+        ? "select * from bulten where year(eklenmeTarihi)=@year ORDER BY id DESC OFFSET @pages ROWS FETCH NEXT 6 ROWS ONLY"
         : req.body.page
         ? "SELECT * FROM bulten ORDER BY id DESC OFFSET @page ROWS FETCH NEXT 6 ROWS ONLY"
         : req.body.random
         ? "SELECT TOP(@random) * FROM bulten where id != @ownid and id!=@lastid ORDER BY NEWID()"
         : req.body.date
         ? " select * from bulten where eklenmeTarihi between CAST(@date AS DATETIME2) and CAST(@date AS DATETIME2)"
+        : req.body.years
+        ? "select distinct year(eklenmeTarihi) as eklenmeTarihi from bulten"
         : "select * from bulten"
     )
     .then((dbres) => {
@@ -212,7 +218,7 @@ router.post("/login/update", (req, res) => {
       "update login set username=@username, pwd=@pwd where username=@username"
     )
     .then((dbres) => {
-      console.log(dbres.recordset);
+      // console.log(dbres.recordset);
       res.status(200);
       res.json(dbres);
     })
@@ -266,7 +272,7 @@ router.post("/ekip/insert", (req, res) => {
       "insert into ekip (isim,soyisim,aciklamaTR,aciklamaEN,resim) values (@isim,@soyisim,@aciklamaTR,@aciklamaEN,@resim)"
     )
     .then((dbres) => {
-      console.log(dbres);
+      // console.log(dbres);
       res.status(200);
       res.json(dbres);
     })
@@ -311,7 +317,7 @@ router.post("/ekip/update", (req, res) => {
       `
     )
     .then((dbres) => {
-      console.log(dbres);
+      // console.log(dbres);
       res.status(200);
       res.json(dbres);
     })
@@ -333,7 +339,7 @@ router.post("/ekip/delete", (req, res) => {
     .input("id", sql.Int, req.body.id)
     .query("delete from ekip where id=@id")
     .then((dbres) => {
-      console.log(dbres);
+      // console.log(dbres);
       res.status(200);
       res.json(dbres);
     })
@@ -363,6 +369,8 @@ router.post("/haber/select", (req, res) => {
     .input("lastX", sql.Int, req.body.lastX)
     .input("page", sql.Int, (req.body.page - 1) * 6)
     .input("date", sql.NVarChar, req.body.date)
+    .input("year", sql.Int, req.body.year)
+    .input("pages", sql.Int, (req.body.pages - 1) * 6)
     .query(
       req.body.id
         ? "select * from haber where id=@input"
@@ -372,10 +380,14 @@ router.post("/haber/select", (req, res) => {
         ? "SELECT * FROM haber ORDER BY id DESC OFFSET @page ROWS FETCH NEXT 6 ROWS ONLY"
         : req.body.date
         ? " select * from haber where eklenmeTarihi between CAST(@date AS DATETIME2) and CAST(@date AS DATETIME2)"
+        : req.body.years
+        ? "select distinct year(eklenmeTarihi) as eklenmeTarihi from haber"
+        : req.body.year
+        ? "select * from haber where year(eklenmeTarihi)=@year ORDER BY id DESC OFFSET @pages ROWS FETCH NEXT 6 ROWS ONLY"
         : "select * from haber"
     )
     .then((dbres) => {
-      console.log(dbres);
+      // console.log(dbres);
       res.status(200);
       res.json(dbres.recordset);
     })
@@ -396,7 +408,7 @@ router.post("/haber/delete", (req, res) => {
     .input("id", sql.Int, req.body.id)
     .query("delete from haber where id=@id")
     .then((dbres) => {
-      console.log(dbres);
+      // console.log(dbres);
       res.status(200);
       res.json(dbres);
     })
@@ -427,7 +439,7 @@ router.post("/haber/insert", (req, res) => {
       "insert into haber (baslikTR,baslikEN,yaziTR,yaziEN,resim) values (@baslikTR,@baslikEN,@yaziTR,@yaziEN,@resim)"
     )
     .then((dbres) => {
-      console.log(dbres);
+      // console.log(dbres);
       res.status(200);
       res.json(dbres);
     })
@@ -472,7 +484,7 @@ router.post("/haber/update", (req, res) => {
       `
     )
     .then((dbres) => {
-      console.log(dbres);
+      // console.log(dbres);
       res.status(200);
       res.json(dbres);
     })
@@ -502,6 +514,8 @@ router.post("/duyuru/select", (req, res) => {
     .input("lastX", sql.Int, req.body.lastX)
     .input("page", sql.Int, (req.body.page - 1) * 6)
     .input("date", sql.NVarChar, req.body.date)
+    .input("year", sql.Int, req.body.year)
+    .input("pages", sql.Int, (req.body.pages - 1) * 6)
     .query(
       req.body.id
         ? "select * from duyuru where id=@input"
@@ -511,6 +525,10 @@ router.post("/duyuru/select", (req, res) => {
         ? "SELECT * FROM duyuru ORDER BY id DESC OFFSET @page ROWS FETCH NEXT 6 ROWS ONLY"
         : req.body.date
         ? " select * from duyuru where eklenmeTarihi between CAST(@date AS DATETIME2) and CAST(@date AS DATETIME2)"
+        : req.body.years
+        ? "select distinct year(eklenmeTarihi) as eklenmeTarihi from duyuru"
+        : req.body.year
+        ? "select * from duyuru where year(eklenmeTarihi)=@year ORDER BY id DESC OFFSET @pages ROWS FETCH NEXT 6 ROWS ONLY"
         : "select * from duyuru"
     )
     .then((dbres) => {
@@ -663,7 +681,7 @@ router.post("/mesaj/delete", (req, res) => {
     .input("id", sql.Int, req.body.id)
     .query("delete from mesaj where id=@id")
     .then((dbres) => {
-      console.log(dbres);
+      // console.log(dbres);
       res.status(200);
       res.json(dbres);
     })
@@ -695,7 +713,7 @@ router.post("/mesaj/insert", (req, res) => {
       values (@${mesajColumns[0]},@${mesajColumns[1]},@${mesajColumns[2]},@${mesajColumns[3]},@${mesajColumns[4]})`
     )
     .then((dbres) => {
-      console.log(dbres);
+      // console.log(dbres);
       res.status(200);
       res.json(dbres);
     })

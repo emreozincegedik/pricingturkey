@@ -42,7 +42,7 @@ export function IstekForm() {
       },
       body: sendBody,
     });
-    const body = await response.json();
+    await response.json();
     setAd("");
     setSoyad("");
     setEmail("");

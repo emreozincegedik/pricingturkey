@@ -10,6 +10,7 @@ export function BultenMain(props) {
         ordered={true}
         bilgiCesit={props.match.params.bilgiCesit}
         page={props.match.params.id}
+        yil={props.match.params.yil}
       />
     </div>
   );

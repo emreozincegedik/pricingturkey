@@ -4,9 +4,12 @@ import { useQuery } from "react-query";
 import { Context } from "../index";
 import { Error } from "../../sayfalar";
 
-const fetchBultenX = async (key, lastX, bilgiCesit, page) => {
+const fetchBultenX = async (key, lastX, bilgiCesit, page, year) => {
+  // console.log(year);
   var postBody = page
-    ? JSON.stringify({ page: page })
+    ? year !== undefined && year !== null
+      ? JSON.stringify({ year: year, pages: page })
+      : JSON.stringify({ page: page })
     : JSON.stringify({ lastX: lastX });
   var path =
     bilgiCesit === undefined || bilgiCesit === null
@@ -27,11 +30,11 @@ const fetchBultenX = async (key, lastX, bilgiCesit, page) => {
 
 export function BultenSon4(props) {
   const { data, status } = useQuery(
-    ["bulten", props.lastX, props.bilgiCesit, props.page],
+    ["bulten", props.lastX, props.bilgiCesit, props.page, props.yil],
     fetchBultenX
   );
   // console.log(data);
-  // console.log(props.bilgiCesit);
+  // console.log(props);
   // const cards = [1, 2, 3, 4];
   const context = useContext(Context);
   const { dateConverter } = context.state;

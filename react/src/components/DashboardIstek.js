@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Alert } from "./index";
-import { useQuery } from "react-query";
 
 export function DashboardIstek() {
   // const { data, status } = useQuery(["mesaj"], fetchMesaj);
@@ -8,7 +7,6 @@ export function DashboardIstek() {
   const [idDelete, setIdDelete] = useState(0);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const [seciliMesaj, setSeciliMesaj] = useState(0);
   const [mesajlar, setMesajlar] = useState([]);
   const beginDelete = () => {
@@ -25,7 +23,7 @@ export function DashboardIstek() {
       },
       body: JSON.stringify({ id: id }),
     });
-    var body = await response.json();
+    await response.json();
     const newMesajlar = mesajlar.filter((item) => item.id !== id);
     // console.log(newMesajlar);
     setMesajlar(newMesajlar);
@@ -42,19 +40,14 @@ export function DashboardIstek() {
     const body = await response.json();
     setMesajlar(body.reverse());
   };
-  const updateMesajlar = (id) => {
-    const newMesajlar = mesajlar.filter((item) => item.id !== id);
-    console.log(newMesajlar);
-    setMesajlar(newMesajlar);
-  };
   // console.log(data);
   return (
     <>
-      <div role="main" class="col-md-9 mk-sm-auto col-lg-10 px-md-4">
-        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">Mesajlar</h1>
+      <div role="main" className="col-md-9 mk-sm-auto col-lg-10 px-md-4">
+        <div className="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          <h1 className="h2">Mesajlar</h1>
         </div>
-        <table class="table table-responsive table-borderless">
+        <table className="table table-responsive table-borderless">
           <thead>
             <tr>
               <th>#</th>
@@ -78,7 +71,7 @@ export function DashboardIstek() {
                   <td>{item.mesaj}</td>
                   <td>
                     <button
-                      class="btn btn-danger"
+                      className="btn btn-danger"
                       onClick={() => {
                         setSeciliMesaj(i + 1);
                         setIdDelete(item.id);

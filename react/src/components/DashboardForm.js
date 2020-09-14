@@ -59,6 +59,9 @@ export function DashboardForm(props) {
     }
     setBaslikSecildi(true);
   };
+  const handleOk = () => {
+    ////alert hallet ve bitir
+  };
   const formGonderildi = async (e) => {
     e.preventDefault();
     let path =

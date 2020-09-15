@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
 import { useQuery } from "react-query";
-import { Context } from "../components/Genel";
-import { Error } from "./index";
-// import {Redirect} from 'react-router-dom'
+import { BultenTest } from "../components/Bulten";
+import { Context } from "../components";
 
 const fetchBulten = async (key, cesit, id) => {
   // console.log(id);
-  const response = await fetch(`/${cesit}/select`, {
+  var response = await fetch(`/${cesit}/select`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
@@ -15,34 +14,57 @@ const fetchBulten = async (key, cesit, id) => {
     // body: JSON.stringify(user),
   });
   return response.json();
+  // return response.json();
 };
-//props.match.params.id
+
+const fetchBultenLast = async (key, bilgiCesit) => {
+  var postBody = JSON.stringify({ lastX: 1 });
+  var path =
+    bilgiCesit === undefined || bilgiCesit === null
+      ? "/bulten/select"
+      : `/${bilgiCesit}/select`;
+  // console.log(path);
+  // console.log(path);
+  // console.log(path);
+  // console.log(bilgiCesit);
+  const response = await fetch(path, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json;charset=utf-8",
+    },
+    body: postBody,
+    // body: JSON.stringify(user),
+  });
+  // var body = await response.json();
+  // console.log(body);
+  return response.json();
+  // return response.json();
+};
+
 export function BultenTek(props) {
-  console.log("params: ", props.match.params);
+  const { dil_degisken, dateConverter } = useContext(Context).state;
   const { data, status } = useQuery(
-    ["ekip", props.match.params.bilgiCesit, props.match.params.id],
+    ["bultenOwn", props.match.params.bilgiCesit, props.match.params.id],
     fetchBulten
   );
-  const { dil_degisken, dateConverter } = useContext(Context).state;
-  console.log(props);
-
+  const { data: dataLast, status: statusLast } = useQuery(
+    ["bultenLast", props.match.params.bilgiCesit],
+    fetchBultenLast
+  );
+  // console.log(data);
+  // console.log(dataLast);
   return (
-    <div>
-      {status === "success" && data.length > 0 && (
-        <div class="col-md-8 blog-main">
-          <h1 class="pb-4 mb-4 lead border-bottom">
-            {dil_degisken(data[0].baslikTR, data[0].baslikEN)}
-          </h1>
-          <p>{dateConverter(data[0].eklenmeTarihi)}</p>
-          <div
-            dangerouslySetInnerHTML={{
-              __html: dil_degisken(data[0].yaziTR, data[0].yaziEN),
-            }}
-          ></div>
-        </div>
-      )}
-      {status === "success" && data.length === 0 && <Error />}
-      {status === "error" && <Error />}
-    </div>
+    status === "success" &&
+    statusLast === "success" && (
+      <BultenTest
+        dataLast={dataLast[0]}
+        featuredEquals={dataLast[0].id === data[0].id}
+        baslik={dil_degisken(data[0].baslikTR, data[0].baslikEN)}
+        yazi={(data[0].yaziTR, data[0].yaziEN)}
+        bilgiCesit={props.match.params.bilgiCesit}
+        resim={data[0].resim}
+        date={dateConverter(data[0].eklenmeTarihi)}
+      />
+    )
   );
 }

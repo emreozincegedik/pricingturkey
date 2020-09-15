@@ -1,7 +1,13 @@
 import React from "react";
 //import "bootstrap/dist/css/bootstrap.min.css";
 import "./main.css"; //yeni bootstrap
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from "react-router-dom";
 import {
   Anasayfa,
   Test,
@@ -12,8 +18,10 @@ import {
   BultenMain,
   BultenTek,
   Dashboard,
+  BultenYil,
 } from "./sayfalar";
 import { Navbars, Genel, Footer } from "./components";
+import { BultenTest } from "./components/Bulten";
 import { Helmet } from "react-helmet";
 
 function App() {
@@ -49,14 +57,34 @@ function App() {
         <Switch>
           <Route path="/" exact component={Anasayfa} />
           <Route path="/anasayfa" exact component={Anasayfa} />
-          <Route path="/test" exact component={Test} />
+          <Route path="/test" exact component={BultenTest} />
           <Route path="/test/:id" component={Test2} />
           <Route
             path="/bilgi/:bilgiCesit/sayfa/:id"
             exact
             component={BultenMain}
           />
+          <Route
+            path="/bulten"
+            exact
+            component={() => <Redirect to="/bilgi/bulten/sayfa/1" />}
+          />
+          <Route
+            path="/duyuru"
+            exact
+            component={() => <Redirect to="/bilgi/duyuru/sayfa/1" />}
+          />
+          <Route
+            path="/haber"
+            exact
+            component={() => <Redirect to="/bilgi/haber/sayfa/1" />}
+          />
           <Route path="/bilgi/:bilgiCesit/baslik/:id" component={BultenTek} />
+          <Route
+            path="/bilgi/:bilgiCesit/:yil/sayfa/:id"
+            exact
+            component={BultenMain}
+          />
           <Route path="/login" exact component={Login} />
           <Route path="/hizmetlerimiz" exact component={Hizmetlerimiz} />
           <Route path="/dashboard" exact component={Dashboard} />

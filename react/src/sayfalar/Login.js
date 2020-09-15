@@ -9,7 +9,6 @@ import crypto from "crypto";
 export function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [remember, setRemember] = useState(false);
 
   const [emailMesaj, setEmailMesaj] = useState(true);
   const [passwordMesaj, setPasswordMesaj] = useState(true);
@@ -49,8 +48,7 @@ export function Login() {
     });
     // var response = await response.status;
     if (response.status === 200) {
-      const in15min = new Date(new Date().getTime() + 15 * 60 * 1000);
-      girisHandler(true, setRemember ? 180 : in15min);
+      girisHandler(true);
       setLoginCheck(true);
       // let json = await response.json();
       // console.log(json, response.status);
@@ -141,17 +139,6 @@ export function Login() {
           {genelMesaj}
           {loginCheck && <Redirect to="/dashboard" />}
         </p>
-        <div className="checkbox mb-3 text-center">
-          <label>
-            <input
-              type="checkbox"
-              value="remember-me"
-              checked={remember}
-              onChange={(e) => setRemember(e.target.checked)}
-            />{" "}
-            {dil_degisken("Beni hatırla", "Remember me")}
-          </label>
-        </div>
         <button className="btn btn-outline-emre btn-lg btn-block" type="submit">
           {dil_degisken("Giriş yap", "Sign in")}
         </button>

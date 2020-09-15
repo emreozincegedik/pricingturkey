@@ -8,6 +8,7 @@ export class Genel extends Component {
     diller: ["tr", "en"],
     secili_dil: Cookie.get("dil") != null ? Cookie.get("dil") : "tr",
     uyegirisi: Cookie.get("giris") != null ? Cookie.get("giris") : false,
+    bultenCount: 6,
     girisHandler: (bool, expires) => {
       // Cookie.set("giris", bool);
       this.setState({ uyegirisi: bool });
@@ -41,6 +42,9 @@ export class Genel extends Component {
       var year = dateObj.getUTCFullYear();
       var newdate = day + "/" + month + "/" + year;
       return newdate;
+    },
+    bultenPageCount: (count) => {
+      this.setState({ bultenCount: count });
     },
   };
   render() {

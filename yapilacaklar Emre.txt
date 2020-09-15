@@ -1,8 +1,6 @@
 dashboard
 	hoşgeldiniz parçası
-	
-bulten card
-	height düzeltme
+
 
 ekip card
 	height düzeltme

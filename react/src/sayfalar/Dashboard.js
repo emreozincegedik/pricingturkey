@@ -1,14 +1,21 @@
 import React, { useState, useContext } from "react";
 import { Helmet } from "react-helmet";
-import { Redirect } from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 import "./Dashboard.css";
 import { DashboardForm, Context } from "../components";
 import { Error } from "./Error";
 export function Dashboard() {
   const context = useContext(Context);
   const { uyegirisi, girisHandler } = context.state;
-  const dinamikForm = ["Bülten", "Haber", "Duyuru", "Ekip"];
-  const [seciliForm, setseciliForm] = useState("Bülten");
+  const dinamikForm = [
+    "Mesajlar",
+    "Bülten",
+    "Haber",
+    "Duyuru",
+    "Arastirma",
+    "Ekip",
+  ];
+  const [seciliForm, setseciliForm] = useState("Mesajlar");
   const [ekipler, setEkipler] = useState([]);
   const [signedout, setSignedout] = useState(false);
   const ekipFetch = async (key, form) => {
@@ -39,9 +46,9 @@ export function Dashboard() {
         <html lang="tr" amp />
       </Helmet>
       <div className="navbar navbar-dark sticky-top bg-dashboardkoyumavi flex-md-nowrap p-0">
-        <a className="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">
+        <NavLink className="navbar-brand col-md-3 col-lg-2 mr-0 px-3" to="/">
           Logo
-        </a>
+        </NavLink>
         <button
           className="navbar-toggler position-absolute d-md-none collapsed"
           type="button"

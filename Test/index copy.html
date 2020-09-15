@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Vahitcan Tutarın CSE216 dersi için ödevidir.">
+  <meta name="keywords" content="HTML, CSS, JavaScript">
+  <meta name="author" content="Vahitcan Tutar">
+  <!-- Bootstrap CSS -->
+  <!-- <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Anasayfa</title>
+  <!--Css için linkleme-->
+  <link href="main.css" rel="stylesheet">
+  <style>
+    .custom-section {
+      width: inherit;
+      padding: 40px 0;
+    }
+
+    @media screen and (max-width: 991.98px) {
+      .custom-section {
+        flex-direction: column-reverse;
+      }
+    }
+
+    .custom-section .col-lg-4 {
+      margin-top: 100px;
+    }
+
+    .custom-section .col-lg-4 h2 {
+      font-weight: 700;
+      font-size: 63px;
+      color: #000;
+      margin-bottom: 0;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .custom-section .col-lg-4 h3 {
+      font-weight: 300;
+      font-size: 64px;
+      color: #000;
+      line-height: 1;
+    }
+
+    .custom-section .col-lg-4 p {
+      color: #000;
+      font-size: 14px;
+      margin-top: 30px;
+    }
+
+    .custom-section .col-lg-8 img {
+      width: 100%;
+      position: absolute;
+      top: -14rem;
+      right: -11%;
+    }
+
+    @media screen and (max-width: 991.98px) {
+      .custom-section .col-lg-8 img {
+        width: 100%;
+        position: relative;
+        top: 0;
+        right: 0;
+      }
+    }
+
+    .custom-section .col-lg-8 .animate-img img {
+      width: 118px;
+      position: absolute;
+      top: -13.5rem;
+      right: 2.9rem;
+    }
+
+
+    body {
+      background-color: #ffffff;
+      font-family: 'Sora';
+    }
+
+    .davud {
+      margin-top: 80px;
+    }
+
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+
+    .flex-equal>* {
+      -ms-flex: 1;
+      flex: 1;
+    }
+
+    @media (min-width: 768px) {
+      .flex-md-equal>* {
+        -ms-flex: 1;
+        flex: 1;
+      }
+    }
+
+    .overflow-hidden {
+      overflow: hidden;
+    }
+
+    .sutlu {
+      background-color: #D9BBA0;
+    }
+
+    .kahve {
+      background-color: #BF8C60;
+    }
+
+    .cikolata {
+      background-color: #A68877;
+    }
+
+    .gri {
+      background-color: #737272;
+    }
+
+    .form-label-group {
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.form-label-group > input,
+.form-label-group > label {
+  height: 3.125rem;
+  padding: .75rem;
+}
+
+.form-label-group > label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  margin-bottom: 0; 
+  line-height: 1.5;
+  color: #495057;
+  pointer-events: none;
+  cursor: text;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  transition: all .1s ease-in-out;
+}
+
+.form-label-group input::-webkit-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input:-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-ms-input-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::-moz-placeholder {
+  color: transparent;
+}
+
+.form-label-group input::placeholder {
+  color: transparent;
+}
+
+.form-label-group input:not(:placeholder-shown) {
+  padding-top: 1.25rem;
+  padding-bottom: .25rem;
+}
+
+.form-label-group input:not(:placeholder-shown) ~ label {
+  padding-top: .25rem;
+  padding-bottom: .25rem;
+  font-size: 12px;
+  color: #777;
+}
+
+/* Fallback for Edge
+-------------------------------------------------- */
+@supports (-ms-ime-align: auto) {
+  .form-label-group > label {
+    display: none;
+  }
+  .form-label-group input::-ms-input-placeholder {
+    color: #777;
+  }
+}
+
+/* Fallback for IE
+-------------------------------------------------- */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .form-label-group > label {
+    display: none;
+  }
+  .form-label-group input:-ms-input-placeholder {
+    color: #777;
+  }
+}
+
+  </style>
+  
+</head>
+
+<body data-barba="wrapper">
+
+  <header>
+    <!--navbar-->
+    <nav class="navbar navbar-expand-md navbar-light fixed-top bg-white">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="vtxbox.png" class="d-inline-block align-top" alt="logo" loading="lazy"
+            style="width: 40px; max-width: 100%;">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbartransferpricing"
+          aria-controls="navbartransferpricing" aria-expanded="false" aria-label="Toggle navigation">
+          <span style="border: none;"><img src="navbar.svg" alt="" srcset=""></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbartransferpricing">
+          <ul class="navbar-nav ml-auto justify-content-between">
+            <li class="nav-item active">
+              <a class="nav-link text-vahitcan" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#" tabindex="-1" aria-disabled="true">Our Team</a>
+            </li>
+
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdownMenuLink" role="button"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Services
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html"></i>Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Pricing</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"><i
+                  class="fa fa-language fa-2x"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    </nav>
+  
+    <!--navbar-->
+  </header>
+
+  <!--Workspace-->
+  <main data-barba="container" data-barba-namespace="home">
+    <!-- landing -->
+    <section>
+      <div class="container box" style="margin-top: 90px;">
+        <div class="row custom-section d-flex align-items-center">
+          <div class="col-12 col-lg-4">
+            <h2>Team Work</h2>
+            <h3>Process</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequatur, quidem!</p>
+            <a href="hizmetlerimiz.html" class="btn btn-outline-vahitcan left">Learn more</a>
+          </div>
+          <div class="col-12 col-lg-8">
+            <img src="a.svg" alt="Team process banner">
+          </div>
+        </div>
+      </div>
+    </section>
+     <!-- landing -->
+    <section>
+      <!--  -->
+      <div class="container py-5" style="margin-top:190px;">
+        <!--  -->
+        <div class="row">
+          <!--  -->
+          <div class="order-1 col-lg-4 col-md-4">
+            <div class="card mb-4 bg-white border-vahitcan">
+              <div class="card h-100">
+                <img src="https://via.placeholder.com/350x225" class="card-img" alt="..." style="object-fit: cover; max-width: 350px; max-height: 225px;">
+              <div class="card-body">
+                <h5 class="card-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, error!</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                  content. This content is a little bit longer.</p>
+                <div class="d-flex justify-content-between align-items-center">
+
+                  <button type="button" class="btn btn-m btn-outline-vahitcan">View</button>
+                  <small class="text-muted">9 mins</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <!--  -->
+          <div class="order-2 col-lg-4 col-md-4">
+            <div class="card mb-4 bg-white border-vahitcan">
+              <div class="card h-100">
+                <img src="https://via.placeholder.com/350x225" class="card-img" alt="..." style="object-fit: cover; max-width: 350px; max-height: 225px;">
+              <div class="card-body">
+                <h5 class="card-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, error!</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                  content. This content is a little bit longer.</p>
+                <div class="d-flex justify-content-between align-items-center">
+
+                  <button type="button" class="btn btn-m btn-outline-vahitcan">View</button>
+                  <small class="text-muted">9 mins</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <!--  -->
+          <div class="order-5 col-lg-4 col-md-4">
+            <div class="card mb-4 bg-white border-vahitcan">
+              <div class="card h-100">
+                <img src="https://via.placeholder.com/350x225" class="card-img" alt="..." style="object-fit: cover; max-width: 350px; max-height: 225px;">
+              <div class="card-body">
+                <h5 class="card-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, error!</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                  content. This content is a little bit longer.</p>
+                <div class="d-flex justify-content-between align-items-center">
+
+                  <button type="button" class="btn btn-m btn-outline-vahitcan">View</button>
+                  <small class="text-muted">9 mins</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <!--  -->
+          <div class="order-4 col-lg-4 col-md-4">
+            <div class="card mb-4 bg-white border-vahitcan">
+              <div class="card h-100">
+                <img src="https://via.placeholder.com/350x225" class="card-img" alt="..." style="object-fit: cover; max-width: 350px; max-height: 225px;">
+              <div class="card-body">
+                <h5 class="card-title">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, error!</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                  content. This content is a little bit longer.</p>
+                <div class="d-flex justify-content-between align-items-center">
+
+                  <button type="button" class="btn btn-m btn-outline-vahitcan">View</button>
+                  <small class="text-muted">9 mins</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          <!--  -->
+
+
+
+          <aside class="col-md-4 order-3 justify-content-end">
+
+            <div class="p-4 mb-3 bg-vahitcan">
+              <h4 class="font-italic">About</h4>
+              <p class="mb-0">Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit
+                amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+            </div>
+
+            <div class="p-4">
+              <h4 class="font-italic">Archives</h4>
+              <ol class="list-unstyled mb-0">
+                <li><a href="#">March 2014</a></li>
+                <li><a href="#">February 2014</a></li>
+                <li><a href="#">January 2014</a></li>
+                <li><a href="#">December 2013</a></li>
+                <li><a href="#">November 2013</a></li>
+                <li><a href="#">October 2013</a></li>
+                <li><a href="#">September 2013</a></li>
+                <li><a href="#">August 2013</a></li>
+                <li><a href="#">July 2013</a></li>
+                <li><a href="#">June 2013</a></li>
+                <li><a href="#">May 2013</a></li>
+                <li><a href="#">April 2013</a></li>
+              </ol>
+            </div>
+
+          </aside><!-- /.blog-sidebar -->
+
+        </div>
+      </div>
+    </section>
+    <!-- bölüm bitişi -->
+
+    <!-- 3 bölümlük karosel satırı -->
+    <section>
+      <div class="py-5">
+
+        <div class="container-fluid bg-vahitcan py-5">
+          <div class="display-3 d-flex justify-content-center mb-5">Çalışanlar</div>
+          <div class="container">
+
+            <!-- 3 bölümlük karosel -->
+            <div class="row">
+              <div class="col-lg-4">
+                <img class="rounded-circle" src="https://via.placeholder.com/300x300" alt="">
+                <h2>Heading</h2>
+                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies
+                  vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo
+                  cursus magna.</p>
+              </div><!-- /.col-lg-4 -->
+              <div class="col-lg-4">
+                <img class="rounded-circle" src="https://via.placeholder.com/300x300" alt="">
+                <h2>Heading</h2>
+                <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras
+                  mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris
+                  condimentum nibh.</p>
+              </div><!-- /.col-lg-4 -->
+              <div class="col-lg-4">
+                <img class="rounded-circle" src="https://via.placeholder.com/300x300" alt="">
+                <h2>Heading</h2>
+                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula
+                  porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
+                  ut
+                  fermentum massa justo sit amet risus.</p>
+              </div><!-- /.col-lg-4 -->
+            </div><!-- /.row -->
+
+          </div>
+        </div>
+      </div>
+    </section>
+     <!-- 3 bölümlük karosel satırı -->
+
+    <!-- form bölümü -->
+    <section>
+      <div class="py-5">
+        <div class="container">
+          <div class="jumbotron bg-vahitcan rounded-lg">
+            <div class="display-4 mb-3">Send Us a Message...</div>
+            <form>
+              <div class="row">
+                <div class="col">
+                  <div class="form-label-group">
+                  <input type="text" class="form-control" placeholder="First name" id="inputName">
+                  <label for="inputName">First name</label>
+                </div>
+              </div>
+                <div class="col">
+                  <div class="form-label-group">
+                  <input type="text" class="form-control" placeholder="Last name" id="inputLast">
+                  <label for="inputLast">Last name</label>
+                </div>
+              </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-label-group">
+                  <input type="text" class="form-control" placeholder="E-mail" id="inputMail">
+                  <label for="inputMail">E-mail</label>
+                </div>
+              </div>
+                <div class="col">
+                  <div class="form-label-group">
+                  <input type="text" class="form-control" placeholder="Desired Services" id="inputServices">
+                  <label for="inputServices">Desired Services</label>
+                </div>
+              </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group py-3">
+                    <textarea class="form-control" id="TextArea" rows="10"
+                      placeholder="Plase enter you Message."></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <button class="btn btn-outline-emre btn-block mt-3">Send</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+     <!-- form bölümü -->
+  </main>
+  <!--Workspace-->
+
+
+  <!--footer-->
+  <footer class="footer mt-auto container-fluid bg-vahitcan">
+    <div class="row">
+      <div class="col-12 col-md mt-5">
+        <img src="logo/logo_turkish.png" alt="logo2" width="251px" height="109px" class="d-inline-block align-top">
+        <small class="d-inline-block mb-3 text-muted">&copy; Penetra - 2020</small>
+      </div>
+      <div class="col-6 col-md mt-3">
+        <h5>Features</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Cool stuff</a></li>
+          <li><a class="text-muted" href="#">Random feature</a></li>
+          <li><a class="text-muted" href="#">Team feature</a></li>
+          <li><a class="text-muted" href="#">Stuff for developers</a></li>
+          <li><a class="text-muted" href="#">Another one</a></li>
+          <li><a class="text-muted" href="#">Last time</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md mt-3">
+        <h5>Resources</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Resource</a></li>
+          <li><a class="text-muted" href="#">Resource name</a></li>
+          <li><a class="text-muted" href="#">Another resource</a></li>
+          <li><a class="text-muted" href="#">Final resource</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md mt-3">
+        <h5>Resources</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Business</a></li>
+          <li><a class="text-muted" href="#">Education</a></li>
+          <li><a class="text-muted" href="#">Government</a></li>
+          <li><a class="text-muted" href="#">Gaming</a></li>
+        </ul>
+      </div>
+      <div class="col-6 col-md mt-3">
+        <h5>About</h5>
+        <ul class="list-unstyled text-small">
+          <li><a class="text-muted" href="#">Team</a></li>
+          <li><a class="text-muted" href="#">Locations</a></li>
+          <li><a class="text-muted" href="#">Privacy</a></li>
+          <li><a class="text-muted" href="#">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!--footer-->
+  <!-- Optional JavaScript -->
+  
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/gsap.min.js"></script>
+ 
+
+  <script>
+    gsap.from(".box", {
+  opacity: 0, 
+  y: 100, 
+  duration: 1
+});
+  </script>
+  
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+   
+
+    
+</body>
+
+</html>

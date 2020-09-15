@@ -4,4 +4,28 @@ Emre bundan sonra yaptığımız değişiklikleri yazalım en azından daha raha
 Eski kodlamamdan kalan saçma classları kaldırdım allah vs.
 İstediğin css efekti forma ekledim ve alt sayfalara başladım. -can
 
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-dashboardmavi" data-toggle="modal" data-target="#uyarı">
+  Launch demo modal
+</button>
 
+<!-- Modal -->
+<div class="modal fade" id="uyarı" tabindex="-1" role="dialog" aria-labelledby="uyarı" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">başlık</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">kapat</button>
+        <button type="button" class="btn btn-primary">kaydet</button>
+      </div>
+    </div>
+  </div>
+</div>

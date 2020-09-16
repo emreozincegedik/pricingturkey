@@ -102,23 +102,6 @@ export function Navbars() {
                     </NavLink>
                   </div>
                 </li>
-                <li className="nav-item">
-                  <NavLink
-                    className="nav-link"
-                    to="/"
-                    tabIndex="-1"
-                    aria-disabled="true"
-                    onClick={() => {
-                      scrollSetup("carouselCalisanlarEmreOzincegedik");
-                      scroller.scrollTo(
-                        "carouselCalisanlarEmreOzincegedik",
-                        scrollSetting
-                      );
-                    }}
-                  >
-                    {dil_degisken("Ekibimiz", "Our Team")}
-                  </NavLink>
-                </li>
 
                 <li className="nav-item dropdown">
                   <div
@@ -136,42 +119,164 @@ export function Navbars() {
                     className="dropdown-menu"
                     aria-labelledby="navbarDropdownMenuLink"
                   >
-                    <NavLink className="dropdown-item" to="/action">
-                      Transfet fiyatlandırması
+                    <NavLink
+                      className="dropdown-item"
+                      to="/hizmetlerimiz/transferfiyatlandirmasi"
+                    >
+                      {dil_degisken(
+                        "Transfer fiyatlandırması",
+                        "Transfer pricing"
+                      )}
                     </NavLink>
-                    <NavLink className="dropdown-item" to="/anotheraction">
-                      TF raporlaması
+                    <NavLink
+                      className="dropdown-item"
+                      to="/hizmetlerimiz/tfraporlamasi"
+                    >
+                      {dil_degisken("TF raporlaması", "TF reporting")}
                     </NavLink>
-                    <NavLink className="dropdown-item" to="/somethingelse">
-                      Master dosya hazırlama
+                    <NavLink
+                      className="dropdown-item"
+                      to="/hizmetlerimiz/masterdosyahazirlama"
+                    >
+                      {dil_degisken(
+                        "Master dosya hazırlama",
+                        "Master file preparing"
+                      )}
                     </NavLink>
-                    <NavLink className="dropdown-item" to="/somethingelse">
-                      Ön fiyatlandırma anlaşmasına başvuru
+                    <NavLink
+                      className="dropdown-item"
+                      to="/hizmetlerimiz/onfiyatlandirma"
+                    >
+                      {dil_degisken(
+                        "Ön fiyatlandırma anlaşmasına başvuru",
+                        "Application to a pre-pricing agreement"
+                      )}
                     </NavLink>
-                    <NavLink className="dropdown-item" to="/somethingelse">
-                      Danışmanlık
+                    <NavLink
+                      className="dropdown-item"
+                      to="/hizmetlerimiz/danismanlik"
+                    >
+                      {dil_degisken("Danışmanlık", "Consultancy")}
                     </NavLink>
-                    <NavLink className="dropdown-item" to="/somethingelse">
-                      Veri tabanında emsal araştırma hizmeti
+                    <NavLink
+                      className="dropdown-item"
+                      to="/hizmetlerimiz/veritabaniemsal"
+                    >
+                      {dil_degisken(
+                        "Veri tabanında emsal araştırma hizmeti",
+                        "Peer research service in the database"
+                      )}
                     </NavLink>
-                    <NavLink className="dropdown-item" to="/somethingelse">
-                      Teklif iste
+                    <NavLink className="dropdown-item" to="/istekform">
+                      {dil_degisken("Teklif iste", "Request an offer")}
+                    </NavLink>
+                  </div>
+                </li>
+                <li className="nav-item dropdown">
+                  <div
+                    className="nav-link dropdown-toggle text-dark"
+                    to="/hizmetlerimiz"
+                    id="navbarDropdownMenuLink"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    {dil_degisken("Hakkımızda", "About Us")}
+                  </div>
+                  <div
+                    className="dropdown-menu"
+                    aria-labelledby="navbarDropdownMenuLink"
+                  >
+                    <NavLink
+                      className="dropdown-item"
+                      to="/hakkimizda/sirketimiz"
+                    >
+                      {dil_degisken("Şirketimiz", "Company")}
+                    </NavLink>
+                    <NavLink
+                      className="dropdown-item"
+                      to="/hakkimizda/ekibimiz"
+                    >
+                      {dil_degisken("Ekibimiz", "Team")}
+                    </NavLink>
+                    <NavLink
+                      className="dropdown-item"
+                      to="/hakkimizda/referanslarimiz"
+                    >
+                      {dil_degisken("Referanslarımız", "References")}
+                    </NavLink>
+                  </div>
+                </li>
+                <li className="nav-item dropdown">
+                  <div
+                    className="nav-link dropdown-toggle text-dark"
+                    to="/hizmetlerimiz"
+                    id="navbarDropdownMenuLink"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    {dil_degisken("İşlem Rehberi", "Operation Guide")}
+                  </div>
+                  <div
+                    className="dropdown-menu"
+                    aria-labelledby="navbarDropdownMenuLink"
+                  >
+                    <NavLink
+                      className="dropdown-item"
+                      to="/islem/verikorumapolitika"
+                    >
+                      {dil_degisken(
+                        "Kişisel verileri koruma politikamız",
+                        "Personal data protection policy"
+                      )}
+                    </NavLink>
+                    <NavLink
+                      className="dropdown-item"
+                      to="/islem/6563sayilikanun"
+                    >
+                      {dil_degisken(
+                        "6563 sayılı Kanun ile ilgili Sorumluluklarımız",
+                        "Our Responsibilities Regarding Law No. 6563"
+                      )}
+                    </NavLink>
+                    <NavLink className="dropdown-item" to="/islem/basvuru">
+                      {dil_degisken("Kariyer başvurusu", "Career application")}
                     </NavLink>
                   </div>
                 </li>
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/">
+                  <NavLink className="nav-link active" to="/iletisim">
                     {dil_degisken("İletişim", "Contact")}
                   </NavLink>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <NavLink className="nav-link" to="/">
                     {dil_degisken("Ücretlendirme", "Pricing")}
                   </NavLink>
-                </li>
+                </li> */}
                 {/* <li className="nav-item">
                   <NavLink className="nav-link" to="/login">
                     {dil_degisken("Giriş", "Login")}
+                  </NavLink>
+                </li> */}
+                {/* <li className="nav-item">
+                  <NavLink
+                    className="nav-link"
+                    to="/"
+                    tabIndex="-1"
+                    aria-disabled="true"
+                    onClick={() => {
+                      scrollSetup("carouselCalisanlarEmreOzincegedik");
+                      scroller.scrollTo(
+                        "carouselCalisanlarEmreOzincegedik",
+                        scrollSetting
+                      );
+                    }}
+                  >
+                    {dil_degisken("Ekibimiz", "Our Team")}
                   </NavLink>
                 </li> */}
 
@@ -189,7 +294,7 @@ export function Navbars() {
                   >
                     <img
                       src={secili_dil === "tr" ? en : tr}
-                      alt="asdasd"
+                      alt={dil_degisken("Dil degistir", "Change language")}
                       width="24 rem"
                     />
                   </div>

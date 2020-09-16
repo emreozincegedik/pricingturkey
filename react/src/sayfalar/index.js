@@ -7,3 +7,4 @@ export { Hizmetlerimiz } from "./Hizmetlerimiz";
 export { BultenMain } from "./BultenMain";
 export { BultenTek } from "./BultenTek";
 export { Dashboard } from "./Dashboard";
+export { TestSayfa } from "./TestSayfa";

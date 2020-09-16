@@ -3,7 +3,7 @@ import { Context } from "../components";
 export class Error extends Component {
   static contextType = Context;
   componentDidMount() {
-    console.log(this);
+    // console.log(this);
   }
   render() {
     const { dil_degisken } = this.context.state;

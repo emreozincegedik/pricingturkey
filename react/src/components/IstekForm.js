@@ -63,7 +63,7 @@ export function IstekForm() {
   // state = { ad: "", soyad: "", email: "", servis: "" };
   return (
     <section>
-      <div className="py-5">
+      <div className="py-5" id="istekFormEmreOzincegedik">
         <div className="container">
           <div className="jumbotron bg-vahitcan rounded-lg">
             <div className="display-4 mb-3">

@@ -18,8 +18,27 @@ import {
   BultenMain,
   BultenTek,
   Dashboard,
-  BultenYil,
+  TestSayfa,
 } from "./sayfalar";
+
+import {
+  Danismanlik,
+  Hakkimizda,
+  Iletisim,
+  KariyerBasvurusu,
+  KisiselVerileriKoruma,
+  MasterDosya,
+  Onfiyatlandirma,
+  SayiliKanun,
+  TFRapor,
+  TransferFiyatlandirmasi,
+  UlkeDosyasi,
+  VeriTabani,
+  Sirketimiz,
+  Ekibimiz,
+  Referans,
+} from "./sayfalar/statik";
+import { IstekForm } from "./components";
 import { Navbars, Genel, Footer } from "./components";
 import { BultenTest } from "./components/Bulten";
 import { Helmet } from "react-helmet";
@@ -57,7 +76,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Anasayfa} />
           <Route path="/anasayfa" exact component={Anasayfa} />
-          <Route path="/test" exact component={BultenTest} />
+          <Route path="/test" exact component={TestSayfa} />
           <Route path="/test/:id" component={Test2} />
           <Route
             path="/bilgi/:bilgiCesit/sayfa/:id"
@@ -88,6 +107,62 @@ function App() {
           <Route path="/login" exact component={Login} />
           <Route path="/hizmetlerimiz" exact component={Hizmetlerimiz} />
           <Route path="/dashboard" exact component={Dashboard} />
+
+          <Route path="/hakkimizda" exact component={Hakkimizda} />
+          <Route path="/iletisim" exact component={Iletisim} />
+          <Route path="/islem/basvuru" exact component={KariyerBasvurusu} />
+          <Route
+            path="/islem/verikorumapolitika"
+            exact
+            component={KisiselVerileriKoruma}
+          />
+          <Route
+            path="/hizmetlerimiz/danismanlik"
+            exact
+            component={Danismanlik}
+          />
+          <Route path="/islem/6563sayilikanun" exact component={SayiliKanun} />
+          <Route
+            path="/hizmetlerimiz/transferfiyatlandirmasi"
+            exact
+            component={TransferFiyatlandirmasi}
+          />
+          <Route
+            path="/hizmetlerimiz/tfraporlamasi"
+            exact
+            component={TFRapor}
+          />
+          <Route
+            path="/hizmetlerimiz/masterdosyahazirlama"
+            exact
+            component={MasterDosya}
+          />
+          <Route
+            path="/hizmetlerimiz/onfiyatlandirma"
+            exact
+            component={Onfiyatlandirma}
+          />
+          <Route
+            path="/hizmetlerimiz/veritabaniemsal"
+            exact
+            component={VeriTabani}
+          />
+          <Route
+            path="/hizmetlerimiz/ulkedosyasi"
+            exact
+            component={UlkeDosyasi}
+          />
+
+          <Route path="/hakkimizda/sirketimiz" exact component={Sirketimiz} />
+          <Route path="/hakkimizda/ekibimiz" exact component={Ekibimiz} />
+          <Route
+            path="/hakkimizda/referanslarimiz"
+            exact
+            component={Referans}
+          />
+
+          <Route path="/istekform" exact component={IstekForm} />
+
           <Route component={Error} />
         </Switch>
         <Footer />

@@ -1,0 +1,15 @@
+export { Danismanlik } from "./Danismanlik";
+export { Hakkimizda } from "./Hakkimizda";
+export { Iletisim } from "./Iletisim";
+export { KariyerBasvurusu } from "./KariyerBasvurusu";
+export { KisiselVerileriKoruma } from "./KisiselVerileriKoruma";
+export { MasterDosya } from "./MasterDosya";
+export { Onfiyatlandirma } from "./Onfiyatlandirma";
+export { SayiliKanun } from "./SayiliKanun";
+export { TFRapor } from "./TFRapor";
+export { TransferFiyatlandirmasi } from "./TransferFiyatlandirmasi";
+export { UlkeDosyasi } from "./UlkeDosyasi";
+export { VeriTabani } from "./VeriTabani";
+export { Sirketimiz } from "./Sirketimiz";
+export { Ekibimiz } from "./Ekibimiz";
+export { Referans } from "./Referans";

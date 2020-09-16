@@ -1,0 +1,26 @@
+{
+  "name": "pricingturkey",
+  "version": "1.0.0",
+  "description": "test readme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "backend": "npm start --prefix db",
+    "frontend": "npm start --prefix react",
+    "all": "concurrently \"npm run backend\" \"npm run frontend\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emreozincegedik/pricingturkey.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emreozincegedik/pricingturkey/issues"
+  },
+  "homepage": "https://github.com/emreozincegedik/pricingturkey#readme",
+  "dependencies": {
+    "concurrently": "^5.3.0"
+  }
+}

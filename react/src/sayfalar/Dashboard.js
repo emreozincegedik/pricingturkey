@@ -7,7 +7,14 @@ import { Error } from "./Error";
 export function Dashboard() {
   const context = useContext(Context);
   const { uyegirisi, girisHandler } = context.state;
-  const dinamikForm = ["Bülten", "Haber", "Duyuru", "Ekip", "Mesajlar"];
+  const dinamikForm = [
+    "Mesajlar",
+    "Bülten",
+    "Haber",
+    "Duyuru",
+    "Arastirma",
+    "Ekip",
+  ];
   const [seciliForm, setseciliForm] = useState("Mesajlar");
   const [ekipler, setEkipler] = useState([]);
   const [signedout, setSignedout] = useState(false);

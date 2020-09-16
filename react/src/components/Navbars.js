@@ -94,6 +94,12 @@ export function Navbars() {
                     >
                       {dil_degisken("Haberler", "News")}
                     </NavLink>
+                    <NavLink
+                      className="dropdown-item"
+                      to="/bilgi/arastirma/sayfa/1"
+                    >
+                      {dil_degisken("Araştırmalar", "Investigations")}
+                    </NavLink>
                   </div>
                 </li>
                 <li className="nav-item">
@@ -131,13 +137,25 @@ export function Navbars() {
                     aria-labelledby="navbarDropdownMenuLink"
                   >
                     <NavLink className="dropdown-item" to="/action">
-                      Action
+                      Transfet fiyatlandırması
                     </NavLink>
                     <NavLink className="dropdown-item" to="/anotheraction">
-                      Another action
+                      TF raporlaması
                     </NavLink>
                     <NavLink className="dropdown-item" to="/somethingelse">
-                      Something else here
+                      Master dosya hazırlama
+                    </NavLink>
+                    <NavLink className="dropdown-item" to="/somethingelse">
+                      Ön fiyatlandırma anlaşmasına başvuru
+                    </NavLink>
+                    <NavLink className="dropdown-item" to="/somethingelse">
+                      Danışmanlık
+                    </NavLink>
+                    <NavLink className="dropdown-item" to="/somethingelse">
+                      Veri tabanında emsal araştırma hizmeti
+                    </NavLink>
+                    <NavLink className="dropdown-item" to="/somethingelse">
+                      Teklif iste
                     </NavLink>
                   </div>
                 </li>
@@ -151,11 +169,11 @@ export function Navbars() {
                     {dil_degisken("Ücretlendirme", "Pricing")}
                   </NavLink>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <NavLink className="nav-link" to="/login">
                     {dil_degisken("Giriş", "Login")}
                   </NavLink>
-                </li>
+                </li> */}
 
                 <li className="nav-item">
                   <div

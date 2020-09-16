@@ -1,28 +1,38 @@
-//----------------------mesaj--------------------------
-const mesajColumns = [
-  "isim",
-  "soyisim",
-  "email",
-  "servis",
-  "mesaj",
-  "eklenmeTarihi",
-];
-router.post("/mesaj/select", (req, res) => {
+//----------------------arastirma--------------------------
+const arastirmaColumns = ["baslikTR", "baslikEN", "yaziTR", "yaziEN", "resim"];
+router.post("/arastirma/select", (req, res) => {
   // console.log(req.body);
   console.log({ incomingBody: req.body });
+  if (
+    ((req.body.page - 1) * 6 < 0 || isNaN(parseInt(req.body.page))) &&
+    req.body.page !== undefined
+  ) {
+    res.status(403);
+    res.json([]);
+    return;
+  }
   var sql_request = new sql.Request();
   sql_request
     .input("input", sql.Int, req.body.id)
     .input("lastX", sql.Int, req.body.lastX)
+    .input("page", sql.Int, (req.body.page - 1) * 6)
     .input("date", sql.NVarChar, req.body.date)
+    .input("year", sql.Int, req.body.year)
+    .input("pages", sql.Int, (req.body.pages - 1) * 6)
     .query(
       req.body.id
-        ? "select * from mesaj where id=@input"
+        ? "select * from arastirma where id=@input"
         : req.body.lastX
-        ? "SELECT TOP(@lastX) * FROM mesaj  ORDER BY id DESC"
+        ? "SELECT TOP(@lastX) * FROM arastirma  ORDER BY id DESC"
+        : req.body.page
+        ? "SELECT * FROM arastirma ORDER BY id DESC OFFSET @page ROWS FETCH NEXT 6 ROWS ONLY"
         : req.body.date
-        ? "select * from mesaj where eklenmeTarihi between CAST(@date AS DATETIME2) and CAST(@date AS DATETIME2)"
-        : "select * from mesaj"
+        ? " select * from arastirma where eklenmeTarihi between CAST(@date AS DATETIME2) and CAST(@date AS DATETIME2)"
+        : req.body.years
+        ? "select distinct year(eklenmeTarihi) as eklenmeTarihi from arastirma"
+        : req.body.year
+        ? "select * from arastirma where year(eklenmeTarihi)=@year ORDER BY id DESC OFFSET @pages ROWS FETCH NEXT 6 ROWS ONLY"
+        : "select * from arastirma"
     )
     .then((dbres) => {
       // console.log(dbres);
@@ -35,7 +45,7 @@ router.post("/mesaj/select", (req, res) => {
       res.json(err);
     });
 });
-router.post("/mesaj/delete", (req, res) => {
+router.post("/arastirma/delete", (req, res) => {
   if (!req.body.id) {
     res.status(400);
     res.json({ message: "id is needed to delete" });
@@ -44,9 +54,9 @@ router.post("/mesaj/delete", (req, res) => {
   var sql_request = new sql.Request();
   sql_request
     .input("id", sql.Int, req.body.id)
-    .query("delete from mesaj where id=@id")
+    .query("delete from arastirma where id=@id")
     .then((dbres) => {
-      console.log(dbres);
+      // console.log(dbres);
       res.status(200);
       res.json(dbres);
     })
@@ -57,10 +67,10 @@ router.post("/mesaj/delete", (req, res) => {
     });
 });
 
-router.post("/mesaj/insert", (req, res) => {
+router.post("/arastirma/insert", (req, res) => {
   // console.log(req.body);
 
-  if (!columnChecker(req.body, mesajColumns)) {
+  if (!columnChecker(req.body, arastirmaColumns)) {
     res.status(400);
     res.json("invalid column(s): " + errCols);
     errCols = [];
@@ -68,18 +78,16 @@ router.post("/mesaj/insert", (req, res) => {
   }
   var sql_request = new sql.Request();
   sql_request
-    .input(mesajColumns[0], sql.NVarChar, req.body[mesajColumns[0]])
-    .input(mesajColumns[1], sql.NVarChar, req.body[mesajColumns[1]])
-    .input(mesajColumns[2], sql.NVarChar, req.body[mesajColumns[2]])
-    .input(mesajColumns[3], sql.NVarChar, req.body[mesajColumns[3]])
-    .input(mesajColumns[4], sql.NVarChar, req.body[mesajColumns[4]])
-    .input(mesajColumns[5], sql.NVarChar, req.body[mesajColumns[5]])
+    .input("baslikTR", sql.NVarChar, req.body[arastirmaColumns[0]])
+    .input("baslikEN", sql.NVarChar, req.body[arastirmaColumns[1]])
+    .input("yaziTR", sql.NVarChar, req.body[arastirmaColumns[2]])
+    .input("yaziEN", sql.NVarChar, req.body[arastirmaColumns[3]])
+    .input("resim", sql.NVarChar, req.body[arastirmaColumns[4]])
     .query(
-      `insert into mesaj (${mesajColumns[0]},${mesajColumns[1]},${mesajColumns[2]},${mesajColumns[3]},${mesajColumns[4]},${mesajColumns[5]}) 
-      values (@${mesajColumns[0]},@${mesajColumns[1]},@${mesajColumns[2]},@${mesajColumns[3]},@${mesajColumns[4]},@${mesajColumns[5]})`
+      "insert into arastirma (baslikTR,baslikEN,yaziTR,yaziEN,resim) values (@baslikTR,@baslikEN,@yaziTR,@yaziEN,@resim)"
     )
     .then((dbres) => {
-      console.log(dbres);
+      // console.log(dbres);
       res.status(200);
       res.json(dbres);
     })
@@ -87,5 +95,50 @@ router.post("/mesaj/insert", (req, res) => {
       console.log(err);
       res.status(500);
       res.json("Internal server error");
+    });
+});
+router.post("/arastirma/update", (req, res) => {
+  if (!req.body.id) {
+    res.status(400);
+    res.json({ message: "id is needed to update" });
+    return;
+  }
+  if (!columnChecker(req.body, arastirmaColumns)) {
+    res.status(400);
+    res.json("invalid column(s): " + errCols);
+    errCols = [];
+    return;
+  }
+  var sql_request = new sql.Request();
+  sql_request
+    .input("id", sql.Int, req.body.id)
+    .input("baslikTR", sql.NVarChar, req.body[arastirmaColumns[0]])
+    .input("baslikEN", sql.NVarChar, req.body[arastirmaColumns[1]])
+    .input("yaziTR", sql.NVarChar, req.body[arastirmaColumns[2]])
+    .input("yaziEN", sql.NVarChar, req.body[arastirmaColumns[3]])
+    .input("resim", sql.NVarChar, req.body[arastirmaColumns[4]])
+    .query(
+      `
+    update arastirma
+    set
+      baslikTR=@baslikTR,
+      baslikEN=@baslikEN,
+      yaziTR=@yaziTR,
+      yaziEN=@yaziEN,
+      resim=@resim,
+      degistirilmeTarihi=getdate()
+    where
+      id=@id
+      `
+    )
+    .then((dbres) => {
+      // console.log(dbres);
+      res.status(200);
+      res.json(dbres);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500);
+      res.json(err);
     });
 });

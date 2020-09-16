@@ -42,7 +42,7 @@ const fetchBultenLast = async (key, bilgiCesit) => {
 };
 
 export function BultenTek(props) {
-  const { dil_degisken } = useContext(Context).state;
+  const { dil_degisken, dateConverter } = useContext(Context).state;
   const { data, status } = useQuery(
     ["bultenOwn", props.match.params.bilgiCesit, props.match.params.id],
     fetchBulten
@@ -63,6 +63,7 @@ export function BultenTek(props) {
         yazi={(data[0].yaziTR, data[0].yaziEN)}
         bilgiCesit={props.match.params.bilgiCesit}
         resim={data[0].resim}
+        date={dateConverter(data[0].eklenmeTarihi)}
       />
     )
   );

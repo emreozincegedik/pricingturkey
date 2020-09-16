@@ -3,6 +3,7 @@ import { BultenSon4, BultenTarih } from "./index";
 import { Context } from "../index";
 import { NavLink } from "react-router-dom";
 import { useQuery } from "react-query";
+import { Error } from "../../sayfalar";
 
 const fetchBultenX = async (key, lastX, bilgiCesit, page, year) => {
   // console.log(year);
@@ -35,6 +36,7 @@ export function Bulten(props) {
     bulten: ["Bülten", "Bulletin"],
     duyuru: ["Duyuru", "Announcement"],
     haber: ["Haberler", "News"],
+    arastirma: ["Araştırma", "Investigations"],
   };
   const { data, status } = useQuery(
     [
@@ -49,70 +51,78 @@ export function Bulten(props) {
   // console.log(props.bilgiCesit);
   return (
     <>
-      <div className="container py-5" style={{ marginTop: "90px" }}>
-        {props.bilgiCesit !== undefined && props.bilgiCesit !== null && (
-          <h1>
-            {dil_degisken(
-              basliklar[props.bilgiCesit][0],
-              basliklar[props.bilgiCesit][1]
+      {props.bilgiCesit in basliklar ? (
+        <>
+          <div className="container py-5" style={{ marginTop: "90px" }}>
+            {props.bilgiCesit !== undefined && props.bilgiCesit !== null && (
+              <h1>
+                {dil_degisken(
+                  basliklar[props.bilgiCesit][0],
+                  basliklar[props.bilgiCesit][1]
+                )}
+              </h1>
             )}
-          </h1>
-        )}
-        <div className="row">
-          {props.ordered ? (
-            <>
-              <BultenTarih bilgiCesit={props.bilgiCesit} />
-              <BultenSon4
-                yil={props.yil}
-                lastX={props.lastX || 4}
-                bilgiCesit={props.bilgiCesit}
-                page={props.page}
-              />
-            </>
-          ) : (
-            <>
-              <BultenSon4
-                yil={props.yil}
-                lastX={props.lastX || 4}
-                bilgiCesit={props.bilgiCesit}
-                page={props.page}
-              />
-              <BultenTarih />
-            </>
-          )}
-        </div>
-      </div>
-      {props.bilgiCesit !== undefined && props.bilgiCesit !== null && (
-        <div className="container">
-          <div aria-label="Page navigation example">
-            <ul class="nav-justified pagination">
-              {props.page > 1 && (
-                <li class="page-item">
-                  <NavLink
-                    class="page-link disabled"
-                    to={`/bilgi/${props.bilgiCesit}/sayfa/${props.page - 1}`}
-                  >
-                    {dil_degisken("Önceki sayfa", "Previous page")}
-                  </NavLink>
-                </li>
+            <div className="row">
+              {props.ordered ? (
+                <>
+                  <BultenTarih bilgiCesit={props.bilgiCesit} />
+                  <BultenSon4
+                    yil={props.yil}
+                    lastX={props.lastX || 4}
+                    bilgiCesit={props.bilgiCesit}
+                    page={props.page}
+                  />
+                </>
+              ) : (
+                <>
+                  <BultenSon4
+                    yil={props.yil}
+                    lastX={props.lastX || 4}
+                    bilgiCesit={props.bilgiCesit}
+                    page={props.page}
+                  />
+                  <BultenTarih />
+                </>
               )}
-              <li class="page-item">
-                {!isNaN(parseInt(props.page)) &&
-                  status === "success" &&
-                  data.length !== 0 && (
-                    <NavLink
-                      class="page-link"
-                      to={`/bilgi/${props.bilgiCesit}/sayfa/${
-                        parseInt(props.page) + 1
-                      }`}
-                    >
-                      {dil_degisken("Sonraki sayfa", "Next page")}
-                    </NavLink>
-                  )}
-              </li>
-            </ul>
+            </div>
           </div>
-        </div>
+          {props.bilgiCesit !== undefined && props.bilgiCesit !== null && (
+            <div className="container">
+              <div aria-label="Page navigation example">
+                <ul class="nav-justified pagination">
+                  {props.page > 1 && (
+                    <li class="page-item">
+                      <NavLink
+                        class="page-link disabled"
+                        to={`/bilgi/${props.bilgiCesit}/sayfa/${
+                          props.page - 1
+                        }`}
+                      >
+                        {dil_degisken("Önceki sayfa", "Previous page")}
+                      </NavLink>
+                    </li>
+                  )}
+                  <li class="page-item">
+                    {!isNaN(parseInt(props.page)) &&
+                      status === "success" &&
+                      data.length !== 0 && (
+                        <NavLink
+                          class="page-link"
+                          to={`/bilgi/${props.bilgiCesit}/sayfa/${
+                            parseInt(props.page) + 1
+                          }`}
+                        >
+                          {dil_degisken("Sonraki sayfa", "Next page")}
+                        </NavLink>
+                      )}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          )}
+        </>
+      ) : (
+        <Error />
       )}
     </>
   );

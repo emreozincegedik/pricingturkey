@@ -78,7 +78,7 @@ export function IstekForm() {
                       className={`form-control ${
                         isWrong && ad.length === 0 && errorClass
                       }`}
-                      placeholder="First name"
+                      placeholder={dil_degisken("İlk adınız", "First name")}
                       id="inputName"
                       onChange={(e) => {
                         e.target.value.length <= 50 && setAd(e.target.value);
@@ -97,7 +97,7 @@ export function IstekForm() {
                       className={`form-control ${
                         isWrong && soyad.length === 0 && errorClass
                       }`}
-                      placeholder="Last name"
+                      placeholder={dil_degisken("Soyadınız", "Last name")}
                       id="inputLast"
                       onChange={(e) => {
                         e.target.value.length <= 50 && setSoyad(e.target.value);
@@ -118,7 +118,10 @@ export function IstekForm() {
                       className={`form-control ${
                         isWrong && email.length === 0 && errorClass
                       }`}
-                      placeholder="E-mail"
+                      placeholder={dil_degisken(
+                        "E-mail adresiniz",
+                        "E-mail adress"
+                      )}
                       id="inputMail"
                       onChange={(e) => {
                         e.target.value.length <= 200 &&
@@ -138,7 +141,10 @@ export function IstekForm() {
                       className={`form-control ${
                         isWrong && servis.length === 0 && errorClass
                       }`}
-                      placeholder="Desired Services"
+                      placeholder={dil_degisken(
+                        "İstenen servis",
+                        "Desired service"
+                      )}
                       id="inputServices"
                       onChange={(e) => {
                         e.target.value.length <= 200 &&

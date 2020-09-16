@@ -36,7 +36,9 @@ export function BultenTest(props) {
             <h2 class="blog-post-title">
               {props.baslik || "Sample blog post"}
             </h2>
-            <p class="blog-post-meta">{props.date || "22/12/2020"}</p>
+            <p class="blog-post-meta text-muted">
+              {props.date || "22/12/2020"}
+            </p>
             <img
               className="img-fluid"
               src={props.resim || "https://via.placeholder.com/1640x640"}

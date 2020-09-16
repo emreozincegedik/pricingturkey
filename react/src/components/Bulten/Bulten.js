@@ -57,8 +57,9 @@ export function Bulten(props) {
   );
   return (
     <>
-      {!(props.bilgiCesit in basliklar) &&
-      (props.bilgiCesit !== null || props.bilgiCesit !== undefined) ? (
+      {props.bilgiCesit in basliklar ||
+      props.bilgiCesit === null ||
+      props.bilgiCesit === undefined ? (
         <>
           <div className="container py-5" style={{ marginTop: "90px" }}>
             {props.bilgiCesit !== undefined && props.bilgiCesit !== null && (

@@ -13,8 +13,8 @@ export class Error extends Component {
         <div className="row">
         <img className="col-md-8 mx-auto" src={err} alt="" srcset="" />
         <div class="container">
-          <h1 className="display-3 text-center col-sm-12">
-            {dil_degisken("sayfa bulunamadı", "page not found")}
+          <h1 className="display-4 text-center col-sm-12">
+            {dil_degisken("Sayfa bulunamadı", "Page not found")}
           </h1>
         </div>
       </div>

@@ -9,8 +9,8 @@ export function Iletisim() {
     <>
       <section id="boşluk">
         <div class="container-fluid">
-          <div class="jumbotron">
-            <img src={contact} alt="iletişim giriş resmi" srcset="" />
+          <div class="jumbotron bg-transparent">
+            <img className="mx-auto col-md-12" src={contact} alt="iletişim giriş resmi" srcset="" />
           </div>
         </div>
       </section>

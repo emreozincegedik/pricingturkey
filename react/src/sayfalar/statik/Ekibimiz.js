@@ -17,7 +17,7 @@ export function Ekibimiz() {
   const { dil_degisken } = useContext(Context).state;
   const { data, status } = useQuery("ekip", fetchEkip);
   return (
-    <main>
+    <main /* style={{ height: "100vh" }} */>
       <div class="container-fluid">
         <div class="lead display-4 text-center py-5">
           {dil_degisken("Ekibimiz", "Our Team")}

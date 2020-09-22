@@ -4,14 +4,19 @@ import logo from "../resimler/logo_turkish.png";
 import React, { useContext } from "react";
 import { Context } from "./Genel";
 
-export function Footer() {
+export function Footer(props) {
   const context = useContext(Context);
   let location = useLocation();
   return (location.pathname === "/dashboard" && context.state.uyegirisi) ||
     location.pathname === "/login" ? (
     ""
   ) : (
-    <footer className="footer mt-auto container-fluid bg-vahitcan">
+    <footer
+      className={
+        "footer mt-auto container-fluid bg-vahitcan mt-auto py-3" +
+        (props.fixed ? " fixed-bottom" : "")
+      }
+    >
       {/* {console.log(location.pathname)} */}
       <div className="row">
         <div className="col-12 col-md mt-5">

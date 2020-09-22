@@ -73,99 +73,105 @@ function App() {
           />
         </Helmet>
         <Navbars />
-        <Switch>
-          <Route path="/" exact component={Anasayfa} />
-          <Route path="/anasayfa" exact component={Anasayfa} />
-          <Route path="/test" exact component={TestSayfa} />
-          <Route path="/test/:id" component={Test2} />
-          <Route
-            path="/bilgi/:bilgiCesit/sayfa/:id"
-            exact
-            component={BultenMain}
-          />
-          <Route
-            path="/bulten"
-            exact
-            component={() => <Redirect to="/bilgi/bulten/sayfa/1" />}
-          />
-          <Route
-            path="/duyuru"
-            exact
-            component={() => <Redirect to="/bilgi/duyuru/sayfa/1" />}
-          />
-          <Route
-            path="/haber"
-            exact
-            component={() => <Redirect to="/bilgi/haber/sayfa/1" />}
-          />
-          <Route path="/bilgi/:bilgiCesit/baslik/:id" component={BultenTek} />
-          <Route
-            path="/bilgi/:bilgiCesit/:yil/sayfa/:id"
-            exact
-            component={BultenMain}
-          />
-          <Route path="/login" exact component={Login} />
-          <Route path="/hizmetlerimiz" exact component={Hizmetlerimiz} />
-          <Route path="/dashboard" exact component={Dashboard} />
+        <div className="d-flex flex-column min-vh-100">
+          <Switch>
+            <Route path="/" exact component={Anasayfa} />
+            <Route path="/anasayfa" exact component={Anasayfa} />
+            <Route path="/test" exact component={TestSayfa} />
+            <Route path="/test/:id" component={Test2} />
+            <Route
+              path="/bilgi/:bilgiCesit/sayfa/:id"
+              exact
+              component={BultenMain}
+            />
+            <Route
+              path="/bulten"
+              exact
+              component={() => <Redirect to="/bilgi/bulten/sayfa/1" />}
+            />
+            <Route
+              path="/duyuru"
+              exact
+              component={() => <Redirect to="/bilgi/duyuru/sayfa/1" />}
+            />
+            <Route
+              path="/haber"
+              exact
+              component={() => <Redirect to="/bilgi/haber/sayfa/1" />}
+            />
+            <Route path="/bilgi/:bilgiCesit/baslik/:id" component={BultenTek} />
+            <Route
+              path="/bilgi/:bilgiCesit/:yil/sayfa/:id"
+              exact
+              component={BultenMain}
+            />
+            <Route path="/login" exact component={Login} />
+            <Route path="/hizmetlerimiz" exact component={Hizmetlerimiz} />
+            <Route path="/dashboard" exact component={Dashboard} />
 
-          <Route path="/hakkimizda" exact component={Hakkimizda} />
-          <Route path="/iletisim" exact component={Iletisim} />
-          <Route path="/islem/basvuru" exact component={KariyerBasvurusu} />
-          <Route
-            path="/islem/verikorumapolitika"
-            exact
-            component={KisiselVerileriKoruma}
-          />
-          <Route
-            path="/hizmetlerimiz/danismanlik"
-            exact
-            component={Danismanlik}
-          />
-          <Route path="/islem/6563sayilikanun" exact component={SayiliKanun} />
-          <Route
-            path="/hizmetlerimiz/transferfiyatlandirmasi"
-            exact
-            component={TransferFiyatlandirmasi}
-          />
-          <Route
-            path="/hizmetlerimiz/tfraporlamasi"
-            exact
-            component={TFRapor}
-          />
-          <Route
-            path="/hizmetlerimiz/masterdosyahazirlama"
-            exact
-            component={MasterDosya}
-          />
-          <Route
-            path="/hizmetlerimiz/onfiyatlandirma"
-            exact
-            component={Onfiyatlandirma}
-          />
-          <Route
-            path="/hizmetlerimiz/veritabaniemsal"
-            exact
-            component={VeriTabani}
-          />
-          <Route
-            path="/hizmetlerimiz/ulkedosyasi"
-            exact
-            component={UlkeDosyasi}
-          />
+            <Route path="/hakkimizda" exact component={Hakkimizda} />
+            <Route path="/iletisim" exact component={Iletisim} />
+            <Route path="/islem/basvuru" exact component={KariyerBasvurusu} />
+            <Route
+              path="/islem/verikorumapolitika"
+              exact
+              component={KisiselVerileriKoruma}
+            />
+            <Route
+              path="/hizmetlerimiz/danismanlik"
+              exact
+              component={Danismanlik}
+            />
+            <Route
+              path="/islem/6563sayilikanun"
+              exact
+              component={SayiliKanun}
+            />
+            <Route
+              path="/hizmetlerimiz/transferfiyatlandirmasi"
+              exact
+              component={TransferFiyatlandirmasi}
+            />
+            <Route
+              path="/hizmetlerimiz/tfraporlamasi"
+              exact
+              component={TFRapor}
+            />
+            <Route
+              path="/hizmetlerimiz/masterdosyahazirlama"
+              exact
+              component={MasterDosya}
+            />
+            <Route
+              path="/hizmetlerimiz/onfiyatlandirma"
+              exact
+              component={Onfiyatlandirma}
+            />
+            <Route
+              path="/hizmetlerimiz/veritabaniemsal"
+              exact
+              component={VeriTabani}
+            />
+            <Route
+              path="/hizmetlerimiz/ulkedosyasi"
+              exact
+              component={UlkeDosyasi}
+            />
 
-          <Route path="/hakkimizda/sirketimiz" exact component={Sirketimiz} />
-          <Route path="/hakkimizda/ekibimiz" exact component={Ekibimiz} />
-          <Route
-            path="/hakkimizda/referanslarimiz"
-            exact
-            component={Referans}
-          />
+            <Route path="/hakkimizda/sirketimiz" exact component={Sirketimiz} />
+            <Route path="/hakkimizda/ekibimiz" exact component={Ekibimiz} />
+            <Route
+              path="/hakkimizda/referanslarimiz"
+              exact
+              component={Referans}
+            />
 
-          <Route path="/istekform" exact component={IstekForm} />
+            <Route path="/istekform" exact component={IstekForm} />
 
-          <Route component={Error} />
-        </Switch>
-        <Footer />
+            <Route component={Error} />
+          </Switch>
+          <Footer />
+        </div>
       </Genel>
     </Router>
   );

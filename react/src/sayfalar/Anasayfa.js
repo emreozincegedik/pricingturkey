@@ -31,6 +31,7 @@ export class Anasayfa extends Component {
         {/* <CarouselTest /> */}
         <Bulten />
         <CarouselCalisanlar />
+        <Bulten bilgiCesit={"haber"} anasayfa={true} />
         <IstekForm />
       </div>
     );

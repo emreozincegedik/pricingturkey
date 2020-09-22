@@ -63,7 +63,7 @@ export function Bulten(props) {
         <>
           <div className="container py-5" style={{ marginTop: "90px" }}>
             {props.bilgiCesit !== undefined && props.bilgiCesit !== null && (
-              <h1>
+              <h1 className={props.anasayfa !== true && "text-center"}>
                 {dil_degisken(
                   basliklar[props.bilgiCesit][0],
                   basliklar[props.bilgiCesit][1]
@@ -73,7 +73,10 @@ export function Bulten(props) {
             <div className="row">
               {props.ordered ? (
                 <>
-                  <BultenTarih bilgiCesit={props.bilgiCesit} />
+                  <BultenTarih
+                    bilgiCesit={props.bilgiCesit}
+                    anasayfa={props.anasayfa}
+                  />
                   <BultenSon4
                     yil={props.yil}
                     lastX={props.lastX || 4}
@@ -89,7 +92,10 @@ export function Bulten(props) {
                     bilgiCesit={props.bilgiCesit}
                     page={props.page}
                   />
-                  <BultenTarih />
+                  <BultenTarih
+                    bilgiCesit={props.bilgiCesit}
+                    anasayfa={props.anasayfa}
+                  />
                 </>
               )}
             </div>

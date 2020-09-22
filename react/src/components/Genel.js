@@ -46,6 +46,7 @@ export class Genel extends Component {
     bultenPageCount: (count) => {
       this.setState({ bultenCount: count });
     },
+    anasayfa: true,
   };
   render() {
     return (

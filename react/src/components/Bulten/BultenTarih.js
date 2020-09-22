@@ -25,14 +25,16 @@ export function BultenTarih(props) {
 
   return (
     <aside className={`col-md-${props.col || "3"} justify-content-end`}>
-      <div className="p-4 mb-3 bg-vahitcan">
-        <h4 className="font-italic">{dil_degisken("Hakkımızda", "About")}</h4>
-        <p className="mb-0">
-          Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis
-          consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla
-          sed consectetur.
-        </p>
-      </div>
+      {props.anasayfa !== true && (
+        <div className="p-4 mb-3 bg-vahitcan">
+          <h4 className="font-italic">{dil_degisken("Hakkımızda", "About")}</h4>
+          <p className="mb-0">
+            Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis
+            consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla
+            sed consectetur.
+          </p>
+        </div>
+      )}
 
       <div className="p-4">
         <h4 className="font-italic">{dil_degisken("Arşivler", "Archives")}</h4>

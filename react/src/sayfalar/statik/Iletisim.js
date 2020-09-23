@@ -18,7 +18,7 @@ export function Iletisim() {
         <section id="iletişim">
           <div class="container-fluid">
             <h3 class="text-center text-uppercase display-4">Bize ulaşın</h3>
-            <p class="text-center w-75 m-auto display-5" style={{ fontSize:"29px" }}>
+            <p class="text-center w-75 m-auto display-5" style={{ fontSize: "29px" }}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
               interdum purus at sem ornare sodales. Morbi leo nulla, pharetra
               vel felis nec, ullamcorper condimentum quam.
@@ -97,7 +97,7 @@ export function Iletisim() {
             <div class="embed-responsive embed-responsive-16by9">
               <iframe
                 class="embed-responsive-item"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3186.364881496609!2d35.318129316107324!3d37.00109066406369!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x15288f348f56470f%3A0x1d2a05c195a044f5!2zw4dhxJ9kYcWfIFBzaWtvbG9qaQ!5e0!3m2!1str!2str!4v1600247181461!5m2!1str!2str"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3006.2968026461926!2d28.987020214855278!3d41.10620857929092!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab76e72e36343%3A0x46823a1f1a091e6e!2zUGVuZXRyYSBZZW1pbmxpIE1hbMOuIE3DvMWfYXZpcmxpayBMdGQuIMWedGku!5e0!3m2!1str!2str!4v1600265426467!5m2!1str!2str"
                 width="600"
                 height="450"
                 frameborder="0"

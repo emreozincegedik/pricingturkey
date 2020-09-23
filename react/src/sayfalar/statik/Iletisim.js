@@ -10,15 +10,15 @@ export function Iletisim() {
       <section id="boşluk">
         <div class="container-fluid">
           <div class="jumbotron bg-transparent">
-            <img className="mx-auto col-md-12" src={contact} alt="iletişim giriş resmi" srcset="" />
+            <img className="mx-auto d-block col-8" src={contact} alt="iletişim giriş resmi" srcset="" />
           </div>
         </div>
       </section>
       <main>
         <section id="iletişim">
-          <div class="container">
-            <h3 class="text-center text-uppercase">Bize ulaşın</h3>
-            <p class="text-center w-75 m-auto">
+          <div class="container-fluid">
+            <h3 class="text-center text-uppercase display-4">Bize ulaşın</h3>
+            <p class="text-center w-75 m-auto display-5" style={{ fontSize:"29px" }}>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
               interdum purus at sem ornare sodales. Morbi leo nulla, pharetra
               vel felis nec, ullamcorper condimentum quam.
